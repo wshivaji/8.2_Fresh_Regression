@@ -11,8 +11,15 @@ class Test_Portal_Login_Page_Test_Cases(web_driver, web_logger):
     print("******** Portal_Login_Page (Order - 1) Begin ********")
 
     @pytest.mark.p1
-    def test_Portal_Login_TC01(self):
+    def test_TC_Portal_Login_01(self):
         if Portal_Login_Page_Pom().open_portal_url_and_verify_expected_url_is_visible_verify_expected_page_title_is_visible_and_verify_face_first_logo_is_visible():
+            assert True
+        else:
+            assert False
+
+    @pytest.mark.p1
+    def test_Portal_Login_TC02(self):
+        if Portal_Login_Page_Pom().verify_username_textbox_is_visible_and_clickable_username_label_on_it_is_visible():
             assert True
         else:
             assert False
