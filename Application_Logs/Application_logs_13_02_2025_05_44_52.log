@@ -1,9 +1,0 @@
-13/02/2025 05:44:53 AM : root         : INFO     :  ******** Portal_Login_Page (Order - 1) Begin ********
-13/02/2025 05:44:53 AM : root         : INFO     : ********** TC_Portal_Login_01 started ********
-13/02/2025 05:44:53 AM : root         : INFO     : open_portal_url_and_verify_expected_url_is_visible_verify_expected_page_title_is_visible_and_verify_face_first_logo_is_visible
-13/02/2025 05:44:58 AM : root         : INFO     : actual url: https://ftecore5-vm.qa.facefirst.dev/
-13/02/2025 05:44:58 AM : root         : INFO     : expected Portal url: https://ftecore5-vm.qa.facefirst.dev/
-13/02/2025 05:44:59 AM : root         : INFO     : actual title: Privacy error
-13/02/2025 05:45:00 AM : root         : INFO     : expected title: FaceFirst
-13/02/2025 05:45:01 AM : root         : INFO     :  ******** Portal_Menu (Order - 2) Begin ********
-13/02/2025 05:45:01 AM : root         : INFO     : ********** TC_PM_1 started ********

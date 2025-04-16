@@ -5,7 +5,6 @@ filepath = f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\2_Portal_Menu
 print("configure filepath: ", filepath)
 common_test_data_ini_file_path = f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\Common_Test_Data\\common_test_data.ini"
 
-
 class Portal_Menu_Module_read_ini:
     def __init__(self):
         self.config = configparser.RawConfigParser()
