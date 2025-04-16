@@ -1,0 +1,16 @@
+
+
+>> python -m pytest -v -s -m "p4" '.\All_Test_Cases_Package\_5_Enrollment_Groups_Module\test_Enrollment_Groups_Test_Cases.py' --html=".\\Reports\\html_reports\\enrollment_groups_p4_12_10_2023.html"
+
+            count_data = Read_Visitor_Search_jobs_Components().matches_count_data_input()
+
+            matches_found = self.matches_found()
+            if type(matches_found) == bool:
+                result.append(matches_found)
+            else:
+                self.logger.info("no matches found")
+
+            max_number_counted = self.max_matches()
+            self.logger.info(f"max_number_counted: {max_number_counted}")
+            if max_number_counted != "No":
+                result.append(int(max_number_counted) <= int(count_data))

@@ -1,0 +1,37 @@
+import sys, os, pytest, subprocess
+from pathlib import Path
+import datetime
+
+if __name__ == "__main__":
+    p1_report_path = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\p1_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    p2_report_path = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\p2_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    p3_report_path = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\p3_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    p4_report_path = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\p4_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    p5_report_path = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\p5_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    # test_suite_path_All_Modules = f"{Path(__file__).parent}\\All_Test_Cases_Package\\"
+    # test_suite_path_USER_LOGIN = f"{Path(__file__).parent}\\All_Test_Cases_Package\\User_Login_Page_Module\\"
+    # test_suite_path_PORTAL_MENU = f"{Path(__file__).parent}\\All_Test_Cases_Package\\Portal_Menu_Module\\"
+    # test_suite_path_ENROLLMENT_GROUPS = f"{Path(__file__).parent}\\All_Test_Cases_Package\\Enrollment_Groups_Module\\"
+    # test_suite_path_NOTIFICATION_GROUPS = f"{Path(__file__).parent}\\All_Test_Cases_Package\\Notification_Groups_Module\\"
+    # test_suite_path_USER_ROLES = f"{Path(__file__).parent}\\All_Test_Cases_Package\\User_Roles_Module\\"test_suite_path_USER_ROLES = f"{Path(__file__).parent}\\All_Test_Cases_Package\\User_Roles_Module\\"
+    test_suite_path = f"{Path(__file__).parent}\\All_Test_Cases_Package\\"
+
+    # Run allure report of this file, export report to PJ/Reports
+    # pytest.main(['-s', '-q', '-m', 'p1', '--alluredir', f'{p1_report_path}', f'{test_suite_path_USERS}'])
+    pytest.main(['-s', '-q', '-m', 'p1', f'{test_suite_path}', '--html', f'{p1_report_path}'])
+    pytest.main(['-s', '-q', '-m', 'p2', f'{test_suite_path}', '--html', f'{p2_report_path}'])
+    pytest.main(['-s', '-q', '-m', 'p3', f'{test_suite_path}', '--html', f'{p3_report_path}'])
+    pytest.main(['-s', '-q', '-m', 'p4', f'{test_suite_path}', '--html', f'{p4_report_path}'])
+    pytest.main(['-s', '-q', '-m', 'p5', f'{test_suite_path}', '--html', f'{p5_report_path}'])
+    # pytest.main(['-s', '-q', '--alluredir', f'{report_path}', f'{test_suite_path_USERS}'])
+    # pytest.main(['-s', '-q', '--alluredir', f'{report_path}', f'{test_suite_path1}'])
+
+    # Open allure report via browser
+    # subprocess.run([r'PowerShell.exe', r'allure ' + 'serve ' + f'{report_path}'])
+    # subprocess.run([r'powershell.exe', r'allure ' + 'generate ' + '--output ' + f'{report_path} ' + f'{report_path}'])
+    # subprocess.Popen.terminate()
+    # subprocess.Popen.kill()
+
+
+            #  python -m pytest -v -s -m "p1" '.\All_Test_Cases_Package\' --html=".\\Reports\\html_reports\\All_
+    # Tests_integrated_p1_19_10_2023.html"
