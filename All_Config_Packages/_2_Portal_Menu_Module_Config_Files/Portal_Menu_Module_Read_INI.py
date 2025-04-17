@@ -82,6 +82,22 @@ class Portal_Menu_Module_read_ini:
         except Exception as ex:
             print(ex.args)
 
+    def get_executive_menus(self):
+        try:
+            executive_menus = self.config.get("Portal Menu", "executive_menus")
+            print("expected executive_menus: ", executive_menus)
+            return executive_menus
+        except Exception as ex:
+            print(ex.args)
+
+    def get_it_admin_menus(self):
+        try:
+            it_admin_menus = self.config.get("Portal Menu", "it_admin_menus")
+            print("expected it_admin_menus: ", it_admin_menus)
+            return it_admin_menus
+        except Exception as ex:
+            print(ex.args)
+
     def get_close_panel_button_by_xpath(self):
         try:
             close_panel_button = self.config.get("Portal Menu", "close_panel_button_by_xpath")

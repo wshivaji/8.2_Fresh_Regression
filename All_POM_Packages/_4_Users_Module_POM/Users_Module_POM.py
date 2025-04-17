@@ -2,6 +2,7 @@ import random
 import time
 from pathlib import Path
 
+import pandas as pd
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -107,6 +108,80 @@ class Users_Module_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}login_failed_for_users_menu_failed.png")
             self.log.info(f"login_before_failed: {ex}")
             return False
+
+    def Read_user_from_json(self):
+        try:
+            file_path = f'{Path(__file__).parent.parent.parent}\\All_Test_Data\\4_Users_Module\\Data_From_JSON\\users_creation.json'
+            print(f"json file path: {file_path}")
+            # users_dict = json.loads(file_path)
+            # print(f"users dictionary: {users_dict["date_range"]}")
+            user_dict_pd = pd.read_json(file_path)
+            print(f"user dict dataframe: {user_dict_pd['users']}")
+            return user_dict_pd
+        except Exception as ex:
+            self.logger.info(f"reading users from json: {ex.args}")
+
+    def Create_5_users_standard_operator_responder_approver_executive_with_all_required_field(self):
+        try:
+            users_dict = self.Read_user_from_json()
+            users_list = []
+            username = users_dict["users"][4]["username"]
+            login().login_with_persona_user(self.d, username)
+            time.sleep(web_driver.one_second)
+            dictionary_length = len(users_dict["users"])-1
+            print("length of dictionary is", dictionary_length)
+            i = 0
+            for i in range(dictionary_length):
+                print(users_dict["users"][i])
+                self.click_user_on_cloud_menu()
+                self.click_on_action_create_user_option()
+                time.sleep(web_driver.one_second)
+                # username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
+                self.enter_user_name(users_dict["users"][i]["username"])
+                self.enter_first_name(users_dict["users"][i]["firstname"])
+                self.enter_last_name(users_dict["users"][i]["lastname"])
+                self.d.find_element(By.XPATH, "//select[@name='userRoleId']").click()
+                self.select_user_role(users_dict["users"][i]["userrole"])
+                self.enter_password(users_dict["users"][i]["password"])
+                self.select_region(users_dict["users"][i]["user_orgahierarchy"])
+                # self.select_store_group(users_dict["users"][i]["store_group"])
+                self.enter_email(users_dict["users"][i]["Email"])
+                self.enter_alert_email(users_dict["users"][i]["Email"])
+                self.select_time_zone(Read_Users_Components().time_zone_input_data())
+                time.sleep(web_driver.one_second)
+                self.click_on_save_btn()
+                time.sleep(web_driver.two_second)
+
+                # i+=1
+                if self.check_if_user_is_created(users_dict["users"][i]["username"]):
+                    time.sleep(web_driver.one_second)
+                    self.click_on_alert_schedule_icon()
+                    time.sleep(web_driver.one_second)
+                    self.click_on_alert_schedule_action_option_edit()
+                    time.sleep(web_driver.one_second)
+                    if True in self.verify_settings_yes_or_no_button():
+                        time.sleep(web_driver.one_second)
+                        alert_save_button = self.d.find_element(By.XPATH,
+                                                                Read_Users_Components().alert_schedule_save_btn_by_xpath())
+                        alert_save_button.click()
+                        self.logger.info("user created successfully")
+                        # self.close_all_panel_one_by_one()
+                        users_list.append(True)
+                else:
+                    self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_1_failed.png")
+                    users_list.append(False)
+                self.close_all_panel_one_by_one()
+            self.logger.info(f"user list contains {users_list}")
+            if False in users_list:
+                return False
+            else:
+                return True
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_1_exception.png")
+            self.log.info(f"test_TC_US_1_exception: {ex}")
+            return False
+        # finally:
+        #     self.click_on_logout_button()
 
     def verify_user_able_to_view_the_user_on_cloud_menu(self):
         try:

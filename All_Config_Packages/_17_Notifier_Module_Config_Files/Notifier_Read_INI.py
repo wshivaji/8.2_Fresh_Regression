@@ -1414,29 +1414,50 @@ class Notifier_Read_ini:
 
     def get_Location_Name(self):
         try:
-            Location_name = self.config.get("data_validation","Location_name")
+            Location_name = self.config.get("data_validation", "Location_name")
             return Location_name
         except Exception as ex:
             print(ex.args)
 
-    def get_station_camer_name(self):
+    def get_location_data(self):
         try:
-            get_station_camer_name = self.config.get("data_validation","camera_name")
-            return get_station_camer_name
+            location_data = self.config.get("data_validation", "location_data")
+            return location_data
+        except Exception as ex:
+            print(ex.args)
+
+    def get_station_camera_name(self):
+        try:
+            get_station_camera_name = self.config.get("data_validation", "camera_name")
+            return get_station_camera_name
+        except Exception as ex:
+            print(ex.args)
+
+    def get_station_camera_data(self):
+        try:
+            get_station_camera_data = self.config.get("data_validation", "camera_data")
+            return get_station_camera_data
         except Exception as ex:
             print(ex.args)
 
     def get_case_subject(self):
         try:
-            case_subject = self.config.get("data_validation","case_subject")
+            case_subject = self.config.get("data_validation", "case_subject")
             return case_subject
         except Exception as ex:
             print(ex.args)
 
     def get_Action(self):
         try:
-            Action = self.config.get("data_validation","Action")
+            Action = self.config.get("data_validation", "Action")
             return Action
+        except Exception as ex:
+            print(ex.args)
+
+    def get_Action_data(self):
+        try:
+            Action_data = self.config.get("data_validation", "Action_data")
+            return Action_data
         except Exception as ex:
             print(ex.args)
 
@@ -1447,4 +1468,23 @@ class Notifier_Read_ini:
         except Exception as ex:
             print(ex.args)
 
+    def get_Index_data(self):
+        try:
+            get_Index_data = self.config.get("data_validation", "Index_data")
+            return get_Index_data
+        except Exception as ex:
+            print(ex.args)
 
+    def get_enrollment_number(self):
+        try:
+            enrollment_number = self.config.get("data_validation", "enrollment_number")
+            return enrollment_number
+        except Exception as ex:
+            print(ex.args)
+
+    def get_enrollment_number_data(self):
+        try:
+            enrollment_number_data = self.config.get("data_validation", "enrollment_number_data")
+            return enrollment_number_data
+        except Exception as ex:
+            print(ex.args)
