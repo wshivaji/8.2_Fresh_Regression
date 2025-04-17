@@ -21,14 +21,14 @@ class Test_detect_faces_testcases(web_driver, web_logger):
             assert False
 
     @pytest.mark.p1
-    def test_Detect_Faces_TC_009(self):
+    def test_TC_DF_08(self):
         if detect_faces_pom().upload_a_image_having_more_no_of_faces_verify_banner_showing_number_of_faces_on_a_image():
             assert True
         else:
             assert False
 
     @pytest.mark.p1
-    def test_Detect_faces_Tc_022(self):
+    def test_TC_DF_22(self):
         if detect_faces_pom().on_image_quality_page_In_action_dropdown_click_on_identify_within_enrollments_Identify_and_enroll_page_is_visible_and_clickable():
             assert True
         else:
