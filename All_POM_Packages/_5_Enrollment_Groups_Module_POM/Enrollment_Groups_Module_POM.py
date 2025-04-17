@@ -50,7 +50,7 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             self.logger.info(f"element length: {len(element_list)}")
             return element_list[0]
 
-    def verify_user_able_to_click_on_enrollment_groups_in_cloud_menu(self):
+    def verify_Enrollment_Groups_submenu_is_visible_and_enabled_in_cloud_menu(self):
         try:
             self.logger.info("***************** test_TC_EG_001 *****************")
             # # self.d = self.load_portal_login_page_if_not_loaded()
@@ -68,7 +68,6 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
                 self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_001_failed.png")
                 return False
         except Exception as ex:
-
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_001_exception.png")
             self.logger.info(f"verify_user_able_to_click_on_enrollment_groups_in_cloud_menu_failed: {ex}")
             return False
@@ -142,7 +141,7 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
 
     def verify_action_button_is_visible_and_clickable(self):
         try:
-            self.logger.info("*********************** test_TC_EG_004 ********************")
+            self.logger.info("*********************** test_TC_EG_05 ********************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -161,13 +160,12 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             self.logger.info(f"Status is : {status}")
             time.sleep(web_driver.one_second)
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_004_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_05_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_004_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_05_exception.png")
             self.logger.info(f"verify_action_button_is_visible_and_clickable_failed: {ex}")
             return False
         finally:
@@ -1036,7 +1034,7 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
 
     def verify_user_fill_the_name_text_box_with_data_click_save_button_then_below_fields_should_be_activated(self):
         try:
-            self.logger.info("******************** test_TC_EG_026 *********************")
+            self.logger.info("******************** test_TC_EG_26 *********************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -1093,13 +1091,13 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             self.logger.info(f"Status: {status}")
             time.sleep(web_driver.one_second)
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_026_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_26_failed.png")
                 return False
             else:
                 self.delete_enrollment_group(Read_Enrollment_Groups_Components().name_field_data())
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_026_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_26_exception.png")
             self.logger.info(f"verify_user_fill_the_name_text_box_with_data_click_save_button_then_below_fields_should_be_activated: {ex}")
             return False
         finally:
@@ -1542,7 +1540,7 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
 
     def verify_enrollment_group_details_action_dropdown_has_edit_button_is_visible_and_clickable(self):
         try:
-            self.logger.info("*********************** test_TC_EG_035 **********************")
+            self.logger.info("*********************** test_TC_EG_35 **********************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -1583,21 +1581,21 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             self.logger.info(f"status: {status}")
             time.sleep(web_driver.one_second)
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_035_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_35_failed.png")
                 return False
             else:
                 self.delete_enrollment_group(Read_Enrollment_Groups_Components().name_field_data())
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_035_Exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_35_Exception.png")
             self.logger.info(f"verify_enrollment_group_details_action_dropdown_has_edit_button_is_visible_and_clickable_failed: {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one_no_popup()
 
-    def verify_user_unsaving_enrollment_group_details_panel_below_buttons_should_be_disable_mode(self):
+    def verify_user_without_saving_Enrollment_Group_details_panel_below_Enrollments_Notification_Group_Probable_match_Events_should_be_in_disable_mode(self):
         try:
-            self.logger.info("***************** test_TC_EG_027 ***********************")
+            self.logger.info("***************** test_TC_EG_27 ***********************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -1656,22 +1654,22 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info(f"status: {status}")
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_027_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_27_failed.png")
                 return False
             else:
                 # self.delete_enrollment_group(Read_Enrollment_Groups_Components().name_field_data())
                 return True
         except Exception as ex:
 
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_027_Exception.png")
-            self.logger.info(f"verify_user_unsaving_enrollment_group_details_panel_below_buttons_should_be_disable_mode_failed: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_27_Exception.png")
+            self.logger.info(f"verify_user_without_saving_enrollment_group_details_panel_below_buttons_should_be_disable_mode_failed: {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one_no_popup()
 
-    def verify_user_can_delete_any_enrollment_groups(self):
+    def verify_user_can_delete_any_enrollment_groups_which_has_no_enrollments_linked(self):
         try:
-            self.logger.info("*********************** test_TC_EG_036 *******************")
+            self.logger.info("*********************** test_TC_EG_36 *******************")
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
@@ -1711,10 +1709,10 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
                 return True
             else:
                 self.logger.info(f"status: {False}")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_036_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_36_failed.png")
                 return False
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_036_Exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_36_Exception.png")
             self.logger.info(f"verify_user_can_delete_any_enrollment_groups_failed: {ex}")
             return False
         finally:
@@ -3467,9 +3465,9 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one_no_popup()
 
-    def filling_name_data_it_should_displayed_success_message(self):
+    def verify_user_fills_the_Name_text_box_with_any_data_and_click_on_Save_button_then_validation_message_Success_the_group_below_has_been_created_should_display(self):
         try:
-            self.logger.info("****************** test_TC_EG_070 ***********************")
+            self.logger.info("****************** test_TC_EG_25 ***********************")
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
             enrollment_groups_btn = self.explicit_wait(10, "XPATH", Read_Enrollment_Groups_Components()
@@ -3512,10 +3510,10 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
                 return True
             else:
                 self.logger.info(f"status: {False}")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_070_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_25_failed.png")
                 return False
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_070_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_25_exception.png")
             self.logger.info(f"filling_name_data_it_should_displayed_success_message_failed: {ex}")
             return False
         finally:
@@ -5347,9 +5345,9 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one_no_popup()
 
-    def name_description_face_masked_face_threshold_serious_offender_suppress_duplicate_events_data_success(self):
+    def verify_enrollment_groups_functionality_by_filling_name_description_face_threshold_masked_face_threshold_serious_offender_suppress_duplicate_Probable_match_Events_data_it_should_displayed_success_the_group_below_has_been_created_message(self):
         try:
-            self.logger.info("******************** test_TC_EG_0101 *******************")
+            self.logger.info("******************** test_TC_EG_68 *******************")
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
@@ -5405,11 +5403,13 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             masked_face_threshold_data = Read_Enrollment_Groups_Components().masked_face_threshold_data()
             self.enter_mask_face_thresh_hold(masked_face_threshold_data)
-
+            self.logger.info(f"entered masked face threshold value: {masked_face_threshold_data}")
             serious_offender = Read_Enrollment_Groups_Components().serious_offender_input_data()
+            self.logger.info(f"serious offender: {serious_offender}")
             self.select_serious_offender(serious_offender)
             time.sleep(web_driver.one_second)
             supress_duplicate_events = Read_Enrollment_Groups_Components().supress_duplicate_events_input_data()
+            self.logger.info(f"suppress duplicate events: {supress_duplicate_events}")
             self.select_suppress_duplicate_events(supress_duplicate_events)
             time.sleep(web_driver.one_second)
             save_button = self.d.find_element(By.XPATH, Read_Enrollment_Groups_Components().save_button_by_xpath())
@@ -5432,10 +5432,10 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
                 return True
             else:
                 self.logger.info(f"status: {False}")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0101_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_68_failed.png")
                 return False
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0101_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_68_exception.png")
             self.logger.info(f"name_description_face_masked_face_threshold_serious_offender_suppress_duplicate_events_data_success_failed: {ex}")
             return False
         finally:
@@ -5574,7 +5574,7 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
 
     def verify_that_notification_group_should_be_created_from_enrollment_group_module_end_to_end(self):
         try:
-            self.logger.info("******************* test_TC_EG_0103 *******************")
+            self.logger.info("******************* test_TC_EG_70 *******************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -5729,20 +5729,20 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             self.logger.info(f"ac created eg is : {ac_created_eg}")
             self.logger.info(f"status: {status}")
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0103_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_70_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0103_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_70_exception.png")
             self.logger.info(f"verify_that_notification_group_should_be_created_from_enrollment_group_module_end_to_end_failed: {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one_no_popup()
 
-    def verify_that_events_should_be_created_from_enrollment_group_module_end_to_end(self):
+    def verify_that_Probable_match_Events_should_be_displayed_from_enrollment_group_module_end_to_end(self):
         try:
-            self.logger.info("*********************** test_TC_EG_0104 *********************")
+            self.logger.info("*********************** test_TC_EG_71 *********************")
             status = []
             # self.d = self.load_portal_login_page_if_not_loaded()
             login().login_to_cloud_if_not_done(self.d)
@@ -5799,12 +5799,12 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info(f"Status is : {status}")
             if False in status:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0104_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_71_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_0104_Exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_EG_71_Exception.png")
             self.logger.info(f"verify_events_groups_button_is_activated_and_clickable_failed: {ex}")
             return False
         finally:
@@ -5885,12 +5885,16 @@ class Enrollments_Groups_Module_pom(web_driver, web_logger):
 
     def select_serious_offender(self, serious_offender):
         ele = self.d.find_element(By.XPATH, Read_Enrollment_Groups_Components().serious_offender_drop_down_by_xpath())
+        self.logger.info(f"select element visible: {ele.is_displayed()}")
+        # ele.click()
+        time.sleep(web_driver.one_second)
         select = Select(ele)
         select.select_by_visible_text(serious_offender)
         time.sleep(web_driver.one_second)
 
     def select_suppress_duplicate_events(self, supress_duplicate_events):
         ele = self.d.find_element(By.XPATH, Read_Enrollment_Groups_Components().supress_duplicate_events_by_xpath())
+        self.logger.info(f"select element visible: {ele.is_displayed()}")
         select = Select(ele)
         select.select_by_value(supress_duplicate_events)
         time.sleep(web_driver.one_second)
