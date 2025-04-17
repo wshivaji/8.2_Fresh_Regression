@@ -3605,7 +3605,9 @@ class Users_Module_pom(web_driver, web_logger):
             self.select_user_role(Read_Users_Components().user_role_input_data())
             self.enter_password(Read_Users_Components().password_data_input())
             self.select_region(Read_Users_Components().region_data_input())
-            self.enter_email(Read_Users_Components().email_input_data())
+            email = username+"@facefirst.com"
+            self.enter_email(email)
+            # self.enter_email(Read_Users_Components().email_input_data())
             self.select_time_zone(Read_Users_Components().time_zone_input_data())
             time.sleep(web_driver.one_second)
             self.click_on_save_btn()
@@ -3613,12 +3615,12 @@ class Users_Module_pom(web_driver, web_logger):
             if self.validate_successful_message():
                 return True
             else:
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_109_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_118_failed.png")
                 return False
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_109_exception.png")
-            self.log.info(f"test_TC_US_109_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_118_exception.png")
+            self.log.info(f"test_TC_US_118_exception: {ex}")
             return False
         finally:
             self.delete_randomly_created_users()
@@ -3650,12 +3652,12 @@ class Users_Module_pom(web_driver, web_logger):
             if self.check_if_user_is_created(user_name=username):
                 return True
             else:
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_110_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_119_failed.png")
                 return False
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_110_exception.png")
-            self.log.info(f"test_TC_US_110_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_119_exception.png")
+            self.log.info(f"test_TC_US_119_exception: {ex}")
             return False
         finally:
             self.delete_randomly_created_users()
@@ -3894,12 +3896,12 @@ class Users_Module_pom(web_driver, web_logger):
             if self.check_if_users_able_to_see_all_details(user_name=username):
                 return True
             else:
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_113_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_120_failed.png")
                 return False
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_113_exception.png")
-            self.log.info(f"test_TC_US_113_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_120_exception.png")
+            self.log.info(f"test_TC_US_120_exception: {ex}")
             return False
         finally:
             self.delete_randomly_created_users()
@@ -4227,6 +4229,70 @@ class Users_Module_pom(web_driver, web_logger):
             logout().logout_from_core(self.d)
             self.d.refresh()
 
+    def Verify_user_able_to_see_all_the_details_filled_for_the_newly_created_user(self):
+        try:
+            login().login_to_cloud_if_not_done(self.d)
+            time.sleep(web_driver.one_second)
+            self.click_user_on_cloud_menu()
+            self.click_on_action_create_user_option()
+            time.sleep(web_driver.two_second)
+
+            username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
+            self.enter_user_name(username)
+
+            first_name = Read_Users_Components().first_name_input_data()
+            self.enter_first_name(first_name)
+
+            last_name = Read_Users_Components().last_name_input_data()
+            self.enter_last_name(last_name)
+
+            user_role = Read_Users_Components().user_role_input_data()
+            self.select_user_role(user_role)
+
+            password = Read_Users_Components().password_data_input()
+            self.enter_password(password)
+
+            region = Read_Users_Components().region_data_input()
+            self.select_region(region)
+
+            # email = Read_Users_Components().email_input_data()
+            email = f"{username}@facefirst.com"
+            self.enter_email(email)
+
+            time_zone = Read_Users_Components().time_zone_input_data()
+            self.select_time_zone(time_zone)
+
+            time.sleep(web_driver.one_second)
+            self.click_on_save_btn()
+            time.sleep(web_driver.two_second)
+            result = self.verify_user_details_under_users_panel()
+            self.log.info(f"Status : {result}")
+            # search_box = self.d.find_element(By.XPATH, Read_Users_Components().search_box_by_xpath())
+            search_box = web_driver.explicit_wait(self, 5, "XPATH", Read_Users_Components().search_box_by_xpath(), self.d)
+            search_box.clear()
+            time.sleep(web_driver.two_second)
+            # users_created = self.d.find_elements(By.XPATH, Read_Users_Components().facefirst_user_xpath())
+            # user_checkbox = self.d.find_elements(By.XPATH, Read_Users_Components().user_checkbox_by_xpath())
+            # for i in range(len(users_created)):
+            #     if Read_Users_Components().user_name_input_data() in users_created[i].text:
+            #         user_checkbox[i].click()
+            self.delete_randomly_created_users()
+
+            if False in result:
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_121_failed.png")
+                return False
+            else:
+                return True
+
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_121_exception.png")
+            self.log.info(f"test_TC_US_121_exception: {ex}")
+            return False
+        finally:
+            logout().logout_from_core(self.d)
+            self.d.refresh()
+
+
     def user_able_to_see_the_newly_created_users_details_username_firstname_lastname_email_under_users_panel(self):
         try:
             login().login_to_cloud_if_not_done(self.d)
@@ -4277,14 +4343,14 @@ class Users_Module_pom(web_driver, web_logger):
             self.delete_randomly_created_users()
 
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_120_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_127_failed.png")
                 return False
             else:
                 return True
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_120_exception.png")
-            self.log.info(f"test_TC_US_120_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_127_exception.png")
+            self.log.info(f"test_TC_US_127_exception: {ex}")
             return False
         finally:
             logout().logout_from_core(self.d)
@@ -4928,12 +4994,12 @@ class Users_Module_pom(web_driver, web_logger):
                 return True
             else:
                 self.logger.info(f"Status : {False}")
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_132_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_139_failed.png")
                 return False
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_132_exception.png")
-            self.log.info(f"test_TC_US_132_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_139_exception.png")
+            self.log.info(f"test_TC_US_139_exception: {ex}")
             return False
         finally:
             self.delete_randomly_created_users()
@@ -6307,6 +6373,39 @@ class Users_Module_pom(web_driver, web_logger):
             logout().logout_from_core(self.d)
             self.d.refresh()
 
+    def Verify_new_user_can_be_created_without_selecting_store_group(self):
+        try:
+            login().login_to_cloud_if_not_done(self.d)
+            time.sleep(web_driver.one_second)
+            self.click_user_on_cloud_menu()
+            self.click_on_action_create_user_option()
+            time.sleep(web_driver.one_second)
+            username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
+            self.enter_user_name(username)
+            self.enter_first_name(Read_Users_Components().first_name_input_data())
+            self.enter_last_name(Read_Users_Components().last_name_input_data())
+            self.select_user_role(Read_Users_Components().user_role_input_data())
+            self.enter_password(Read_Users_Components().password_data_input())
+            self.select_region(Read_Users_Components().region_data_input())
+            email = f"{username}@facefirst.com"
+            self.enter_email(email)
+            # self.enter_email(Read_Users_Components().email_input_data())
+            self.select_time_zone(Read_Users_Components().time_zone_input_data())
+            time.sleep(web_driver.one_second)
+            self.click_on_save_btn()
+            time.sleep(web_driver.one_second)
+            if self.check_if_user_is_created(user_name=username):
+                return True
+            else:
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_197_failed.png")
+                return False
+        except Exception as ex:
+            self.logger.info(f"type: {type(ex).__name__}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_197_exception.png")
+        finally:
+            logout().logout_from_core(self.d)
+            self.d.refresh()
+
     def on_alert_schedule_verify_the_username_is_correct(self):
         try:
             login().login_to_cloud_if_not_done(self.d)
@@ -6477,7 +6576,7 @@ class Users_Module_pom(web_driver, web_logger):
         #     logout().logout_from_core(self.d)
         #     self.d.refresh()
 
-    def edit_the_settings_send_sms_toggle_it_either_yes_or_no_save_and_verify_the_changes_are_reflected(self):
+    def click_on_edit_alert_schedule_make_some_changes_and_save_new_changes_and_verify_alert_schedule_changes_are_saved_successfully(self):
         try:
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.one_second)
@@ -6488,14 +6587,14 @@ class Users_Module_pom(web_driver, web_logger):
             self.click_on_alert_schedule_action_option_edit()
             time.sleep(web_driver.one_second)
             if False in self.verify_send_sms_toggle_yes_or_no():
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_171_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_183_failed.png")
                 return False
             else:
                 return True
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_171_exception.png")
-            self.log.info(f"test_TC_US_171_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_183_exception.png")
+            self.log.info(f"test_TC_US_183_exception: {ex}")
             return False
         finally:
             logout().logout_from_core(self.d)
@@ -8031,6 +8130,7 @@ class Users_Module_pom(web_driver, web_logger):
 
     def is_constant_user_created(self):
         user_name = Read_Users_Components().constant_user_name()
+        # user_name = Read_Users_Components().user_name_input_data() + str(generate_random_number())
         # search_box = self.d.find_element(By.XPATH, Read_Users_Components().search_box_by_xpath())
         search_box = web_driver.explicit_wait(self, 5, "XPATH", Read_Users_Components().search_box_by_xpath(), self.d)
         search_box.send_keys(user_name)
@@ -8055,6 +8155,7 @@ class Users_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
 
             username = Read_Users_Components().constant_user_name()
+            # username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
             self.enter_user_name(username)
 
             first_name = Read_Users_Components().first_name_input_data()
