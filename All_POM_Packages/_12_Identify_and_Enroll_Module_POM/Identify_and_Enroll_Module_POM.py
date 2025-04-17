@@ -107,7 +107,7 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
             enrollment_group.click()
             time.sleep(web_driver.one_second)
             select = Select(enrollment_group)
-            # select.select_by_index(1)
+            select.select_by_index(1)
             # select.select_by_value(enrollment_groups_list[i])
             self.logger.info(f"enrollment group: {enrollment_groups_list}")
             # enter_eg = enrollment_groups_list[i] + " (Serious Offender - High)"
@@ -617,7 +617,7 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_IE_01_exception.png")
             return False
 
-    def verify_if_Identify_and_Enroll_Menu_Option_is_displayed_and_clickable(self):
+    def Click_on_Identify_Entroll_Option_inside_Cloud_Menu_Local_Menu_and_verify_a_new_panel_is_displayed_with_title_as_Identify_Enroll(self):
         try:
             self.logger.info("************* test_TC_IE_02 started  **************")
 
@@ -637,6 +637,24 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
                 self.status.append(True)
             else:
                 self.logger.info("identify_and_enroll is not clickable...")
+                self.status.append(False)
+            identify_and_enroll = self.explicit_wait(10, "XPATH", Read_Identify_and_Enroll_Components()
+                                                     .identify_and_enroll_link_by_xpath(), self.d)
+            self.d.execute_script("arguments[0].click();", identify_and_enroll)
+            self.logger.info("clicked on Identify and enroll link")
+            time.sleep(web_driver.two_second)
+
+            identify_and_enroll_panel_title = self.explicit_wait(10, "XPATH",
+                                                                 Read_Identify_and_Enroll_Components().identify_and_enroll_panel_title_by_xpath(),
+                                                                 self.d)
+            actual_text = identify_and_enroll_panel_title.text
+            expected_text = Read_Identify_and_Enroll_Components().identify_and_enroll_panel_title()
+            self.logger.info(f"Expected data = {expected_text}")
+            self.logger.info(f"Actual data = {actual_text}")
+            self.close_all_panel_one_by_one()
+            if actual_text.lower() == expected_text.lower():
+                self.status.append(True)
+            else:
                 self.status.append(False)
 
             self.logger.info(f"status: {self.status}")
@@ -1369,7 +1387,7 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
 
     def verify_new_panel_is_displayed_with_title_as_Identify_Results(self):
         try:
-            self.logger.info("************* test_TC_IE_15 started  **************")
+            self.logger.info("************* test_TC_IE_13 started  **************")
 
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
@@ -1515,17 +1533,17 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
             print(self.status)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\test_TC_IE_15.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_IE_15_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\test_TC_IE_13.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_IE_13_failed.png")
                 print(self.status)
                 self.click_on_close_all_panel_btn()
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"test_TC_IE_15 got an exception as: {ex.args}")
+            self.logger.error(f"test_TC_IE_13 got an exception as: {ex.args}")
             self.d.save_screenshot(f"{self.screenshots_path}"
-                                   f"\\test_TC_IE_15_exception.png")
+                                   f"\\test_TC_IE_13_exception.png")
             return False
 
     def verify_matches_are_found_and_displayed_inside_Identify_Results_panel(self):
@@ -7511,7 +7529,7 @@ class Identify_And_Enroll_POM(web_driver, web_logger):
                 f"{self.screenshots_path}\\test_TC_IE_99_Exception.png")
             return False
 
-    def Enter_Data_into_fields_displayed_on_Add_Details_panel_and_verify_enrollment_successfully_created(self):
+    def Enter_Data_into_fields_displayed_on_Add_Details_panel_and_verify_enrollment_successfully_created_and_add_details_panel_closed(self):
         try:
             self.logger.info("************* test_TC_IE_100 started  **************")
 

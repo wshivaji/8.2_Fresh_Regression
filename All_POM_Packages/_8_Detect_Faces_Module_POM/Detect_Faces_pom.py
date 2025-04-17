@@ -1,6 +1,9 @@
 import time
 from pathlib import Path
 from selenium.webdriver.common.by import By
+
+from All_Config_Packages._12_Identify_and_Enroll_Config_Files.Identify_and_Enroll_Readd_INI import \
+    Read_Identify_and_Enroll_Components
 from Base_Package.Web_Driver import web_driver
 from Base_Package.Web_Logger import web_logger
 from All_Config_Packages._8_detect_faces_config_Files.Detect_Faces_Read_Ini import detect_Faces_Read_Ini
@@ -151,7 +154,7 @@ class detect_faces_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_003.png")
             self.logger.error(f"TC_detect_faces_003 got exception as: {ex} ")
 
-    def click_on_DETECT_FACES_on_clould_menu_items_and_verify_detect_faces_panel_is_visible(self):
+    def Click_on_Detect_Faces_menu_and_verify_it_is_navigating_to_Detect_Faces_panel_verify_panel_heading_is_visible_as_expected(self):
         try:
             self.logger.info("******TC_004******* started")
             login().login_to_cloud_if_not_done(self.d)
@@ -166,7 +169,9 @@ class detect_faces_pom(web_driver, web_logger):
                 self.status.append(False)
             self.logger.info(f"status :{self.status}")
             time.sleep(web_driver.one_second)
-            logout().logout_from_core(self.d)
+            # logout().logout_from_core(self.d)
+            self.close_all_panels()
+
             if False in self.status:
                 self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_detect_faces_004.png")
                 self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_004.png")
@@ -178,7 +183,7 @@ class detect_faces_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_004.png")
             self.logger.error(f"TC_detect_faces_004 got exception as: {ex} ")
 
-    def After_clicking_detect_faces_on_cloudmenu_items_check_panel_heading_of_DETECT_FACES(self):
+    def click_on_DETECT_FACES_on_clould_menu_items_and_verify_detect_faces_panel_is_visible(self):
         try:
             self.logger.info("**********TC_005******* started")
             login().login_to_cloud_if_not_done(self.d)
@@ -327,7 +332,7 @@ class detect_faces_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_008.png")
             self.logger.error(f"TC_detect_faces_008 got exception as: {ex} ")
 
-    def on_Detect_faces_page_upload_a_image_having_more_no_of_faces_verify_banner_showing_number_of_faces_on_a_image(self):
+    def upload_a_image_having_more_no_of_faces_verify_banner_showing_number_of_faces_on_a_image(self):
         try:
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
@@ -358,8 +363,8 @@ class detect_faces_pom(web_driver, web_logger):
                 self.status.append(False)
             self.logger.info(f"status :{self.status}")
             time.sleep(web_driver.three_second)
-            logout().logout_from_core(self.d)
-            
+            # logout().logout_from_core(self.d)
+            self.close_all_panels()
             if False in self.status:
                 self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_detect_faces_009.png")
                 self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_009.png")
@@ -850,7 +855,7 @@ class detect_faces_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_21.png")
             self.logger.error(f"TC_detect_faces_21 got exception as: {ex} ")
 
-    def click_on_ACTION_DROPDOWN_dropdown_on_image_quality_page_verify_list_of_options_are_visible(self):
+    def on_image_quality_page_In_action_dropdown_click_on_identify_within_enrollments_Identify_and_enroll_page_is_visible_and_clickable(self):
         try:
             self.logger.info("*******TC_022******** started")
             login().login_to_cloud_if_not_done(self.d)
@@ -880,7 +885,8 @@ class detect_faces_pom(web_driver, web_logger):
                 self.status.append(False)
             self.logger.info(f"status :{self.status}")
             time.sleep(web_driver.two_second)
-            logout().logout_from_core(self.d)
+            # logout().logout_from_core(self.d)
+            self.close_all_panels()
             if False in self.status:
                 self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_detect_faces_22.png")
                 self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_22.png")
@@ -1456,3 +1462,20 @@ class detect_faces_pom(web_driver, web_logger):
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_detect_faces_33.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_33.png")
             self.logger.error(f"TC_detect_faces_33 got exception as: {ex} ")
+
+    def close_all_panels(self):
+        try:
+            time.sleep(web_driver.one_second)
+            cloud_menu = self.d.find_element(By.XPATH, Read_Identify_and_Enroll_Components().cloud_menu_by_xpath())
+            cloud_menu.click()
+            web_driver.implicit_wait(self, web_driver.one_second, self.d)
+            close_all_panels_menu = self.d.find_elements(By.XPATH,
+                                                         Read_Identify_and_Enroll_Components().close_all_panels_btn_by_xpath())
+            time.sleep(web_driver.one_second)
+            if len(close_all_panels_menu) > 0:
+                close_all_panels_menu[0].click()
+                time.sleep(web_driver.one_second)
+        except Exception as ex:
+            self.logger.error(f"Exception crated: {ex.args}")
+            self.d.save_screenshot(f"{Path(__file__).parent.parent}\\Screenshots\\test_TC_DFexception.png")
+            return False

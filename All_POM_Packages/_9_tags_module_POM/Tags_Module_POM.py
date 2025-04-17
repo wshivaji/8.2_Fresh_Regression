@@ -232,8 +232,8 @@ class Tags_Module_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_TAG_02_exception.png")
             self.log.info(f"create_tags_for_non_serious_event:  {ex}")
             return False
-        # finally:
-        #     self.close_all_panel_one_by_one()
+        finally:
+            self.close_all_panel_one_by_one()
         #     logout().logout_from_core(self.d)
 
     def filter_serious_event_tags_varify_it(self):
@@ -425,11 +425,11 @@ class Tags_Module_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_TAG_06_Exception.png")
             self.log.info(f"duplicate_tags_not_create_validation_failed:  {ex}")
             return False
-        # finally:
-        #     self.close_all_panel_one_by_one()
+        finally:
+            self.close_all_panel_one_by_one()
         #     logout().logout_from_core(self.d)
 
-    def update_serious_event_tag_name(self):
+    def Verify_tags_name_edit_functionality(self):
         rows = XLUtils.getRowCount(test_data, 'serious_event_tags_data')
         try:
             self.log.info("********** test_TC_TAG_07 ************")
