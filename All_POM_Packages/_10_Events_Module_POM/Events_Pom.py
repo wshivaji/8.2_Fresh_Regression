@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
 from All_Config_Packages._10_Events_Config_Files.Events_Read_Ini import events_Read_Ini
+from All_Config_Packages._9_tags_module_Config_Files.Tags_Read_INI import Read_Tags_Components
 from Base_Package.Login_Logout_Ops import login
 from Base_Package.Web_Driver import web_driver
 from Base_Package.Web_Logger import web_logger
@@ -3379,11 +3380,11 @@ class events_pom(web_driver, web_logger):
             web_driver.explicit_wait(self, 10, "XPATH", events_Read_Ini().get_match_event_tags_filter_unlink_tag(), self.d).click()
             time.sleep(web_driver.one_second)
             details_button = web_driver.explicit_wait(self, 10, "XPATH", events_Read_Ini().tag_details_button(), self.d)
-            # filter_dropdown = self.d.find_element(By.XPATH, events_Read_Ini().filter_dropdown_in_events_tag())
-            # filter_dropdown.click()
-            # time.sleep(web_driver.one_second)
-            # linked_tags = web_driver.explicit_wait(self, 10, "XPATH", events_Read_Ini().linked_tags_by_xpath(), self.d)
-            # linked_tags.click()
+            filter_dropdown = self.d.find_element(By.XPATH, events_Read_Ini().filter_dropdown_in_events_tag())
+            filter_dropdown.click()
+            time.sleep(web_driver.one_second)
+            linked_tags = web_driver.explicit_wait(self, 10, "XPATH", events_Read_Ini().linked_tags_by_xpath(), self.d)
+            linked_tags.click()
             time.sleep(web_driver.one_second)
             checkbox_twentyfour = self.d.find_element(By.XPATH, events_Read_Ini().checkbox_number_twentyfour())
             checkbox_twentyfour.click()
@@ -5111,3 +5112,56 @@ class events_pom(web_driver, web_logger):
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\Tc_events_128.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_events_128.png")
             self.logger.error(f"TC_events_128 got exception as: {ex} ")
+
+    def verify_user_able_to_delete_selected_Probable_Match_Events(self):
+        try:
+            login().login_to_cloud_if_not_done(self.d)
+            self.status.clear()
+            time.sleep(web_driver.one_second)
+            events = self.d.find_element(By.XPATH, events_Read_Ini().get_Events_in_dashboard())
+            events.click()
+            time.sleep(web_driver.three_second)
+            selecting_checkbox = self.d.find_element(By.XPATH , events_Read_Ini().first_event_checkbox())
+            selecting_checkbox.click()
+            time.sleep(web_driver.one_second)
+            action_dropdown = self.d.find_element(By.XPATH, events_Read_Ini().action_dropdown_in_events())
+            action_dropdown.click()
+            time.sleep(web_driver.one_second)
+            permenant_delete_option = self.d.find_element(By.LINK_TEXT,"Permanently DELETE Selected Events")
+            permenant_delete_option.click()
+            time.sleep(web_driver.two_second)
+            delete_event_option = self.d.find_element(By.XPATH, events_Read_Ini().delete_event_button())
+            delete_event_option.click()
+            time.sleep(web_driver.one_second)
+            Event_deletion_success_msg = self.d.find_element(By.XPATH , events_Read_Ini().event_deleting_success_msg())
+            if Event_deletion_success_msg.is_displayed():
+                self.logger.info(" Event deletion success msg is visible")
+                self.status.append(True)
+            else:
+                self.logger.info("Event deletion success msg is not visible")
+                self.status.append(True)
+            self.logger.info(f"status:{self.status}")
+            time.sleep(web_driver.one_second)
+            self.d.find_element(By.XPATH, events_Read_Ini().get_facefirst_logout_button()).click()
+            time.sleep(web_driver.one_second)
+            if False in self.status:
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\Tc_events_139.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_events_139.png")
+                return False
+            else:
+                return True
+        except Exception as ex:
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\Tc_events_139.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_events_139.png")
+            self.logger.error(f"TC_events_128 got exception as: {ex} ")
+
+
+    def close_all_panels(self):
+        try:
+            close_panel_list = self.d.find_elements(By.XPATH, Read_Tags_Components().close_all_panel_list_in_tags())
+            for i in close_panel_list:
+                i.click()
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}\\close_all_panel_one_by_one_failed.png")
+            self.log.info(f"close_all_panel_one_by_one_failed:  {ex}")
+

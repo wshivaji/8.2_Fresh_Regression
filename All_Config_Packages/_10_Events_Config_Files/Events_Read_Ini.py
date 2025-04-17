@@ -1137,3 +1137,29 @@ class events_Read_Ini:
         add_tags_to_alert = self.config.get("events_locators", "add_tags_to_alert")
         print("add_tags_to_alert", add_tags_to_alert)
         return add_tags_to_alert
+
+    def first_event_checkbox(self):
+        try:
+            first_event_checkbox = self.config.get("events_locators","First_event_checkbox")
+            print("first checkbox ",first_event_checkbox)
+            return first_event_checkbox
+        except Exception as ex:
+            print(ex)
+
+    def delete_event_button(self):
+        try:
+            delete_event_button = self.config.get("events_locators","delete_event_button")
+            print("delete_event_button_xpath",delete_event_button)
+            return delete_event_button
+        except Exception as ex:
+            print(ex)
+
+    def event_deleting_success_msg(self):
+        try:
+            event_deletion_msg = self.config.get("events_locators","event_deletion_success_msg")
+            print("event deletion success msg" , event_deletion_msg)
+            return event_deletion_msg
+        except Exception as ex:
+            print(ex)
+
+

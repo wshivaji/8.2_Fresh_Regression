@@ -1375,7 +1375,7 @@ class detect_faces_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_detect_faces_31.png")
             self.logger.error(f"TC_detect_faces_31 got exception as: {ex} ")
 
-    def on_image_quality_page_In_action_dropdown_click_on_identify_within_visitors_visitor_search_page_is_visible(self):
+    def on_image_quality_page_click_on_identify_within_visitors_inside_Action_dropdown_and_perform_visitor_search(self):
         try:
             self.logger.info("******TC_032***** started")
             login().login_to_cloud_if_not_done(self.d)

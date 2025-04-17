@@ -34,3 +34,16 @@ class Test_detect_faces_testcases(web_driver, web_logger):
         else:
             assert False
 
+    @pytest.mark.p1
+    def test_TC_DF_23(self):
+        if detect_faces_pom().In_identify_and_enroll_page_if_person_is_already_enrolled_identify_results_page_is_visible():
+            assert True
+        else:
+            assert False
+
+    @pytest.mark.p1
+    def test_Detect_faces_Tc_032(self):
+        if detect_faces_pom().on_image_quality_page_click_on_identify_within_visitors_inside_Action_dropdown_and_perform_visitor_search():
+            assert True
+        else:
+            assert False

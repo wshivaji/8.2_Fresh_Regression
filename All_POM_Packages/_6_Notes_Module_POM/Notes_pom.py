@@ -3621,7 +3621,7 @@ class notes_pom(web_driver, web_logger):
             self.logger.error(f"TC_notes_076 got exception as: {ex} ")
             print(ex)
 
-    def create_note_by_filling_all_details_on_create_note(self):
+    def verify_user_able_create_a_note(self):
         try:
             self.logger.info("*********TC_082********** started")
             login().login_to_cloud_if_not_done(self.d)
@@ -4114,7 +4114,7 @@ class notes_pom(web_driver, web_logger):
             self.logger.error(f"TC_notes_087 got exception as: {ex} ")
             print(ex)
 
-    def on_notes_panel_selecting_a_checkbox_and_click_on_delete_selected_notes_a_WARNING_message_window_is_displayed_click_on_yes_button(self):
+    def verify_user_able_to_delete_a_notes_from_notes_panel(self):
         try:
             self.logger.info("********TC_107***** started")
             login().login_to_cloud_if_not_done(self.d)
@@ -4602,7 +4602,7 @@ class notes_pom(web_driver, web_logger):
             self.logger.error(f"TC_notes_93 got exception as: {ex} ")
             print(ex)
 
-    def on_notes_panel_click_on_location_symbol_map_is_visible(self):
+    def verify_user_able_to_view_created_notes(self):
         try:
             self.logger.info("********TC_94******* started")
             login().login_to_cloud_if_not_done(self.d)

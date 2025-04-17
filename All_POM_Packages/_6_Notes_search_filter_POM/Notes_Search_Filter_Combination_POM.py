@@ -538,7 +538,7 @@ class Notes_search_filter_combination_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def notes_with_Location_Store_and_Case_Subject_filter_combination(self):
+    def Notes_with_Location_Store_CASE_NUMBER_Sortby_Location_Store_and_Sortby_A_to_Zor_Z_to_A_filter_combination_result_should_be_Location_Store_CASENUMBER_Sortby_Location_Store_and_Sorby_A_to_Z_or_Z_to_A(self):
         try:
             self.log.info("*********** test_TC_NSFC_013 ************")
             status = []
