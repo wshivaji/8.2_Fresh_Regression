@@ -103,11 +103,9 @@ class Notifier_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(ex)
 
-
-    def Verify_Notifier_is_visible_and_clickable_in_dashboard_menu_items_click_on_Notifier_and_verify_it_is_navigating_to_notifier_panel(
-            self):
+    def Verify_Notifier_is_visible_and_clickable_in_dashboard_menu_items_click_on_Notifier_and_verify_it_is_navigating_to_notifier_panel(self):
         try:
-            self.logger.info("*********** TC_Notifier_002 started **********")
+            self.logger.info("*********** TC_Notifier_001 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             time.sleep(web_driver.one_second)
@@ -137,15 +135,15 @@ class Notifier_pom(web_driver, web_logger):
 
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_002.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_002.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_001.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_001.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_002_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_002_exception.png")
-            self.logger.error(f"TC_Notifier_002 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_001_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_001_exception.png")
+            self.logger.error(f"TC_Notifier_001 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
@@ -6875,7 +6873,7 @@ class Notifier_pom(web_driver, web_logger):
 
     def Verify_Notifier_result_for_first_camera_of_first_region_selected_with_group_selected_as_ABE_with_Auto_Refresh_Of_events_displayed_as_2_photo_size_as_Medium_and_Sound_Option_as_OFF(self):
         try:
-            self.logger.info("*********** TC_Notifier_099 started **********")
+            self.logger.info("*********** TC_Notifier_087 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -6920,23 +6918,23 @@ class Notifier_pom(web_driver, web_logger):
 
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_099.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_099.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_087.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_087.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_099_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_099_exception.png")
-            self.logger.error(f"TC_Notifier_099 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_087_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_087_exception.png")
+            self.logger.error(f"TC_Notifier_087 got exception as: {ex}")
         finally:
-            pass
-            #self.close_notifier_module()
+            # pass
+            self.close_notifier_module()
 
     def Verify_Notifier_result_for_first_camera_of_first_region_selected_with_group_selected_as_PTE_with_Auto_Refresh_Of_events_displayed_as_2_photo_size_as_Medium_and_Sound_Option_as_OFF(
             self):
         try:
-            self.logger.info("*********** TC_Notifier_100 started **********")
+            self.logger.info("*********** TC_Notifier_088 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -6984,21 +6982,21 @@ class Notifier_pom(web_driver, web_logger):
                 time.sleep(web_driver.one_second)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_100.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_100.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_088.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_088.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_100_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_100_exception.png")
-            self.logger.error(f"TC_Notifier_100 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_088_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_088_exception.png")
+            self.logger.error(f"TC_Notifier_088 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
     def Verify_Notifier_result_for_first_camera_of_first_region_selected_with_group_selected_as_FRAUDE_with_Auto_Refresh_Of_events_displayed_as_2_photo_size_as_Medium_and_Sound_Option_as_OFF(self):
         try:
-            self.logger.info("*********** TC_Notifier_101 started **********")
+            self.logger.info("*********** TC_Notifier_089 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -7029,8 +7027,8 @@ class Notifier_pom(web_driver, web_logger):
             save_btn = self.d.find_element(By.XPATH, Notifier_Read_ini().get_save_button_on_org_hierarchy_panel_by_xpath())
             self.d.execute_script("arguments[0].click();", save_btn)
             time.sleep(web_driver.one_second)
-            self.select_SOE_group_from_ini()
-            # self.select_FRAUDE_group_from_ini()
+            # self.select_SOE_group_from_ini()
+            self.select_FRAUDE_group_from_ini()
             notifier_setting = self.d.find_element(By.XPATH, Notifier_Read_ini().get_notifier_setting_button_by_xpath())
             notifier_setting.click()
             time.sleep(web_driver.one_second)
@@ -7043,22 +7041,22 @@ class Notifier_pom(web_driver, web_logger):
                 time.sleep(web_driver.one_second)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_101.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_101.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_089.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_089.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_101_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_101_exception.png")
-            self.logger.error(f"TC_Notifier_101 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_089_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_089_exception.png")
+            self.logger.error(f"TC_Notifier_089 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
     def Verify_Notifier_result_for_first_camera_of_first_region_selected_with_group_selected_as_VIPE_with_Auto_Refresh_Of_events_displayed_as_2_photo_size_as_Medium_and_Sound_Option_as_OFF(
             self):
         try:
-            self.logger.info("*********** TC_Notifier_102 started **********")
+            self.logger.info("*********** TC_Notifier_90 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -7108,22 +7106,22 @@ class Notifier_pom(web_driver, web_logger):
                 time.sleep(web_driver.one_second)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_102.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_90.png")
                 self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_102.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_102_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_102_exception.png")
-            self.logger.error(f"TC_Notifier_102 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_90_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_90_exception.png")
+            self.logger.error(f"TC_Notifier_90 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
     def Verify_Notifier_result_for_first_camera_of_first_region_selected_with_group_selected_as_SOE_with_Auto_Refresh_Of_events_displayed_as_2_photo_size_as_Medium_and_Sound_Option_as_OFF(
             self):
         try:
-            self.logger.info("*********** TC_Notifier_103 started **********")
+            self.logger.info("*********** TC_Notifier_91 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -7171,21 +7169,21 @@ class Notifier_pom(web_driver, web_logger):
                 time.sleep(web_driver.one_second)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_103.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_103.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_91.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_91.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_103_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_103_exception.png")
-            self.logger.error(f"TC_Notifier_103 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_91_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_91_exception.png")
+            self.logger.error(f"TC_Notifier_91 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
-    def Verify_Notifier_result_for_root_region_selected_with_refresh_rate_10_sec_events_displayed_as_2_photo_size_as_Medium_Sound_Option_as_ON(self):
+    def Verify_Notifier_result_for_root_region_selected_with_refresh_rate_10_sec_probable_match_events_displayed_as_2_photo_size_as_Medium_Sound_Option_as_ON(self):
         try:
-            self.logger.info("*********** TC_Notifier_104 started **********")
+            self.logger.info("*********** TC_Notifier_92 started **********")
             login().login_to_cloud_if_not_done(self.d)
             self.status.clear()
             self.load_notifier_module()
@@ -7282,77 +7280,108 @@ class Notifier_pom(web_driver, web_logger):
                 time.sleep(web_driver.one_second)
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_104.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_104.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_92.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_92.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_104_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_104_exception.png")
-            self.logger.error(f"TC_Notifier_104 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_92_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_92_exception.png")
+            self.logger.error(f"TC_Notifier_92 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
-    def Verify_notifier_panel_should_display_Location_with_valid_name(self):
+    def Verify_notifier_panel_should_display_LOCATION_with_valid_name(self):
         try:
+            self.logger.info("*********** TC_Notifier_95 started **********")
             self.logger.info("TC_Notifier_verifying_Location_data")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
             self.load_notifier_module()
             time.sleep(web_driver.two_second)
-            Location_and_location_name = self.d.find_element(By.XPATH,Notifier_Read_ini().get_Location_Name())
+            Location_and_location_name = self.d.find_element(By.XPATH, Notifier_Read_ini().get_Location_Name())
             if Location_and_location_name.is_displayed():
-                self.logger.info("Location and its name is visible")
+                self.logger.info(f"LOCATION: {self.d.find_element(By.XPATH, Notifier_Read_ini().get_location_data()).text}")
                 self.status.append(True)
             else:
                 self.logger.info("Location and its name is not visible")
                 self.status.append(False)
 
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_Location_and_its_name.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_Location_and_its_name.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_95.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_95.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_Location_and_its_name_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_Location_nd_its_name_exception.png")
-            self.logger.error(f"TC_Notifier_Location_and_its_name got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_95.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_95_exception.png")
+            self.logger.error(f"TC_Notifier_95 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
-
-    def Verify_notifier_panel_should_display_camera_with_valid_enrollment_data(self):
+    def Verify_notifier_panel_should_display_CAMERA_with_valid_data(self):
         try:
+            self.logger.info("*********** TC_Notifier_96 started **********")
             self.logger.info("TC_Notifier_verifying_Location_data")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
             self.load_notifier_module()
             time.sleep(web_driver.two_second)
-            camera_and_camera_name = self.d.find_element(By.XPATH,Notifier_Read_ini().get_station_camer_name())
+            camera_and_camera_name = self.d.find_element(By.XPATH,Notifier_Read_ini().get_station_camera_name())
             if camera_and_camera_name.is_displayed():
-                self.logger.info("camera and camera name is visible")
+                self.logger.info(f"Camera: {self.d.find_element(By.XPATH, Notifier_Read_ini().get_station_camera_data()).text}")
                 self.status.append(True)
             else:
                 self.logger.info("camera and camera name is not visible")
                 self.status.append(False)
 
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_camera_and_camera_name.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_camera_and_camera_name.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_96.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_96.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_camera_and_camera_name_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_camera_nd_its_camera_exception.png")
-            self.logger.error(f"TC_Notifier_camera_andcamera name got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_96_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_96_exception.png")
+            self.logger.error(f"TC_Notifier_96 name got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
-    def Verify_notifier_panel_should_display_action_with_valid_enrollment_data(self):
+    def Verify_notifier_panel_should_display_ENROLLMENT_NUMBER_with_valid_data(self):
         try:
+            self.logger.info("*********** TC_Notifier_97 started **********")
+            self.logger.info("TC_Notifier_verifying_Enrollment_Number_data")
+            login().login_to_cloud_if_not_done(self.d)
+            time.sleep(web_driver.two_second)
+            self.load_notifier_module()
+            time.sleep(web_driver.two_second)
+            enrollment_number = self.d.find_element(By.XPATH,Notifier_Read_ini().get_enrollment_number())
+            if enrollment_number.is_displayed():
+                self.logger.info(f"Enrollment Number: {self.d.find_element(By.XPATH, Notifier_Read_ini().get_enrollment_number_data()).text}")
+                self.status.append(True)
+            else:
+                self.logger.info("Enrollment Number and Enrollment Number data is not visible")
+                self.status.append(False)
+
+            if False in self.status:
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_97.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_97.png")
+                return False
+            else:
+                return True
+        except Exception as ex:
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_97_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_97_exception.png")
+            self.logger.error(f"TC_Notifier_97 name got exception as: {ex}")
+        finally:
+            self.close_notifier_module()
+
+    def Verify_notifier_panel_should_display_ACTION_with_valid_data(self):
+        try:
+            self.logger.info("*********** TC_Notifier_98 started **********")
             self.logger.info("TC_Notifier_verifying_Location_data")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
@@ -7360,27 +7389,28 @@ class Notifier_pom(web_driver, web_logger):
             time.sleep(web_driver.two_second)
             action_and_action_details = self.d.find_element(By.XPATH,Notifier_Read_ini().get_Action())
             if action_and_action_details.is_displayed():
-                self.logger.info("action and action details is visible")
+                self.logger.info(f"Action: {self.d.find_element(By.XPATH, Notifier_Read_ini().get_Action_data()).text}")
                 self.status.append(True)
             else:
                 self.logger.info("action and action details is not visible")
                 self.status.append(False)
 
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_action and action details.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_action and action details.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_98.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_98.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_action and action details_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_action and action details_exception.png")
-            self.logger.error(f"TC_Notifier_action and action details got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Notifier_98_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_98_exception.png")
+            self.logger.error(f"TC_Notifier_98 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 
-    def Verify_notifier_panel_should_display_index_with_valid_enrollment_data(self):
+    def Verify_notifier_panel_should_display_INDEX_SCORE_with_valid_data(self):
         try:
+            self.logger.info("*********** TC_Notifier_100 started **********")
             self.logger.info("TC_Notifier_verifying_Location_data")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.two_second)
@@ -7388,7 +7418,7 @@ class Notifier_pom(web_driver, web_logger):
             time.sleep(web_driver.two_second)
             index_and_score = self.d.find_element(By.XPATH, Notifier_Read_ini().get_Action())
             if index_and_score.is_displayed():
-                self.logger.info("index and score is visible")
+                self.logger.info(f"Index Score: {self.d.find_element(By.XPATH, Notifier_Read_ini().get_Index_data()).text}")
                 self.status.append(True)
             else:
                 self.logger.info("index and score is not visible")
@@ -7396,16 +7426,16 @@ class Notifier_pom(web_driver, web_logger):
 
             if False in self.status:
                 self.logger.error(
-                    f"screenshot file path: {self.screenshots_path}\\TC_Notifier_index and score.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_index and score.png")
+                    f"screenshot file path: {self.screenshots_path}\\TC_Notifier_100.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_100.png")
                 return False
             else:
                 return True
         except Exception as ex:
             self.logger.error(
-                f"screenshot file path: {self.screenshots_path}\\TC_Notifier_index and score_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_index and score_exception.png")
-            self.logger.error(f"TC_Notifier_index and score details got exception as: {ex}")
+                f"screenshot file path: {self.screenshots_path}\\TC_Notifier_100_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Notifier_100_exception.png")
+            self.logger.error(f"TC_Notifier_100 got exception as: {ex}")
         finally:
             self.close_notifier_module()
 

@@ -1137,3 +1137,31 @@ class events_Read_Ini:
         add_tags_to_alert = self.config.get("events_locators", "add_tags_to_alert")
         print("add_tags_to_alert", add_tags_to_alert)
         return add_tags_to_alert
+
+    def regions_xpath(self):
+        try:
+            region_xpath = self.config.get("LOCATOR",  "region_xpath")
+            print("region of an event",  region_xpath)
+            return region_xpath
+        except Exception as ex:
+            print(ex)
+
+    def region_checkbox_xpath(self):
+        try:
+            region_checkbox_xpath = self.config.get("LOCATOR", "region_checkbox_xpath")
+            print("region of an event", region_checkbox_xpath)
+            return region_checkbox_xpath
+        except Exception as ex:
+            print(ex)
+
+    def edge_name(self):
+        try:
+            edge_name = self.common_test_data_config.get("common_data",  "zone_data_input")
+            print("edge_name: ",  edge_name)
+            return edge_name
+        except Exception as ex:
+            print(ex)
+
+    def save_zone_button_by_xpath(self):
+        save_zone_button_by_xpath = self.config.get("LOCATOR", "save_zone_button_by_xpath")
+        return save_zone_button_by_xpath

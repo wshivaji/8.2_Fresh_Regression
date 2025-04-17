@@ -275,7 +275,6 @@ class login(web_driver, web_logger):
             self.d.save_screenshot(f"{web_driver.screenshots_path}\\login_exception.png")
             print(f"{ex.args}")
 
-
     def login_action(self):
         # username_textbox = self.d.find_element(By.XPATH, self.config.get("login_page_locators", "username_textbox_by_xpath"))
         username_textbox = web_driver.explicit_wait(self, 10, "XPATH", self.config.get("login_page_locators", "username_textbox_by_xpath"), self.d)
@@ -443,20 +442,99 @@ class login(web_driver, web_logger):
             self.d.save_screenshot(f"{web_driver.screenshots_path}\\login_exception.png")
             print(f"{ex.args}")
 
-    def accept_terms_and_conditions_for_login_for_new_user(self, d):
+    def accept_terms_and_conditions_for_login_for_new_user(self):
         try:
-            time.sleep(web_driver.two_second)
-            accept_btn = d.find_element(By.XPATH,"//body/div[@id=\"login-screen\"]//div[@class=\"ng-modal\"]/div[@class=\"ng-modal-dialog\"]/div/div/div[@class=\"modal-button-container fltlft posrel clrbth\"]/button[@ng-click=\"handleAUPModalAgree()\"]")
-            accept_btn.click()
-            # agree_and_continue_btn = self.explicit_wait(10, "XPATH", Portal_login_page_read_ini().agree_and_continue_btn_on_popup_by_xpath(), self.d)
-            self.logger.info(f"agree and continue btn visible: {accept_btn.is_displayed()}")
-            # if accept_btn.is_displayed():
-            #     accept_btn.click()
+            agree_and_continue_btn = self.d.find_element(By.XPATH, Portal_login_page_read_ini().accept_user_policy())
+            agree_and_continue_btn.click()
+            # agree_and_continue_btn = self.explicit_wait(10, "XPATH", "//body/div[@id=\"login-screen\"]//div[@class=\"ng-modal\"]/div[@class=\"ng-modal-dialog\"]/div/div/div[@class=\"modal-button-container fltlft posrel clrbth\"]/button[@ng-click=\"handleAUPModalAgree()\"]", self.d)
+            self.logger.info(f"agree and continue btn visible: {agree_and_continue_btn.is_displayed()}")
+            # if agree_and_continue_btn.is_displayed():
+            #     agree_and_continue_btn.click()
+            #     time.sleep(web_driver.one_second)
             #     self.logger.info(f"agree and continue btn clicked.")
             # else:
             #     self.logger.info(f"agree and continue btn not visible")
         except Exception as ex:
             self.logger.info(f"except: {ex.args}")
+
+    def login_with_persona_user(self, d, user):
+        try:
+            self.d = d
+            time.sleep(web_driver.one_second)
+            if self.d.current_url == Portal_login_page_read_ini().get_portal_url():
+                self.logger.info(f"page url: {self.d.current_url}")
+                pass
+            else:
+                self.d.get(Portal_login_page_read_ini().get_portal_url())
+                self.d.maximize_window()
+                time.sleep(web_driver.one_second)
+
+                for i in range(5):
+                    pyautogui.hotkey('ctrl', '-')
+                    time.sleep(0.5)
+
+            login_btn = self.d.find_elements(By.XPATH, self.config.get("login_page_locators", "login_link_by_xpath"))
+            current_url = self.d.current_url
+            self.logger.info(f"current url: {current_url}")
+
+            if current_url is None or len(login_btn) > 0:
+                print("current url", current_url)
+                self.logger.info("url is not open")
+                self.d.get(self.cloud_url)
+                self.d.maximize_window()
+                self.logger.info("opening localhost portal login")
+                self.logger.info("logging in to core")
+                self.implicit_wait(web_driver.one_second, self.d)
+                print(f"portal login page title: {self.d.title}")
+                username_textbox = web_driver.explicit_wait(self, 10, "XPATH",
+                                                            self.config.get("login_page_locators",
+                                                                            "username_textbox_by_xpath"), self.d)
+                password_textbox = self.d.find_element(By.XPATH, self.config.get("login_page_locators",
+                                                                                 "password_textbox_by_xpath"))
+                login_btn = self.d.find_element(By.XPATH,
+                                                self.config.get("login_page_locators", "login_link_by_xpath"))
+                self.implicit_wait(web_driver.one_second, self.d)
+                if username_textbox != None:
+                    if username_textbox.text == "":
+                        username_textbox.send_keys(user)
+                        time.sleep(web_driver.one_second)
+                self.implicit_wait(web_driver.one_second, self.d)
+                if password_textbox != None:
+                    if password_textbox.text == "":
+                        password_textbox.send_keys(self.config.get("user_info", "password"))
+                        time.sleep(web_driver.one_second)
+                self.implicit_wait(web_driver.one_second, self.d)
+                login_btn.click()
+                self.implicit_wait(web_driver.one_second, self.d)
+
+                # login().accept_terms_and_conditions_for_login_for_new_user(self.d)
+                # logout_btn = web_driver.explicit_wait(self, 10, "XPATH",
+                #                                       self.config.get("logout_locators", "logout_btn_by_xpath"),
+                #                                       self.d)
+                #
+                # time.sleep(web_driver.two_second)
+                # if logout_btn.is_displayed():
+                #     self.logger.info(f"******* Login with {user} user success *********")
+                # else:
+                #     self.logger.info("login unsuccessful.. please check code.")
+                #     self.d.save_screenshot(f"{web_driver.screenshots_path}\\login_failed.png")
+                # time.sleep(web_driver.two_second)
+            # else:
+            #     print("portal logged in")
+            #     logout_btn = web_driver.explicit_wait(self, 10, "XPATH",
+            #                                           self.config.get("logout_locators", "logout_btn_by_xpath"), self.d)
+            #     time.sleep(web_driver.one_second)
+            #     if logout_btn.is_displayed():
+            #         self.logger.info("Someone already logged in..")
+            #         logout_btn.click()
+            #     else:
+            #         self.logger.info("Unable to click logout")
+            #     time.sleep(web_driver.two_second)
+            return self.d
+        except Exception as ex:
+            self.logger.info(f"exception: {ex.args}")
+            self.d.save_screenshot(f"{web_driver.screenshots_path}\\login_exception.png")
+            print(f"{ex.args}")
 
 class logout(web_driver, web_logger):
     def __init__(self):

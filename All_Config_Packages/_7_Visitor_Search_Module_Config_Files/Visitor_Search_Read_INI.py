@@ -22,6 +22,14 @@ class Read_Visitor_Search_Components:
         except Exception as ex:
             print("configure_search_by_xpath : ", ex)
 
+    def dats_on_possible_matches_found_by_xpath(self):
+        try:
+            dats_on_possible_matches_found_by_xpath = self.config.get("LOCATORS", "dats_on_possible_matches_found_by_xpath")
+            return dats_on_possible_matches_found_by_xpath
+        except Exception as ex:
+            print("dats_on_possible_matches_found_by_xpath : ", ex)
+
+
     def re_select_photo_by_xpath(self):
         try:
             re_select_photo_by_xpath = self.config.get("LOCATORS", "re_select_photo_by_xpath")

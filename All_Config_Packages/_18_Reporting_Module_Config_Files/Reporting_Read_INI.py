@@ -1263,6 +1263,21 @@ class Reporting_read_ini:
         except Exception as ex:
             print(ex)
 
+    def get_no_records_error_message_by_xpath(self):
+        try:
+            no_records_error_message_by_xpath = self.config.get("Reporting", "no_records_error_message_by_xpath")
+            print("no_records_error_message_by_xpath: ", no_records_error_message_by_xpath)
+            return no_records_error_message_by_xpath
+        except Exception as ex:
+            print(ex)
+
+    def get_expected_no_records_error_message(self):
+        try:
+            expected_no_records_error_message = self.config.get("Reporting", "expected_no_records_error_message")
+            print("expected_no_records_error_message: ", expected_no_records_error_message)
+            return expected_no_records_error_message
+        except Exception as ex:
+            print(ex)
 
     def get_abe_enrollment_group(self):
         try:
@@ -1327,3 +1342,4 @@ class Reporting_read_ini:
             return zones
         except Exception as ex:
             print(ex)
+

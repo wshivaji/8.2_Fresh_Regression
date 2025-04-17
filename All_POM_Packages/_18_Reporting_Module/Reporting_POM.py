@@ -166,7 +166,7 @@ class Reporting_pom(web_driver, web_logger):
             else:
                 return True
 
-            logout().logout_from_core()
+            #logout().logout_from_core()
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_002_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_002_exception.png")
@@ -11191,10 +11191,10 @@ class Reporting_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_EN_ZN_156_exception.png")
             self.logger.error(f"TC_Reporting_EN_ZN_156 got exception as: {ex}")
 
-    def verify_individual_report_for_number_of_enrollments_by_zone_with_date_range_from_json_file_with_group_selected_as_SOE_ABE_PTE_FRAUDE_and_VIPE(self):
+    def Verify_individual_report_for_number_of_enrollments_by_zone_with_date_range_with_group_selected_as_SOE_ABE_PTE_FRAUDE_and_VIPE(self):
         try:
             self.status.clear()
-            self.logger.info("*********** TC_Reporting_EN_ZN_157 started **********")
+            self.logger.info("*********** TC_Reporting_EN_ZN_033 started **********")
             self.load_reporting_module_for_admin()
             self.logger.info("executed load_reporting_module_for_admin")
             web_driver.implicit_wait(self, 10, self.d)
@@ -11252,15 +11252,15 @@ class Reporting_pom(web_driver, web_logger):
             self.close_reporting_module()
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_EN_ZN_157.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_EN_ZN_157.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_EN_ZN_033.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_EN_ZN_033.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_EN_ZN_157_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_EN_ZN_157_exception.png")
-            self.logger.error(f"TC_Reporting_EN_ZN_157 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_EN_ZN_033_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_EN_ZN_033_exception.png")
+            self.logger.error(f"TC_Reporting_EN_ZN_033 got exception as: {ex}")
 
     def verify_report_for_number_of_zones_by_enrollment_with_default_dates_last_1_month_and_with_group_selected_as_ABE_and_zone_selected_as_All_devices(self):
         try:
@@ -11898,10 +11898,11 @@ class Reporting_pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_ZN_EN_202_exception.png")
             self.logger.error(f"TC_Reporting_ZN_EN_202 got exception as: {ex}")
 
-    def verify_individual_report_for_number_of_zones_by_enrollment_with_date_range_from_json_file_and_with_groups_as_SOE_ABE_PTE_FRAUDE_VIPE_and_zone_selected_as_All_devices(self):
+    def Verify_individual_report_for_number_of_zones_by_enrollment_with_date_range_and_with_groups_as_SOE_ABE_PTE_FRAUDE_VIPE_and_zone_selected_as_All_devices(self):
         try:
             self.status.clear()
-            self.logger.info("*********** TC_Reporting_ZN_EN_203 started **********")
+            record_displayed = []
+            self.logger.info("*********** TC_Reporting_ZN_EN_079 started **********")
             self.load_reporting_module_for_admin()
             self.logger.info("executed load_reporting_module_for_admin")
             self.select_number_of_zones_by_enrollment()
@@ -11976,6 +11977,12 @@ class Reporting_pom(web_driver, web_logger):
                         # generate_report_btn.click()
                         self.logger.info("Clicked on Generate report button...")
                         time.sleep(web_driver.one_second)
+                        no_record = self.d.find_element(By.XPATH, Reporting_read_ini().get_no_records_error_message_by_xpath())
+                        if no_record.is_displayed():
+                            record_displayed.append(False)
+                        else:
+                            record_displayed.append(True)
+                        time.sleep(web_driver.one_second)
                         self.d.find_element(By.XPATH,
                                             Reporting_read_ini().get_view_and_edit_groups_button_by_xpath()).click()
                         self.logger.info("clicked on view_and_edit_groups_button_by_xpath")
@@ -11986,16 +11993,21 @@ class Reporting_pom(web_driver, web_logger):
                         self.status.append(True)
                         time.sleep(web_driver.one_second)
 
+            if True in record_displayed:
+                self.status.append(True)
+            else:
+                self.status.append(False)
+
             time.sleep(web_driver.one_second)
             self.close_reporting_module()
             self.logger.info(f"status: {self.status}")
             if False in self.status:
-                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_ZN_EN_203.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_ZN_EN_203.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_ZN_EN_079.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_ZN_EN_079.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_ZN_EN_203_exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_ZN_EN_203_exception.png")
-            self.logger.error(f"TC_Reporting_ZN_EN_203 got exception as: {ex}")
+            self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Reporting_ZN_EN_079_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Reporting_ZN_EN_079_exception.png")
+            self.logger.error(f"TC_Reporting_ZN_EN_079 got exception as: {ex}")
