@@ -1164,6 +1164,7 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
             if close_all_panels_menu.is_enabled():
                 self.logger.info("'Close All Panels' menu is clickable...")
                 self.status.append(True)
+                close_all_panels_menu.click()
             else:
                 self.status.append(False)
 
