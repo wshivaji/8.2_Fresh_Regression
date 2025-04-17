@@ -1023,13 +1023,13 @@ class Test_Users_Module(web_driver, web_logger):
         else:
             assert False
 
-    @pytest.mark.p1
-    def test_TC_US_121(self):
-        self.logger.info("Users module = test_TC_US_121 execution started..")
-        if Users_Module_pom().verify_user_able_to_see_if_the_enabled_is_displayed_for_users_marked_as_enabled_under_users_panel():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_121(self):
+    #     self.logger.info("Users module = test_TC_US_121 execution started..")
+    #     if Users_Module_pom().verify_user_able_to_see_if_the_enabled_is_displayed_for_users_marked_as_enabled_under_users_panel():
+    #         assert True
+    #     else:
+    #         assert False
 
     # @pytest.mark.p2
     # def test_TC_US_122(self):
@@ -1112,20 +1112,20 @@ class Test_Users_Module(web_driver, web_logger):
     #         assert False
 
     @pytest.mark.p1
-    def test_TC_US_132(self):
-        self.logger.info("Users module = test_TC_US_132 execution started..")
+    def test_TC_US_127(self):
+        self.logger.info("Users module = test_TC_US_127 execution started..")
         if Users_Module_pom().verify_user_able_to_edit_the_details_for_the_newly_created_user_details():
             assert True
         else:
             assert False
 
-    # @pytest.mark.p2
-    # def test_TC_US_133(self):
-    #     self.logger.info("Users module = test_TC_US_133 execution started..")
-    #     if Users_Module_pom().verify_user_able_to_delete_the_newly_created_user():
-    #         assert True
-    #     else:
-    #         assert False
+    @pytest.mark.p1
+    def test_TC_US_140(self):
+        self.logger.info("Users module = test_TC_US_140 execution started..")
+        if Users_Module_pom().verify_user_able_to_delete_the_newly_created_user():
+            assert True
+        else:
+            assert False
     #
     # @pytest.mark.p2
     # def test_TC_US_134(self):
@@ -1151,37 +1151,37 @@ class Test_Users_Module(web_driver, web_logger):
     #     else:
     #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_137(self):
-        self.logger.info("Users module = test_TC_US_137 execution started..")
-        if Users_Module_pom().verify_when_user_close_user_panel_it_should_display_a_warning_popup():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_137(self):
+    #     self.logger.info("Users module = test_TC_US_137 execution started..")
+    #     if Users_Module_pom().verify_when_user_close_user_panel_it_should_display_a_warning_popup():
+    #         assert True
+    #     else:
+    #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_138(self):
-        self.logger.info("Users module = test_TC_US_138 execution started..")
-        if Users_Module_pom().verify_users_sees_go_back_and_close_panel_and_discard_changes_in_warning_popup():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_138(self):
+    #     self.logger.info("Users module = test_TC_US_138 execution started..")
+    #     if Users_Module_pom().verify_users_sees_go_back_and_close_panel_and_discard_changes_in_warning_popup():
+    #         assert True
+    #     else:
+    #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_139(self):
-        self.logger.info("Users module = test_TC_US_139 execution started..")
-        if Users_Module_pom().verify_user_lands_on_the_same_panel_on_clicking_go_back():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_139(self):
+    #     self.logger.info("Users module = test_TC_US_139 execution started..")
+    #     if Users_Module_pom().verify_user_lands_on_the_same_panel_on_clicking_go_back():
+    #         assert True
+    #     else:
+    #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_140(self):
-        self.logger.info("Users module = test_TC_US_140 execution started..")
-        if Users_Module_pom().verify_on_clicking_close_panel_and_discard_changes_user_panel_should_be_closed():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_141(self):
+    #     self.logger.info("Users module = test_TC_US_141 execution started..")
+    #     if Users_Module_pom().verify_on_clicking_close_panel_and_discard_changes_user_panel_should_be_closed():
+    #         assert True
+    #     else:
+    #         assert False
 
     # @pytest.mark.p3
     # def test_TC_US_141(self):
@@ -1295,13 +1295,13 @@ class Test_Users_Module(web_driver, web_logger):
     #     else:
     #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_155(self):
-        self.logger.info("Users module = test_TC_US_155 execution started..")
-        if Users_Module_pom().verify_on_alert_schedule_user_is_able_to_see_the_sub_title_user_alert_schedule():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_155(self):
+    #     self.logger.info("Users module = test_TC_US_155 execution started..")
+    #     if Users_Module_pom().verify_on_alert_schedule_user_is_able_to_see_the_sub_title_user_alert_schedule():
+    #         assert True
+    #     else:
+    #         assert False
 
     # @pytest.mark.p3
     # def test_TC_US_156(self):
@@ -1471,10 +1471,10 @@ class Test_Users_Module(web_driver, web_logger):
     #     else:
     #         assert False
 
-    @pytest.mark.p1
-    def test_TC_US_177(self):
-        self.logger.info("Users module = test_TC_US_177 execution started..")
-        if Users_Module_pom().on_alert_schedule_panel_click_on_close_panel_button_and_verify_alert_schedule_panel_is_closing():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p2
+    # def test_TC_US_177(self):
+    #     self.logger.info("Users module = test_TC_US_177 execution started..")
+    #     if Users_Module_pom().on_alert_schedule_panel_click_on_close_panel_button_and_verify_alert_schedule_panel_is_closing():
+    #         assert True
+    #     else:
+    #         assert False

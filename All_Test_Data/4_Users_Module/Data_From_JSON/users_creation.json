@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": "0",
+      "username": "operator",
+      "firstname": "standard",
+      "lastname": "operator",
+      "userrole": "3. operator",
+      "password": "Right_1r1s",
+      "user_orgahierarchy": "Kroger Los Angeles",
+      "store_group": "store1",
+      "Email":"operator@facefirst.com"
+
+    },
+    {
+      "id": "1",
+      "username": "responder",
+      "firstname": "reponder",
+      "lastname": "user",
+      "userrole": "4. responder",
+      "password": "Right_1r1s",
+      "user_orgahierarchy": "Kroger Los Angeles",
+      "store_group": "store1",
+      "Email":"responder@facefirst.com"
+    },
+    {
+      "id": "2",
+      "username": "approver",
+      "firstname": "user",
+      "lastname": "approver",
+      "userrole": "2. approver/supervisor",
+      "password": "Right_1r1s",
+      "user_orgahierarchy": "Kroger CA",
+      "store_group": "store1",
+      "Email":"approver@facefirst.com"
+    },
+    {
+      "id": "3",
+      "username": "executive",
+      "firstname": "user",
+      "lastname": "executive",
+      "userrole": "1. executive",
+      "password": "Right_1r1s",
+      "user_orgahierarchy": "Kroger USA",
+      "store_group": "store1",
+      "Email":"executive@facefirst.com"
+    },
+    {
+      "id": "4",
+      "username": "it admin",
+      "firstname": "user",
+      "lastname": "it admin",
+      "userrole": "5. it system admin",
+      "password": "Right_1r1s",
+      "user_orgahierarchy": "Kroger International",
+      "Email":"it_admin@facefirst.com"
+    }
+  ]
+}
+
+
+
+
+

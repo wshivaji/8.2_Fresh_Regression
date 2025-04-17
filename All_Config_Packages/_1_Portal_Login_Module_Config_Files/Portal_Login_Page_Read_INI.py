@@ -20,8 +20,16 @@ class Portal_login_page_read_ini:
     def get_portal_url(self):
         try:
             portal_url = self.common_test_data_config.get("Login_Logout_Data", "cloud_login_url")
-            print("portal page url: ", portal_url)
+            # print("portal page url: ", portal_url)
             return portal_url
+        except Exception as ex:
+            print(ex)
+
+    def accept_user_policy(self):
+        try:
+            accept_user_policy = self.common_test_data_config.get("Login_Logout_Data", "accept_user_policy")
+            print("accept_user_policy: ", accept_user_policy)
+            return accept_user_policy
         except Exception as ex:
             print(ex)
 

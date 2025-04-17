@@ -83,13 +83,12 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
 
     ############################ Visitor Search with image using NATS (Demographics Enabled) #######################
 
-    def visitor_search_with_no_search_criteria(self):
-        result = []
+    def Verify_Visitor_search_with_no_criteria_selection_should_display_error_message_above_search_menu_as_Error_Meta_data_only_search_should_target_a_single_store(self):
         try:
-            self.logger.info("* test_TC_VS_113 *")
-            self.logger.info("* test_TC_VS_033 *")
-            self.logger.info("************** test_TC_VS_001 ***************")
+            result = []
+            self.logger.info("********** TC_TC_Visitor_Search_059 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             time.sleep(web_driver.one_second)
             self.logger.info("moving on search...")
@@ -103,13 +102,14 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(x)
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_001_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_059.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_059_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_001_exception.png")
-            self.logger.info(f"visitor_search_with_no_search_criteria_exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_059_exception.png")
+            self.logger.info(f"TC_Visitor_Search_059_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -386,13 +386,30 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_date_and_region_criteria_with_NATS(self):
-        result = []
+    def verify_possible_match_dates_are_in_ascending_order(self):
         try:
-            self.logger.info("* test_TC_VS_125 *")
-            self.logger.info("* test_TC_VS_042 *")
-            self.logger.info("************** test_TC_VS_010 ******************")
+            result = []
+            time.sleep(web_driver.one_second)
+            date = self.d.find_elements(By.XPATH, Read_Visitor_Search_Components().dats_on_possible_matches_found_by_xpath())
+            for i in range(len(date)-1):
+                if date[i].text >= date[i+1].text:
+                    self.logger.info(f"{date[i].text} is greater than {date[i+1].text}")
+                    result.append(True)
+                else:
+                    result.append(False)
+            time.sleep(web_driver.one_second)
+            return result
+
+        except Exception as ex:
+            self.logger.info(f"verify_possible_match_dates_are_in_ascending_order got an exception as: {ex}")
+
+
+    def Verify_visitor_search_with_Date_range_and_Org_Hierarch_Selection_should_list_the_visitors_in_selected_date_range_and_belongs_to_selected_Org_Hierarchy_Selection_sorted_by_date_time_in_ascending_order_(self):
+        try:
+            result = []
+            self.logger.info("********** TC_Visitor_Search_069 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed")
             date = int(Read_Visitor_Search_Components().get_start_date())
@@ -432,15 +449,18 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(x)
             self.verify_date()
             self.verify_region_from_match_list(zone_data)
+            self.verify_possible_match_dates_are_in_ascending_order()
+            time.sleep(web_driver.one_second)
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_010_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_069.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_069_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_010_exception.png")
-            self.logger.info(f"visitor_search_with_date_and_region_criteria_with_NATS_exception:{ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_069_exception.png")
+            self.logger.info(f"TC_Visitor_Search_069_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4160,8 +4180,8 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                      pe=self.start_am_pm)
         print(exp_asser, "<<<<<<<<<<<<<<")
         time.sleep(web_driver.one_second)
-        # self.get_date_range_from_json()
-
+        self.get_date_range_from_json()
+        #
         ac_start_date = web_driver.explicit_wait(self, 10, "XPATH",
                                                  Read_Visitor_Search_Components().actual_start_date_by_xpath(),
                                                  self.d)
@@ -4172,7 +4192,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
 
         ele2 = self.d.find_element(By.XPATH, Read_Visitor_Search_Components().no_matches_found())
         self.logger.info(f"No Match Found txt: {ele2.text}, id visible: {ele2.is_displayed()}")
-        self.logger.info(f"expected exp_asser: {exp_asser}, in : {ac_ass_date}")
+        self.logger.info(f"expected exp_asser: {exp_asser}, in: {ac_ass_date}")
         if exp_asser in ac_ass_date:
             return True
         else:
@@ -5261,7 +5281,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     def get_date_range_from_json(self):
         try:
             df_custom_dates = pd.read_json(self.custom_dates_json)
-            self.logger.info(f"Search Dates given: {df_custom_dates}")
+            # self.logger.info(f"Search Dates given: {df_custom_dates}")
             self.start_date_and_time = list({df_custom_dates['date_range'][0]['start_date']})
             for items in self.start_date_and_time:
                 items = items.split(' ')
