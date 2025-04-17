@@ -3881,7 +3881,8 @@ class Users_Module_pom(web_driver, web_logger):
             self.enter_fax_ph_no(fax_ph_no)
 
             phone_type = Read_Users_Components().phone_type_input_data()
-            self.enter_phone_type(phone_type)
+            # self.enter_phone_type(phone_type)
+            self.select_phone_type(phone_type)
 
             phone_provider = Read_Users_Components().phone_provider_input_data()
             self.select_phone_provider(phone_provider)
@@ -4941,6 +4942,7 @@ class Users_Module_pom(web_driver, web_logger):
 
     def verify_user_able_to_delete_the_newly_created_user(self):
         try:
+            self.logger.info(f"verify_user_able_to_delete_the_newly_created_user")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.one_second)
             self.click_user_on_cloud_menu()
@@ -4949,12 +4951,15 @@ class Users_Module_pom(web_driver, web_logger):
 
             username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
             self.enter_user_name(username)
+            self.logger.info("entered username")
 
             first_name = Read_Users_Components().first_name_input_data()
             self.enter_first_name(first_name)
+            self.logger.info("entered firstname")
 
             last_name = Read_Users_Components().last_name_input_data()
             self.enter_last_name(last_name)
+            self.logger.info("entered lastname")
 
             user_role = Read_Users_Components().user_role_input_data()
             self.select_user_role(user_role)
@@ -4975,16 +4980,17 @@ class Users_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.click_on_save_btn()
             time.sleep(web_driver.one_second)
-
-            if False in self.check_if_users_able_to_delete_a_user():
-                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_133_failed.png")
+            status = self.check_if_users_able_to_delete_a_user()
+            self.logger.info(status)
+            if False in status:
+                self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_140_failed.png")
                 return False
             else:
                 return True
 
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_133_exception.png")
-            self.log.info(f"test_TC_US_133_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}test_TC_US_140_exception.png")
+            self.log.info(f"test_TC_US_140_exception: {ex}")
             return False
         finally:
             self.delete_randomly_created_users()
@@ -6788,6 +6794,19 @@ class Users_Module_pom(web_driver, web_logger):
         self.logger.info(f"Select user role : {role_data_text}")
         time.sleep(web_driver.one_second)
 
+    def select_phone_type(self, phone_type):
+        """
+        handles user role drop down using visible text of the element
+        :param phone_type:
+        :return:
+        """
+        time.sleep(web_driver.one_second)
+        phone_type_select = self.d.find_element(By.XPATH, Read_Users_Components().phone_type_by_xpath())
+        select_options_visible_text(phone_type_select, phone_type)
+        self.logger.info(f"Select phone type : {phone_type}")
+        time.sleep(web_driver.one_second)
+
+
     def enter_password(self, password):
         """
         fills password field
@@ -7623,7 +7642,11 @@ class Users_Module_pom(web_driver, web_logger):
         exp_email = f"{username}1@facefirst.com"
         email.send_keys(exp_email)
         time.sleep(web_driver.one_second)
+
         self.logger.info(f"Email field is updated with : {exp_email}")
+        password = Read_Users_Components().password_data_input()
+        self.enter_password(password)
+        time.sleep(web_driver.one_second)
         self.click_on_save_btn()
         self.logger.info(f"click on save btn")
         time.sleep(web_driver.two_second)
@@ -8649,26 +8672,25 @@ class Users_Module_pom(web_driver, web_logger):
             Read_Users_Components().users_panel_title_validation_text()
 
     def delete_randomly_created_users(self):
-        pass
-        # try:
-        #     time.sleep(web_driver.one_second)
-        #     # users_created = self.d.find_elements(By.XPATH, Read_Users_Components().facefirst_user_xpath())
-        #     users_created = web_driver.explicit_wait(self, 5, "XPATH", Read_Users_Components().facefirst_user_xpath(), self.d)
-        #     user_checkbox = self.d.find_elements(By.XPATH, Read_Users_Components().user_checkbox_by_xpath())
-        #     time.sleep(web_driver.one_second)
-        #     for i in range(len(users_created)):
-        #         if Read_Users_Components().user_name_input_data() in users_created[i].text:
-        #             print(f"{Read_Users_Components().user_name_input_data()}")
-        #             user_checkbox[i].click()
-        #             print(f"{user_checkbox[i]}")
-        #             action_btn = self.d.find_element(By.XPATH, Read_Users_Components().action_dropdown_by_xpath())
-        #             action_btn.click()
-        #             time.sleep(web_driver.one_second)
-        #             delete_user = self.d.find_element(By.XPATH, Read_Users_Components().delete_selected_user_by_xpath())
-        #             delete_user.click()
-        #             time.sleep(web_driver.one_second)
-        #             yes_delete_selected = self.d.find_element(By.XPATH, Read_Users_Components().yes_delete_selected_button())
-        #             yes_delete_selected.click()
-        #
-        # except Exception as ex:
-        #     print(ex)
+        try:
+            time.sleep(web_driver.one_second)
+            # users_created = self.d.find_elements(By.XPATH, Read_Users_Components().facefirst_user_xpath())
+            users_created = web_driver.explicit_wait(self, 5, "XPATH", Read_Users_Components().facefirst_user_xpath(), self.d)
+            user_checkbox = self.d.find_elements(By.XPATH, Read_Users_Components().user_checkbox_by_xpath())
+            time.sleep(web_driver.one_second)
+            for i in range(len(users_created)):
+                if Read_Users_Components().user_name_input_data() in users_created[i].text:
+                    print(f"{Read_Users_Components().user_name_input_data()}")
+                    user_checkbox[i].click()
+                    print(f"{user_checkbox[i]}")
+                    action_btn = self.d.find_element(By.XPATH, Read_Users_Components().action_dropdown_by_xpath())
+                    action_btn.click()
+                    time.sleep(web_driver.one_second)
+                    delete_user = self.d.find_element(By.XPATH, Read_Users_Components().delete_selected_user_by_xpath())
+                    delete_user.click()
+                    time.sleep(web_driver.one_second)
+                    yes_delete_selected = self.d.find_element(By.XPATH, Read_Users_Components().yes_delete_selected_button())
+                    yes_delete_selected.click()
+
+        except Exception as ex:
+            print(ex)
