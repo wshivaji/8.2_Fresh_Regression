@@ -22,13 +22,26 @@ class Read_Visitor_Search_Components:
         except Exception as ex:
             print("configure_search_by_xpath : ", ex)
 
-    def dats_on_possible_matches_found_by_xpath(self):
+    def visitor_search_complete_banner_by_xpath(self):
         try:
-            dats_on_possible_matches_found_by_xpath = self.config.get("LOCATORS", "dats_on_possible_matches_found_by_xpath")
-            return dats_on_possible_matches_found_by_xpath
+            visitor_search_complete_banner_by_xpath = self.config.get("LOCATORS", "visitor_search_complete_banner_by_xpath")
+            return visitor_search_complete_banner_by_xpath
         except Exception as ex:
-            print("dats_on_possible_matches_found_by_xpath : ", ex)
+            print("configure_search_by_xpath : ", ex)
 
+    def dates_on_possible_matches_found_by_xpath(self):
+        try:
+            dates_on_possible_matches_found_by_xpath = self.config.get("LOCATORS", "dates_on_possible_matches_found_by_xpath")
+            return dates_on_possible_matches_found_by_xpath
+        except Exception as ex:
+            print("dates_on_possible_matches_found_by_xpath : ", ex)
+
+    def index_score_on_possible_matches_found_by_xpath(self):
+        try:
+            index_score_on_possible_matches_found_by_xpath = self.config.get("LOCATORS", "index_score_on_possible_matches_found_by_xpath")
+            return index_score_on_possible_matches_found_by_xpath
+        except Exception as ex:
+            print("index_score_on_possible_matches_found_by_xpath : ", ex)
 
     def re_select_photo_by_xpath(self):
         try:

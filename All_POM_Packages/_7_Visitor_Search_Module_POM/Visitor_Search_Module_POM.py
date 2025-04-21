@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pandas as pd
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -143,201 +145,201 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_035 *")
-            self.logger.info("******************* test_TC_VS_003 *********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-            self.click_on_submit_search_button()
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_003())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_003_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_003_exception.png")
-            self.logger.info(f"visitor_search_with_gender_criteria_with_NATS_exception:  {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_region_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_036 *")
-            self.logger.info("******************* test_TC_VS_004 *********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_002())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_VS_004_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_004_Exception.png")
-            self.logger.info(f"visitor_search_with_region_and_gender_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_age_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_037 *")
-            self.logger.info("****************** test_TC_VS_005 ***********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-
-            self.select_end_age(end_age)
-
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_VS_005_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_005_Exception.png")
-            self.logger.info(f"visitor_search_with_age_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_region_and_age_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_038 *")
-            self.logger.info("******************* test_TC_VS_006 ********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-
-            self.select_end_age(end_age)
-
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_002())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_006_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_006_Exception.png")
-            self.logger.info(f"visitor_search_with_region_and_age_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_age_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_039 *")
-            self.logger.info("*********************** test_TC_VS_007 *********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-
-            self.select_end_age(end_age)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_007_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_007_Exception.png")
-            self.logger.info(f"visitor_search_with_age_and_gender_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_region_age_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_040 *")
-            self.logger.info("***************** test_TC_VS_008 ********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            # self.nats_checkbox()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_008_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_008_exception.png")
-            self.logger.info(f"visitor_search_with_region_age_and_gender_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
+    # def visitor_search_with_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_035 *")
+    #         self.logger.info("******************* test_TC_VS_003 *********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #         self.click_on_submit_search_button()
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_003())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_003_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         print(ex)
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_003_exception.png")
+    #         self.logger.info(f"visitor_search_with_gender_criteria_with_NATS_exception:  {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_region_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_036 *")
+    #         self.logger.info("******************* test_TC_VS_004 *********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_002())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\test_TC_VS_004_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_004_Exception.png")
+    #         self.logger.info(f"visitor_search_with_region_and_gender_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_age_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_037 *")
+    #         self.logger.info("****************** test_TC_VS_005 ***********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #
+    #         self.select_end_age(end_age)
+    #
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\test_TC_VS_005_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_005_Exception.png")
+    #         self.logger.info(f"visitor_search_with_age_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_region_and_age_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_038 *")
+    #         self.logger.info("******************* test_TC_VS_006 ********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #
+    #         self.select_end_age(end_age)
+    #
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_002())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_006_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_006_Exception.png")
+    #         self.logger.info(f"visitor_search_with_region_and_age_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_age_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_039 *")
+    #         self.logger.info("*********************** test_TC_VS_007 *********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #
+    #         self.select_end_age(end_age)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_007_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_007_Exception.png")
+    #         self.logger.info(f"visitor_search_with_age_and_gender_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_region_age_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_040 *")
+    #         self.logger.info("***************** test_TC_VS_008 ********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         # self.nats_checkbox()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_008_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         print(ex)
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_008_exception.png")
+    #         self.logger.info(f"visitor_search_with_region_age_and_gender_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
 
     def visitor_search_with_only_date_criteria_with_NATS(self):
         result = []
@@ -390,10 +392,39 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         try:
             result = []
             time.sleep(web_driver.one_second)
-            date = self.d.find_elements(By.XPATH, Read_Visitor_Search_Components().dats_on_possible_matches_found_by_xpath())
-            for i in range(len(date)-1):
-                if date[i].text >= date[i+1].text:
-                    self.logger.info(f"{date[i].text} is greater than {date[i+1].text}")
+            date = self.d.find_elements(By.XPATH, Read_Visitor_Search_Components().dates_on_possible_matches_found_by_xpath())
+            i = 0
+            for i in range(len(date) - 1):
+                date_string = date[i]
+                date_format = "%b %d, %Y %I:%M %p"  # Format for the input date string
+
+                # Convert string to datetime object
+                dt = datetime.strptime(date_string, date_format)
+
+                # Convert to epoch time (timestamp)
+                epoch_time = dt.timestamp()
+
+                self.logger.info("Epoch Time:", epoch_time)
+
+            time.sleep(web_driver.one_second)
+            # if epoch_time[i] <= epoch_time[i + 1]:
+            #     # self.logger.info(f"{lesser} is lesser.")
+            #     result.append(True)
+            # else:
+            #     result.append(False)
+            return result
+
+        except Exception as ex:
+            self.logger.info(f"verify_possible_match_dates_are_in_ascending_order got an exception as: {ex}")
+
+    def verify_index_scores_are_in_descending_order(self):
+        try:
+            result = []
+            time.sleep(web_driver.one_second)
+            iscore = self.d.find_elements(By.XPATH, Read_Visitor_Search_Components().index_score_on_possible_matches_found_by_xpath())
+            for i in range(len(iscore)-1):
+                if iscore[i].text >= iscore[i+1].text:
+                    self.logger.info(f"{iscore[i].text} is greater than {iscore[i+1].text}")
                     result.append(True)
                 else:
                     result.append(False)
@@ -401,8 +432,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             return result
 
         except Exception as ex:
-            self.logger.info(f"verify_possible_match_dates_are_in_ascending_order got an exception as: {ex}")
-
+            self.logger.info(f"verify_index_scores_are_in_descending_order got an exception as: {ex}")
 
     def Verify_visitor_search_with_Date_range_and_Org_Hierarch_Selection_should_list_the_visitors_in_selected_date_range_and_belongs_to_selected_Org_Hierarchy_Selection_sorted_by_date_time_in_ascending_order_(self):
         try:
@@ -446,10 +476,20 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.two_second)
             x = self.verify_image_from_match_list()
             self.logger.info(f"Returned: {x}")
-            result.append(x)
+            if False in x:
+                result.append(False)
+            else:
+                result.append(True)
+            # result.append(x)
             self.verify_date()
             self.verify_region_from_match_list(zone_data)
-            self.verify_possible_match_dates_are_in_ascending_order()
+            y = self.verify_possible_match_dates_are_in_ascending_order()
+            self.logger.info(f"Returned: {y}")
+            if False in y:
+                result.append(False)
+            else:
+                result.append(True)
+            # result.append(y)
             time.sleep(web_driver.one_second)
             self.logger.info(f"status: {result}")
             if False in result:
@@ -465,390 +505,403 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_only_date_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_043 *")
-            self.logger.info("******************* test_TC_VS_011 ******************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            self.get_start_date()
-            # self.get_end_date()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            if False in result:
-                self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_011_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_011_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_and_gender_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_region_and_age_range_criteria(self):
-        result = []
-        try:
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = str(Read_Visitor_Search_Components().meta_data_start_minuet())
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = str(Read_Visitor_Search_Components().meta_data_end_minuet())
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_region_from_match_list(zone_data))
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}"
-                                   f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_and_region_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_044 *")
-            self.logger.info("******************* test_TC_VS_012 ***********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = Read_Visitor_Search_Components().meta_data_start_minuet()
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-            time.sleep(web_driver.one_second)
-            self.logger.info("checking images...")
-            web_driver.implicit_wait(self, web_driver.one_second, self.d)
-            # images_displayed = self.verify_image_from_match_list()
-            # self.logger.info("images displayed..")
-            # result.append(images_displayed)
-            # result.append(self.verify_region_from_match_list(zone_data))
-            # result.append(self.verify_date())
-            # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            # result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_012_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_012_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_and_age_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_045 *")
-            self.logger.info("**************** test_TC_VS_013 ********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = Read_Visitor_Search_Components().meta_data_start_minuet()
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            # result.append(self.verify_date())
-            # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            if False in result:
-                self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_013_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_013_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_region_and_age_range_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_046 *")
-            self.logger.info("***************** test_TC_VS_014 ********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = Read_Visitor_Search_Components().meta_data_start_minuet()
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            # result.append(self.verify_region_from_match_list(zone_data))
-            # result.append(self.verify_date())
-            # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_014_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_014_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_age_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_047 *")
-            self.logger.info("************************ test_TC_VS_015 *********************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = str(Read_Visitor_Search_Components().meta_data_start_minuet())
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = str(Read_Visitor_Search_Components().meta_data_end_minuet())
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            # result.append(self.verify_date())
-            # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            # result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_015_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_015_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_date_region_age_range_and_gender_criteria_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_048 *")
-            self.logger.info("************* test_TC_VS_016 *******************")
-            login().login_to_cloud_if_not_done(self.d)
-            self.click_on_visitor_search()
-            date = int(Read_Visitor_Search_Components().meta_data_start_date())
-            month = str(Read_Visitor_Search_Components().meta_data_start_month())
-            year = int(Read_Visitor_Search_Components().meta_data_start_year())
-            hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
-            minute = Read_Visitor_Search_Components().meta_data_start_minuet()
-            period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
-            e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
-            e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
-            e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
-            e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-
-            except Exception as ex:
-                print(ex)
-
-            org_hirarchy_btn = self.d.find_element(By.XPATH, Read_Visitor_Search_Components().zone_by_xpath())
-            org_hirarchy_btn.click()
-            zone_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(zone_data)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            # result.append(self.verify_region_from_match_list(zone_data))
-            # result.append(self.verify_date())
-            # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            # result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
-
-            print(result)
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_016_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_016_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
+    # def visitor_search_with_only_date_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_043 *")
+    #         self.logger.info("******************* test_TC_VS_011 ******************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         self.get_start_date()
+    #         # self.get_end_date()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         if False in result:
+    #             self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_011_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_011_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_and_gender_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_region_and_age_range_criteria(self):
+    #     result = []
+    #     try:
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = str(Read_Visitor_Search_Components().meta_data_start_minuet())
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = str(Read_Visitor_Search_Components().meta_data_end_minuet())
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_region_from_match_list(zone_data))
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}"
+    #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_and_region_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_044 *")
+    #         self.logger.info("******************* test_TC_VS_012 ***********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = Read_Visitor_Search_Components().meta_data_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #         time.sleep(web_driver.one_second)
+    #         self.logger.info("checking images...")
+    #         web_driver.implicit_wait(self, web_driver.one_second, self.d)
+    #         # images_displayed = self.verify_image_from_match_list()
+    #         # self.logger.info("images displayed..")
+    #         # result.append(images_displayed)
+    #         # result.append(self.verify_region_from_match_list(zone_data))
+    #         # result.append(self.verify_date())
+    #         # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         # result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_012_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_012_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_and_age_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_045 *")
+    #         self.logger.info("**************** test_TC_VS_013 ********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = Read_Visitor_Search_Components().meta_data_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         # result.append(self.verify_date())
+    #         # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         if False in result:
+    #             self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_013_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_013_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_region_and_age_range_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_046 *")
+    #         self.logger.info("***************** test_TC_VS_014 ********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = Read_Visitor_Search_Components().meta_data_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         # result.append(self.verify_region_from_match_list(zone_data))
+    #         # result.append(self.verify_date())
+    #         # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_014_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_014_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_age_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_047 *")
+    #         self.logger.info("************************ test_TC_VS_015 *********************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = str(Read_Visitor_Search_Components().meta_data_start_minuet())
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = str(Read_Visitor_Search_Components().meta_data_end_minuet())
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         # result.append(self.verify_date())
+    #         # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         # result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_015_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_015_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_date_region_age_range_and_gender_criteria_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_048 *")
+    #         self.logger.info("************* test_TC_VS_016 *******************")
+    #         login().login_to_cloud_if_not_done(self.d)
+    #         self.click_on_visitor_search()
+    #         date = int(Read_Visitor_Search_Components().meta_data_start_date())
+    #         month = str(Read_Visitor_Search_Components().meta_data_start_month())
+    #         year = int(Read_Visitor_Search_Components().meta_data_start_year())
+    #         hour = str(Read_Visitor_Search_Components().meta_data_start_hour())
+    #         minute = Read_Visitor_Search_Components().meta_data_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().meta_data_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().meta_data_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().meta_data_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().meta_data_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().meta_data_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().meta_data_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().meta_data_end_am_pm_period())
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         org_hirarchy_btn = self.d.find_element(By.XPATH, Read_Visitor_Search_Components().zone_by_xpath())
+    #         org_hirarchy_btn.click()
+    #         zone_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(zone_data)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         # result.append(self.verify_region_from_match_list(zone_data))
+    #         # result.append(self.verify_date())
+    #         # # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         # result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.verify_Must_specify_start_and_end_date_for_meta_data_only_search_TC_VS_001())
+    #
+    #         print(result)
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_016_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         print(ex)
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_016_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
 
     ################ Visitor Search with Image and Metadata with Nats (Demographics Enabled) #######################
 
-    def visitor_search_with_image_and_NATS_criteria(self):
+    def wait_for_visitor_search_result_to_display(self):
         try:
-            self.logger.info("* test_TC_VS_129 *")
-            self.logger.info("* test_TC_VS_049 *")
-            self.logger.info("**************** test_TC_VS_017 *****************")
+            time.sleep(web_driver.two_second)
+            visitor_search_complete = web_driver.explicit_wait(self, 60, "XPATH",
+                                                               Read_Visitor_Search_Components().visitor_search_complete_banner_by_xpath(),
+                                                               self.d)
+            if visitor_search_complete.is_displayed():
+                self.logger.info(f"****************** {visitor_search_complete.text} banner displayed...")
+                time.sleep(web_driver.two_second)
+            else:
+                self.logger.info("Visitor Search Not Completed.")
+        except Exception as ex:
+            self.logger.info(f"No match found {ex.args}")
+
+    def Verify_visitor_search_with_image_only_should_list_the_matching_visitors_with_image_sorted_by_Index_Score_in_descending_order_best_to_worst(self):
+        try:
             result = []
+            self.logger.info("********** TC_Visitor_Search_080 started ********")
             login().login_to_cloud_if_not_done(self.d)
+            time.sleep(web_driver.one_second)
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed")
             self.add_image_search()
@@ -858,15 +911,20 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             x = self.verify_image_from_match_list()
             self.logger.info(f"Returned: {x}")
             result.append(x)
+            y = self.verify_possible_match_dates_are_in_ascending_order()
+            self.logger.info(f"Returned: {y}")
+            result.append(y)
+            # self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_017_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_080_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_080_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_017_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_080_exception.png")
+            self.logger.info(f"TC_Visitor_Search_080_exception: {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -929,12 +987,12 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_thresh_hold_and_max_count_with_NATS_criteria(self):
-        result = []
+    def Verify_visitor_search_with_image_Threshold_and_Max_number_of_Matches_should_list_the_matching_visitors_with_image_having_threshold_more_than_or_equal_to_search_threshold_Search_result_should_contain_selected_count_of_matching_visitors_and_sorted_by_Index_Score_in_descending_order_best_to_worst(self):
         try:
-            self.logger.info("* test_TC_VS_132 *")
-            self.logger.info("******************* test_TC_VS_052 **********************")
+            result = []
+            self.logger.info("********** TC_Visitor_Search_089 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed")
             self.add_image_search()
@@ -949,413 +1007,414 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(self.verify_image_from_match_list())
             result.append(self.compare_thresh_hold_value_with_score())
             result.append(self.compare_count_match(count_data))
+            self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_052_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_089.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_089_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_052_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-            logout().logout_from_core(self.d)
-
-    def visitor_search_with_image_and_gender_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_053 *")
-            self.logger.info("******************* test_TC_VS_019 ******************")
-            self.add_image_search()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_gender_match_list(gender_data))
-
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_019_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_019_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_089_exception.png")
+            self.logger.info(f"TC_Visitor_Search_089_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_gender_and_max_count_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("****************** test_TC_VS_054 ******************")
-            self.add_image_search()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_count_match(count_data))
-
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_054_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_054_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_gender_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("*************** test_TC_VS_055 ******************")
-            self.add_image_search()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            # x = self.verify_image_from_match_list()
-            # web_driver.implicit_wait(self, web_driver.one_second, self.d)
-            # self.logger.info(f"images displayed: {x}")
-            # result.append(x)
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_055_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_055_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_gender_thresh_hold_and_max_count_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************** test_TC_VS_056 **********************")
-            self.add_image_search()
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.set_thresh_hold_slider()
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_056_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_056_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_and_age_range_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_057 *")
-            self.logger.info("*********************** test_TC_VS_021 ******************")
-            self.add_image_search()
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_021_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_021_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_and_max_match_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("***************** test_TC_VS_058 ************************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_058_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_058_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("****************** test_TC_VS_059 *****************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_059_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_059_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_and_max_matches_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_060 ****************************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-            self.click_on_submit_search_button()
-
-            # if self.check_if_match_is_found():
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_060_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_060_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_and_gender_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("**************** test_TC_VS_061 ***********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_gender_match_list(gender_data))
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_061_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_061_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_gender_and_max_matches_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("********************* test_TC_VS_062 ***********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_062_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_062_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_gender_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("********************** test_TC_VS_063 ********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_063_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_063_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_age_range_gender_thresh_hold_and_max_matches_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_064 ******************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            self.set_thresh_hold_slider()
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_064_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_064_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
+    # def visitor_search_with_image_and_gender_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_053 *")
+    #         self.logger.info("******************* test_TC_VS_019 ******************")
+    #         self.add_image_search()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_019_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_019_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_gender_and_max_count_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("****************** test_TC_VS_054 ******************")
+    #         self.add_image_search()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_count_match(count_data))
+    #
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_054_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_054_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_gender_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("*************** test_TC_VS_055 ******************")
+    #         self.add_image_search()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         # x = self.verify_image_from_match_list()
+    #         # web_driver.implicit_wait(self, web_driver.one_second, self.d)
+    #         # self.logger.info(f"images displayed: {x}")
+    #         # result.append(x)
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_055_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_055_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_gender_thresh_hold_and_max_count_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************** test_TC_VS_056 **********************")
+    #         self.add_image_search()
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_056_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_056_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_and_age_range_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_057 *")
+    #         self.logger.info("*********************** test_TC_VS_021 ******************")
+    #         self.add_image_search()
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_021_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_021_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_and_max_match_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("***************** test_TC_VS_058 ************************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_058_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_058_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("****************** test_TC_VS_059 *****************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_059_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_059_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_and_max_matches_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_060 ****************************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #         self.click_on_submit_search_button()
+    #
+    #         # if self.check_if_match_is_found():
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_060_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_060_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_and_gender_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("**************** test_TC_VS_061 ***********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_061_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_061_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_gender_and_max_matches_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("********************* test_TC_VS_062 ***********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_062_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_062_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_gender_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("********************** test_TC_VS_063 ********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_063_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_063_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_age_range_gender_thresh_hold_and_max_matches_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_064 ******************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         self.set_thresh_hold_slider()
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_064_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_064_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
 
     def visitor_search_with_image_and_region_with_NATS_criteria(self):
         result = []
@@ -1492,449 +1551,449 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_region_and_gender_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_069 *")
-            self.logger.info("******************* test_TC_VS_020 ****************")
-            self.add_image_search()
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_gender_match_list(gender_data))
-            time.sleep(web_driver.one_second)
-            result.append(self.verify_region_from_match_list(region_data))
-            # result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_020_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_020_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_gender_and_max_count_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_070 *******************")
-            self.add_image_search()
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            self.verify_gender_match_list(gender_data)
-            self.verify_image_from_match_list()
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_070_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_070_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_gender_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("***************** test_TC_VS_071 **********************")
-            self.add_image_search()
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_071_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_071_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_gender_thresh_hold_and_max_count_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("************** test_TC_VS_072 *******************")
-            self.add_image_search()
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.set_thresh_hold_slider()
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_072_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_072_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_and_age_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_073 *")
-            self.logger.info("********************* test_TC_VS_022 **********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_022_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_022_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_and_max_matches_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("***************** test_TC_VS_074 *********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_074_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_074_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("*********************** test_TC_VS_075 *************************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_075_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_075_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_thresh_hold_and_max_matches_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_076 **********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            self.set_thresh_hold_slider()
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_076_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_076_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_and_gender_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_077 *")
-            self.logger.info("********************* test_TC_VS_023 ***********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.verify_gender_match_list(gender_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_023_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_023_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_gender_and_max_match_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("********************* test_TC_VS_078 *********************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_078_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_078_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_gender_and_thresh_hold_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("***************** test_TC_VS_079 *****************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_079_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_079_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_region_age_gender_thresh_hold_and_max_match_with_NATS_criteria(self):
-        result = []
-        try:
-            self.logger.info("******************** test_TC_VS_080 *******************")
-            self.add_image_search()
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-
-            region_data = Read_Visitor_Search_Components().zone_data_input()
-            self.select_zone(region_data)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-
-            result.append(self.verify_region_from_match_list(region_data))
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_080_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_080_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
+    # def visitor_search_with_image_region_and_gender_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_069 *")
+    #         self.logger.info("******************* test_TC_VS_020 ****************")
+    #         self.add_image_search()
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         time.sleep(web_driver.one_second)
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         # result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_020_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_020_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_gender_and_max_count_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_070 *******************")
+    #         self.add_image_search()
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         self.verify_gender_match_list(gender_data)
+    #         self.verify_image_from_match_list()
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot("{self.screenshots_path}\\test_TC_VS_070_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_070_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_gender_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("***************** test_TC_VS_071 **********************")
+    #         self.add_image_search()
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_071_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_071_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_gender_thresh_hold_and_max_count_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("************** test_TC_VS_072 *******************")
+    #         self.add_image_search()
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_072_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_072_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_and_age_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_073 *")
+    #         self.logger.info("********************* test_TC_VS_022 **********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_022_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_022_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_and_max_matches_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("***************** test_TC_VS_074 *********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_074_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_074_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("*********************** test_TC_VS_075 *************************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_075_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_075_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_thresh_hold_and_max_matches_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_076 **********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_076_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_076_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_and_gender_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_077 *")
+    #         self.logger.info("********************* test_TC_VS_023 ***********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_023_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_023_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_gender_and_max_match_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("********************* test_TC_VS_078 *********************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_078_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_078_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_gender_and_thresh_hold_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("***************** test_TC_VS_079 *****************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_079_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_079_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_region_age_gender_thresh_hold_and_max_match_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************** test_TC_VS_080 *******************")
+    #         self.add_image_search()
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #
+    #         region_data = Read_Visitor_Search_Components().zone_data_input()
+    #         self.select_zone(region_data)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #
+    #         result.append(self.verify_region_from_match_list(region_data))
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_080_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_080_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
 
     def enter_start_and_end_date(self):
         try:
@@ -2012,12 +2071,12 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_date_range_and_max_count_with_NATS_criteria(self):
-        result = []
+    def Verify_visitor_search_with_Image_Date_range_and_Max_number_of_Matches_search_criteria_should_list_the_result_with_visitors_matched_with_image_in_searched_date_range_Search_result_should_contain_selected_count_of_matching_visitors_sorted_by_Index_Score_in_descending_order_best_to_worst(self):
         try:
-            self.logger.info("* test_TC_VS_138 *")
-            self.logger.info("***************** test_TC_VS_082 **********************")
+            result = []
+            self.logger.info("********** TC_Visitor_Search_093 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed ")
             # self.get_start_date()
@@ -2056,25 +2115,27 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(self.verify_image_from_match_list())
             result.append(self.compare_count_match(count_data))
             result.append(self.verify_date())
+            self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_082_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_093.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_093_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_082_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_093_exception.png")
+            self.logger.info(f"TC_Visitor_Search_093_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_date_range_and_thresh_hold_with_NATS_criteria(self):
-        result = []
+    def Verify_visitor_search_with_Image_Date_range_and_Threshold_search_criteria_should_list_the_result_with_visitors_matched_with_image_in_searched_date_range_having_threshold_greater_than_or_equal_to_searched_threshold_and_sorted_by_Index_Score_in_descending_order_best_to_worst(self):
         try:
-            self.logger.info("* test_TC_VS_139 *")
-            self.logger.info("****************** test_TC_VS_083 *********************")
+            result = []
+            self.logger.info("********** TC_Visitor_Search_094 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed ")
             # self.get_start_date()
@@ -2112,25 +2173,27 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(self.verify_image_from_match_list())
             result.append(self.compare_thresh_hold_value_with_score())
             result.append(self.verify_date())
+            self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_083_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_094.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_094_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_083_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_094_exception.png")
+            self.logger.info(f"TC_Visitor_Search_094_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_date_range_thresh_hold_and_max_matches_with_NATS_criteria(self):
-        result = []
+    def Verify_visitor_search_with_Image_Date_range_Threshold_and_max_number_of_Matches_search_criteria_should_list_the_result_with_visitors_matched_with_image_in_searched_date_range_having_threshold_greater_than_or_equal_to_searched_threshold_Search_result_should_contain_selected_count_of_matching_visitors_and_sorted_by_Index_Score_in_descending_order_best_to_worst(self):
         try:
-            self.logger.info("* test_TC_VS_140 *")
-            self.logger.info("***************** test_TC_VS_084 ************************")
+            result = []
+            self.logger.info("********** TC_Visitor_Search_095 started ********")
             login().login_to_cloud_if_not_done(self.d)
+
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed ")
             # self.get_start_date()
@@ -2172,675 +2235,676 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(self.verify_date())
             result.append(self.compare_thresh_hold_value_with_score())
             result.append(self.compare_count_match(count_data))
+            self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_084_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_095.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_095_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_084_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_095_exception.png")
+            self.logger.info(f"TC_Visitor_Search_095_exception:  {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
 
-    def visitor_search_with_image_date_range_and_gender_with_NATS_criteria(self):
-        result = []
+    # def visitor_search_with_image_date_range_and_gender_with_NATS_criteria(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("** test_TC_VS_085 **")
+    #         self.logger.info("********************* test_TC_VS_027 ********************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_027_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_027_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_gender_criteria_and_max_matches_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("***************** test_TC_VS_086 ************************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_086_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_086_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_gender_criteria_and_threshold_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("********************** test_TC_VS_087 ********************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_087_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_087_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_gender_criteria_threshold_and_max_match_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("**************** test_TC_VS_088 ************************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}"
+    #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_and_age_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_089 *")
+    #         self.logger.info("********************* test_TC_VS_029 **************************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_029_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_029_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_and_max_matches_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_090 ***********************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_090_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_090_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_and_threshold_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("****************** test_TC_VS_091 *********************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_091_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_091_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_threshold_and_max_matches_with_NATS(self):
+    #     result = []
+    #     try:
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         self.set_thresh_hold_slider()
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         result.append(self.compare_count_match(count_data))
+    #
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}"
+    #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_and_gender_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("* test_TC_VS_031 *")
+    #         self.logger.info("********************* test_TC_VS_024 *************************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #         self.logger.info(f"Month: {month}")
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         # result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         images_displayed = self.verify_image_from_match_list()
+    #         self.logger.info(f"images displayed: {images_displayed}")
+    #         result.append(images_displayed)
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_024_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_024_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_gender_and_max_matches_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("**************** test_TC_VS_094 ********************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_094_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_094_exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_gender_and_threshold_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("******************* test_TC_VS_095 *****************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         self.set_thresh_hold_slider()
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_095_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_095_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+    #
+    # def visitor_search_with_image_date_range_age_gender_threshold_and_max_matches_with_NATS(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("********************* test_TC_VS_096 ************************")
+    #         date = int(Read_Visitor_Search_Components().get_start_date())
+    #         month = str(Read_Visitor_Search_Components().get_start_month())
+    #         year = int(Read_Visitor_Search_Components().get_start_year())
+    #         hour = str(Read_Visitor_Search_Components().get_start_hour())
+    #         minute = Read_Visitor_Search_Components().get_start_minuet()
+    #         period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
+    #
+    #         e_month = str(Read_Visitor_Search_Components().get_end_month())
+    #         e_date = int(Read_Visitor_Search_Components().get_end_date())
+    #         e_year = int(Read_Visitor_Search_Components().get_end_year())
+    #         e_hour = str(Read_Visitor_Search_Components().get_end_hour())
+    #         e_minute = Read_Visitor_Search_Components().get_end_minuet()
+    #         e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
+    #         self.add_image_search()
+    #         try:
+    #             self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
+    #             time.sleep(3)
+    #             self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
+    #         except Exception as ex:
+    #             print(ex)
+    #
+    #         start_age = Read_Visitor_Search_Components().start_age_data_input()
+    #         end_age = Read_Visitor_Search_Components().end_age_data_input()
+    #         self.select_start_age(start_age)
+    #         self.select_end_age(end_age)
+    #         gender_data = Read_Visitor_Search_Components().gender_data_input()
+    #         self.select_gender(gender_data)
+    #         self.set_thresh_hold_slider()
+    #         count_data = Read_Visitor_Search_Components().matches_count_data_input()
+    #         self.select_count(count_data)
+    #         # self.nats_checkbox()
+    #
+    #         self.click_on_submit_search_button()
+    #
+    #         result.append(self.verify_image_from_match_list())
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.verify_date())
+    #         # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
+    #
+    #         result.append(self.verify_gender_match_list(gender_data))
+    #         result.append(self.compare_thresh_hold_value_with_score())
+    #         result.append(self.compare_count_match(count_data))
+    #         self.logger.info(f"status: {result}")
+    #         if False in result:
+    #             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_096_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_096_Exception.png")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         return False
+    #     finally:
+    #         self.close_all_panel_one_by_one()
+
+    def Verify_visitor_search_with_Image_Date_and_Org_Hierarchy_Selection_should_list_the_matched_visitors_with_search_image_from_selected_Org_Hierarchy_Selection_within_date_range_sorted_by_Index_Score_best_to_worst_order(self):
         try:
-            self.logger.info("** test_TC_VS_085 **")
-            self.logger.info("********************* test_TC_VS_027 ********************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_027_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_027_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_gender_criteria_and_max_matches_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("***************** test_TC_VS_086 ************************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_086_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_086_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_gender_criteria_and_threshold_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("********************** test_TC_VS_087 ********************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_087_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_087_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_gender_criteria_threshold_and_max_match_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("**************** test_TC_VS_088 ************************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}"
-                                   f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_and_age_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_089 *")
-            self.logger.info("********************* test_TC_VS_029 **************************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_029_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_029_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_and_max_matches_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_090 ***********************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_090_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_090_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_and_threshold_NATS(self):
-        result = []
-        try:
-            self.logger.info("****************** test_TC_VS_091 *********************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_091_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_091_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_threshold_and_max_matches_with_NATS(self):
-        result = []
-        try:
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            self.set_thresh_hold_slider()
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            result.append(self.compare_count_match(count_data))
-
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}"
-                                   f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_and_gender_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_031 *")
-            self.logger.info("********************* test_TC_VS_024 *************************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-            self.logger.info(f"Month: {month}")
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            # result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-            result.append(self.verify_gender_match_list(gender_data))
-            images_displayed = self.verify_image_from_match_list()
-            self.logger.info(f"images displayed: {images_displayed}")
-            result.append(images_displayed)
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_024_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_024_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_gender_and_max_matches_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("**************** test_TC_VS_094 ********************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_094_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_094_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_gender_and_threshold_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("******************* test_TC_VS_095 *****************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            self.set_thresh_hold_slider()
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_095_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_095_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_age_gender_threshold_and_max_matches_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("********************* test_TC_VS_096 ************************")
-            date = int(Read_Visitor_Search_Components().get_start_date())
-            month = str(Read_Visitor_Search_Components().get_start_month())
-            year = int(Read_Visitor_Search_Components().get_start_year())
-            hour = str(Read_Visitor_Search_Components().get_start_hour())
-            minute = Read_Visitor_Search_Components().get_start_minuet()
-            period = str(Read_Visitor_Search_Components().get_start_am_pm_period())
-
-            e_month = str(Read_Visitor_Search_Components().get_end_month())
-            e_date = int(Read_Visitor_Search_Components().get_end_date())
-            e_year = int(Read_Visitor_Search_Components().get_end_year())
-            e_hour = str(Read_Visitor_Search_Components().get_end_hour())
-            e_minute = Read_Visitor_Search_Components().get_end_minuet()
-            e_period = str(Read_Visitor_Search_Components().get_end_am_pm_period())
-            self.add_image_search()
-            try:
-                self.handle_calender_pop_up("from", date, month, year, hour, minute, period)
-                time.sleep(3)
-                self.handle_calender_pop_up("to", e_date, e_month, e_year, e_hour, e_minute, e_period)
-            except Exception as ex:
-                print(ex)
-
-            start_age = Read_Visitor_Search_Components().start_age_data_input()
-            end_age = Read_Visitor_Search_Components().end_age_data_input()
-            self.select_start_age(start_age)
-            self.select_end_age(end_age)
-            gender_data = Read_Visitor_Search_Components().gender_data_input()
-            self.select_gender(gender_data)
-            self.set_thresh_hold_slider()
-            count_data = Read_Visitor_Search_Components().matches_count_data_input()
-            self.select_count(count_data)
-            # self.nats_checkbox()
-
-            self.click_on_submit_search_button()
-
-            result.append(self.verify_image_from_match_list())
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.verify_date())
-            # result.append(self.verify_date(e_date, e_month, e_year, e_hour, e_minute, e_period))
-
-            result.append(self.verify_gender_match_list(gender_data))
-            result.append(self.compare_thresh_hold_value_with_score())
-            result.append(self.compare_count_match(count_data))
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_096_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_096_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
-            return False
-        finally:
-            self.close_all_panel_one_by_one()
-
-    def visitor_search_with_image_date_range_and_region_with_NATS(self):
-        result = []
-        try:
-            self.logger.info("* test_TC_VS_141 *")
-            self.logger.info("* test_TC_VS_097 *")
-            self.logger.info("****************** test_TC_VS_026 ********************")
+            result = []
+            self.logger.info("********** TC_Visitor_Search_086 started ********")
             login().login_to_cloud_if_not_done(self.d)
+            time.sleep(web_driver.one_second)
             self.click_on_visitor_search()
             self.logger.info("click_on_visitor_search executed")
             self.add_image_search()
@@ -2858,15 +2922,17 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             result.append(self.verify_date())
             result.append(self.verify_region_from_match_list(zone_data))
             result.append(self.verify_image_from_match_list())
+            self.verify_index_scores_are_in_descending_order()
             self.logger.info(f"status: {result}")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_026_failed.png")
+                self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_Visitor_Search_086_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_086_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_026_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_086_exception.png")
+            self.logger.info(f"TC_Visitor_Search_086_exception: {ex}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4078,28 +4144,27 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
 
     def verify_image_from_match_list(self):
         try:
-            try:
-                time.sleep(web_driver.two_second)
-                x = None
-                self.logger.info("Verifying matches")
-                no_matches_found = web_driver.explicit_wait(self, 10, "XPATH",
-                                                            Read_Visitor_Search_Components().no_matches_found(), self.d)
-                print(no_matches_found)
-                time.sleep(web_driver.one_second)
-                if no_matches_found.is_displayed():
-                    self.logger.info(f"no match text displayed: {no_matches_found.is_displayed()}")
-                    self.logger.info(f"ele2: {no_matches_found.text}")
-                    return True
-            except Exception as ex:
-                time.sleep(web_driver.three_second)
-                ele = web_driver.explicit_wait(self, 15, "XPATH",
-                                               Read_Visitor_Search_Components().image_match_list_by_xpath(), self.d)
-                self.logger.info(f"length of ele: {ele.is_displayed()}")
-                if ele.is_displayed():
-                    self.logger.info(f"images displayed: {ele.is_displayed()}")
-                    return True
-                else:
-                    return False
+            time.sleep(web_driver.two_second)
+            self.logger.info("Verifying matches")
+            self.wait_for_visitor_search_result_to_display()
+            # no_matches_found = web_driver.explicit_wait(self, 5, "XPATH",
+            #                                             Read_Visitor_Search_Components().no_matches_found(), self.d)
+            # if no_matches_found.is_displayed():
+            #     self.logger.info(f"no match text displayed: {no_matches_found.is_displayed()}")
+            #     self.logger.info(f"ele2: {no_matches_found.text}")
+            #     return True
+
+            time.sleep(web_driver.three_second)
+            ele = web_driver.explicit_wait(self, 15, "XPATH",
+                                           Read_Visitor_Search_Components().image_match_list_by_xpath(), self.d)
+            matches = self.d.find_elements(By.XPATH, Read_Visitor_Search_Components().image_match_list_by_xpath())
+            self.logger.info(f"count of matches: {len(matches)}")
+            if ele.is_displayed():
+                self.logger.info(f"images displayed: {ele.is_displayed()}")
+                return True
+            else:
+                return False
+
         except Exception as ex:
             print(ex.args)
             self.logger.info(f"images match exception:")
@@ -4528,6 +4593,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             else:
                 return False
         time.sleep(web_driver.one_second)
+
     def handle_calender_pop_up(self, strategy, date, month, year, hour, minute, req_period):
         self.logger.info(f"Strategy: {strategy}")
         # click on the form calendar popup
