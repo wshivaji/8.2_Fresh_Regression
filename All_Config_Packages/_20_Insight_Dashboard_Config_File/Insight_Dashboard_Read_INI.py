@@ -541,6 +541,30 @@ class insight_dashboard_read_ini:
         except Exception as ex:
             print(ex.args)
 
+    def search_dropdown_on_vsj_penal_by_xpath(self):
+        try:
+            search_dropdown_on_vsj_penal_by_xpath = self.config.get("Insight_Dashboard_Locators", "search_dropdown_on_vsj_penal_by_xpath")
+            print("visitor_search_jobs_menu_item_by_xpath: ", search_dropdown_on_vsj_penal_by_xpath)
+            return search_dropdown_on_vsj_penal_by_xpath
+        except Exception as ex:
+            print(ex.args)
+
+    def search_btn_on_search_panel_by_xpath(self):
+        try:
+            search_btn_on_search_panel_by_xpath = self.config.get("Insight_Dashboard_Locators", "search_btn_on_search_panel_by_xpath")
+            print("visitor_search_jobs_menu_item_by_xpath: ", search_btn_on_search_panel_by_xpath)
+            return search_btn_on_search_panel_by_xpath
+        except Exception as ex:
+            print(ex.args)
+
+    def select_all_users_option_by_xpath(self):
+        try:
+            select_all_users_option_by_xpath = self.config.get("Insight_Dashboard_Locators", "select_all_users_option_by_xpath")
+            print("visitor_search_jobs_menu_item_by_xpath: ", select_all_users_option_by_xpath)
+            return select_all_users_option_by_xpath
+        except Exception as ex:
+            print(ex.args)
+
     def visitor_search_count_text_on_vsj_panel(self):
         try:
             visitor_search_count_text_on_vsj_panel = self.config.get("Insight_Dashboard_Locators", "visitor_search_count_text_on_vsj_panel")

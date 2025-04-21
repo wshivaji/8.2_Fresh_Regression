@@ -1462,14 +1462,32 @@ class Notification_Groups_Module_pom(web_driver, web_logger):
             status = []
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.one_second)
-            self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().
-                                                          notification_groups_button_by_xpath(),
+            self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().notification_groups_button_by_xpath(),
                                self.d)
             notification_groups_btn = self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components()
                                                          .notification_groups_button_by_xpath(), self.d)
             time.sleep(web_driver.one_second)
             self.d.execute_script("arguments[0].click();", notification_groups_btn)
             self.logger.info("notification groups btn is clicked")
+            try:
+                alert_groups = self.d.find_elements(By.XPATH,
+                                                    Read_Notification_Groups_Components().alert_group_list_by_xpath())
+                checkbox = self.d.find_elements(By.XPATH,
+                                                Read_Notification_Groups_Components().alert_checkbox_by_xpath())
+                for i in range(len(alert_groups)):
+                    if alert_groups[i].text == Read_Notification_Groups_Components().name_field_data():
+                        checkbox[i].click()
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().action_dropdown_button_by_xpath()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_selected_notification_groups()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_popup_yes_btn_by_xpath()).click()
+            except Exception as ex:
+                print("NG deleted")
+
             self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().
                                              action_dropdown_button_by_xpath(),
                                self.d)
@@ -1498,10 +1516,10 @@ class Notification_Groups_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             save_button = self.d.find_element(By.XPATH, Read_Notification_Groups_Components().save_button_by_xpath())
             save_button.click()
+            self.logger.info(f"save btn visible: {save_button.is_displayed()}")
             self.logger.info("Notification details is filled and save btn is clicked")
             time.sleep(web_driver.two_second)
-            users_text = self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components()
-                                             .user_button_by_xpath(), self.d)
+            users_text = self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().user_button_by_xpath(), self.d)
 
             self.d.execute_script("arguments[0].click();", users_text)
             self.logger.info("user btn is clicked in notification details panel")
@@ -1511,6 +1529,7 @@ class Notification_Groups_Module_pom(web_driver, web_logger):
 
             status.append(users_text.is_displayed())
             self.logger.info(f"users panel is visible : {users_text.is_displayed()}")
+
             self.logger.info(f"status: {status}")
             if False in status:
                 self.logger.error(f"screenshot file path: {self.screenshots_path}\\test_TC_NG_029_failed.png")
@@ -1540,6 +1559,26 @@ class Notification_Groups_Module_pom(web_driver, web_logger):
             self.d.execute_script("arguments[0].click();", notification_groups_btn)
             self.logger.info("notification groups btn is clicked")
             time.sleep(web_driver.one_second)
+
+            try:
+                alert_groups = self.d.find_elements(By.XPATH,
+                                                    Read_Notification_Groups_Components().alert_group_list_by_xpath())
+                checkbox = self.d.find_elements(By.XPATH,
+                                                Read_Notification_Groups_Components().alert_checkbox_by_xpath())
+                for i in range(len(alert_groups)):
+                    if alert_groups[i].text == Read_Notification_Groups_Components().name_field_data():
+                        checkbox[i].click()
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().action_dropdown_button_by_xpath()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_selected_notification_groups()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_popup_yes_btn_by_xpath()).click()
+            except Exception as ex:
+                print("NG deleted")
+
             self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().
                                              action_dropdown_button_by_xpath(),
                                self.d)
@@ -1611,6 +1650,26 @@ class Notification_Groups_Module_pom(web_driver, web_logger):
             self.d.execute_script("arguments[0].click();", notification_groups_btn)
             self.logger.info("notification groups btn is clicked")
             time.sleep(web_driver.one_second)
+
+            try:
+                alert_groups = self.d.find_elements(By.XPATH,
+                                                    Read_Notification_Groups_Components().alert_group_list_by_xpath())
+                checkbox = self.d.find_elements(By.XPATH,
+                                                Read_Notification_Groups_Components().alert_checkbox_by_xpath())
+                for i in range(len(alert_groups)):
+                    if alert_groups[i].text == Read_Notification_Groups_Components().name_field_data():
+                        checkbox[i].click()
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().action_dropdown_button_by_xpath()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_selected_notification_groups()).click()
+                        time.sleep(web_driver.one_second)
+                        self.d.find_element(By.XPATH,
+                                            Read_Notification_Groups_Components().delete_popup_yes_btn_by_xpath()).click()
+            except Exception as ex:
+                print("NG deleted")
+
             self.explicit_wait(10, "XPATH", Read_Notification_Groups_Components().
                                              action_dropdown_button_by_xpath(),
                                self.d)
