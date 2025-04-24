@@ -270,7 +270,7 @@ class insight_dashboard_pom(web_driver, web_logger):
             self.logger.info(f"user_is_able_to_see_Possible_Match_Events_by_enrollment_action_counts_organisation_and_individual_groups ex: {ex.args}")
             return False
 
-    def Verify_user_is_able_to_see_counts_on_Probable_Match_Events_Dashboard(self):
+    def Verify_user_able_to_select_the_Probable_Match_Events_Dashbaord_from_the_Dashbaord_dropdown_list_and_switched_to_Probabel_Match_Events_Dashboard(self):
         try:
             self.logger.info("************* test_TC_Insight_Dashboard_07 started  **************")
             login().login_to_facecirst_portal_if_not_done(self.d)
@@ -518,7 +518,7 @@ class insight_dashboard_pom(web_driver, web_logger):
             self.logger.info(f"Verify_user_is_able_to_see_counts_on_Probable_Match_Events_Dashboard ex: {ex.args}")
             return False
 
-    def Verify_user_is_able_to_see_on_enrollment_dashboard_as_enrollment_overview_and_cumulative_enrollments_by_date_as_mention_is_link(self):
+    def Verify_clicking_on_Enrollment_Dashbaord_Should_launch_the_Enrollment_Dashbaord(self):
         try:
             self.logger.info("************* test_TC_Insight_Dashboard_17 started  **************")
             login().login_to_facecirst_portal_if_not_done(self.d)

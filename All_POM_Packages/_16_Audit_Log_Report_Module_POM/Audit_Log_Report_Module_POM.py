@@ -232,10 +232,10 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.close_current_tab()
             return False
 
-    def Verify_new_tab_AuditLogReport_page_contains_Select_report_criteria(self):
+    def Verify_user_clicks_on_AuditLogReport_should_open_new_tab_AuditLogReport_page_contains_Select_report_criteria_followed_by_Report_type_filter_by_select_users_and_submit_report_right_to_header(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_003 Starting...")
+            self.logger.info("test_TC_ALR_002 Starting...")
             login().login_to_cloud_if_not_done(self.d)
             time.sleep(web_driver.one_second)
             alr_button = self.explicit_wait(10, "XPATH", Audit_Log_Report_Components().audit_log_report_menu_btn(), self.d)
@@ -283,26 +283,26 @@ class Audit_log_report_pom(web_driver, web_logger):
             result.append(submit_button.is_displayed())
             time.sleep(web_driver.two_second)
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_003 End...")
+            self.logger.info("test_TC_ALR_002 End...")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_003_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_002_failed.png")
                 self.close_current_tab()
                 return False
             else:
                 self.close_current_tab()
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_003_exception.png")
-            self.logger.info(f"test_TC_ALR_003_Exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_002_exception.png")
+            self.logger.info(f"test_TC_ALR_002_Exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
 
-    def Verify_user_able_to_generate_Audit_log_report_with_all_inputs_in_Select_report_criteria(self):
+    def Generate_audit_log_report_with_Select_report_criteria_dropdown_buttons(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_006 Starting...")
+            self.logger.info("test_TC_ALR_009 Starting...")
             self.go_to_audit_log_report()
             time.sleep(web_driver.one_second)
             self.logger.info("go_to_audit_log_report executed")
@@ -311,20 +311,80 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.select_report_type(Audit_Log_Report_Components().get_select_report_type())
             self.logger.info("select_report_type executed")
             time.sleep(web_driver.two_second)
+
             # select user
             self.select_users(Audit_Log_Report_Components().get_select_users())
             self.logger.info("select_users executed")
             time.sleep(web_driver.two_second)
+
             # select filter by
             self.select_filter_by(Audit_Log_Report_Components().get_select_filter_by())
             self.logger.info("select_filter_by executed")
             time.sleep(web_driver.two_second)
+
+
             # submit button click
             self.click_on_submit_button()
             self.logger.info("click_on_submit_button executed")
             time.sleep(web_driver.two_second)
             # report validation
             result.append(self.report_generated_validation())
+            self.logger.info(f"status: {result}")
+            self.logger.info("test_TC_ALR_009 End...")
+            if False in result:
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_009_failed.png")
+                return False
+            else:
+                return True
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_009_Exception.png")
+            self.logger.info(f"test_TC_ALR_009_Exception:  {ex}")
+            return False
+
+        finally:
+            self.close_current_tab()
+            time.sleep(web_driver.one_second)
+            self.d.switch_to.window(self.d.window_handles[0])
+
+    def Verify_Report_type_drop_down_appears_with_Aged_Enrollments_wo_Events_Approver_Enrollments_User_Enrollments_Login_Logout_Threshold_changes_and_System_User_Logs(self):
+        result = []
+        try:
+            self.logger.info("test_TC_ALR_005 Starting...")
+            self.go_to_audit_log_report()
+            self.logger.info("go_to_audit_log_report executed")
+            time.sleep(web_driver.three_second)
+            # validate report type drop down
+            result.append(self.validate_report_drop_down_options())
+            self.logger.info("test_TC_ALR_005 End...")
+            time.sleep(web_driver.one_second)
+            self.logger.info(f"status: {result}")
+            if False in result:
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_005_failed.png")
+                self.close_current_tab()
+                time.sleep(web_driver.one_second)
+                return False
+            else:
+                self.close_current_tab()
+                time.sleep(web_driver.one_second)
+                return True
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_005_exception.png")
+            self.logger.info(f"test_TC_ALR_005_Exception:  {ex}")
+
+            return False
+        finally:
+            self.close_current_tab()
+            self.d.switch_to.window(self.d.window_handles[0])
+
+    def Verify_Filter_date_drop_down_appears_with_Add_date_selection_Custom_Date_Range_Last_7_days_Last_14_days_Last_30_Days_Month_to_date_Last_90_days_Quarter_to_date_Year_to_date(self):
+        result = []
+        try:
+            self.logger.info("test_TC_ALR_006")
+            self.go_to_audit_log_report()
+            time.sleep(web_driver.one_second)
+            self.logger.info("go_to_audit_log_report executed")
+            # validate filter by drop down
+            result.append(self.validate_filter_by_drop_down_options())
             self.logger.info(f"status: {result}")
             self.logger.info("test_TC_ALR_006 End...")
             if False in result:
@@ -333,64 +393,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_006_Exception.png")
-            self.logger.info(f"test_TC_ALR_006_Exception:  {ex}")
-            return False
-
-        finally:
-            self.close_current_tab()
-            time.sleep(web_driver.one_second)
-            self.d.switch_to.window(self.d.window_handles[0])
-
-    def Verify_Report_type_drop_down_appears_with_options(self):
-        result = []
-        try:
-            self.logger.info("test_TC_ALR_007 Starting...")
-            self.go_to_audit_log_report()
-            self.logger.info("go_to_audit_log_report executed")
-            time.sleep(web_driver.three_second)
-            # validate report type drop down
-            result.append(self.validate_report_drop_down_options())
-            self.logger.info("test_TC_ALR_007 End...")
-            time.sleep(web_driver.one_second)
-            self.logger.info(f"status: {result}")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_007_failed.png")
-                self.close_current_tab()
-                time.sleep(web_driver.one_second)
-                return False
-            else:
-                self.close_current_tab()
-                time.sleep(web_driver.one_second)
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_007_exception.png")
-            self.logger.info(f"test_TC_ALR_007_Exception:  {ex}")
-
-            return False
-        finally:
-            self.close_current_tab()
-            self.d.switch_to.window(self.d.window_handles[0])
-
-    def Verify_filter_by_drop_down_appears_with_options(self):
-        result = []
-        try:
-            self.logger.info("test_TC_ALR_008")
-            self.go_to_audit_log_report()
-            time.sleep(web_driver.one_second)
-            self.logger.info("go_to_audit_log_report executed")
-            # validate filter by drop down
-            result.append(self.validate_filter_by_drop_down_options())
-            self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_008 End...")
-            if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_008_failed.png")
-
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_008_exception.png")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_006_exception.png")
             self.logger.info(f"Verify_filter_by_drop_down_appears_with_options exception:  {ex}")
             return False
         finally:
@@ -425,51 +428,53 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
 
-    def Generate_audit_log_report_with_Select_report_criteria_dropdown_buttons(self):
-        result = []
-        try:
-            self.logger.info("test_TC_ALR_011")
-            self.go_to_audit_log_report()
-            time.sleep(web_driver.one_second)
-            self.logger.info("go_to_audit_log_report executed")
-            # select report type
-            self.select_report_type(Audit_Log_Report_Components().get_select_report_type())
-            self.logger.info("select_report_type executed")
-            time.sleep(web_driver.one_second)
-            # select user
-            self.select_users(Audit_Log_Report_Components().get_select_users())
-            self.logger.info("select_users executed")
-            time.sleep(web_driver.one_second)
-            # select filter by
-            self.select_filter_by(Audit_Log_Report_Components().get_select_filter_by())
-            self.logger.info("select_filter_by executed")
-            # submit button click
-            self.click_on_submit_button()
-            time.sleep(web_driver.one_second)
-            self.logger.info("click_on_submit_button executed")
-            # report validation
-            result.append(self.report_generated_validation())
-            time.sleep(web_driver.one_second)
-            self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_011 End...")
-            if False in result:
-                self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_ALR_011_failed.png")
-                return False
-            else:
-                return True
-        except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_011_Exception.png")
-            self.logger.info(f"Generate_audit_log_report_with_Select_report_criteria_dropdown_buttons exception:  {ex}")
-            return False
-        finally:
-            self.close_current_tab()
-            self.d.switch_to.window(self.d.window_handles[0])
+    # def Generate_audit_log_report_with_Select_report_criteria_dropdown_buttons(self):
+    #     result = []
+    #     try:
+    #         self.logger.info("test_TC_ALR_011")
+    #         self.go_to_audit_log_report()
+    #         time.sleep(web_driver.one_second)
+    #         self.logger.info("go_to_audit_log_report executed")
+    #         # select report type
+    #         self.select_report_type(Audit_Log_Report_Components().get_select_report_type())
+    #         self.logger.info("select_report_type executed")
+    #         time.sleep(web_driver.one_second)
+    #
+    #         # select filter by
+    #         self.select_filter_by(Audit_Log_Report_Components().get_select_filter_by())
+    #         self.logger.info("select_filter_by executed")
+    #
+    #         # select user
+    #         self.select_users(Audit_Log_Report_Components().get_select_users())
+    #         self.logger.info("select_users executed")
+    #         time.sleep(web_driver.one_second)
+    #         # submit button click
+    #         self.click_on_submit_button()
+    #         time.sleep(web_driver.one_second)
+    #         self.logger.info("click_on_submit_button executed")
+    #         # report validation
+    #         result.append(self.report_generated_validation())
+    #         time.sleep(web_driver.one_second)
+    #         self.logger.info(f"status: {result}")
+    #         self.logger.info("test_TC_ALR_011 End...")
+    #         if False in result:
+    #             self.d.save_screenshot(
+    #                 f"{self.screenshots_path}\\test_TC_ALR_011_failed.png")
+    #             return False
+    #         else:
+    #             return True
+    #     except Exception as ex:
+    #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_011_Exception.png")
+    #         self.logger.info(f"Generate_audit_log_report_with_Select_report_criteria_dropdown_buttons exception:  {ex}")
+    #         return False
+    #     finally:
+    #         self.close_current_tab()
+    #         self.d.switch_to.window(self.d.window_handles[0])
 
     def Validate_generated_report_by_providing_all_valid_inputs_to_select_report_criteria(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_012")
+            self.logger.info("test_TC_ALR_010")
             self.go_to_audit_log_report()
             time.sleep(web_driver.one_second)
             self.logger.info("go_to_audit_log_report executed")
@@ -493,8 +498,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("report_generated_validation executed")
             # validate generated report type
-            result.append(
-                self.validate_generated_report_type(Audit_Log_Report_Components().report_type_User_Enrollments()))
+            result.append(self.validate_generated_report_type(Audit_Log_Report_Components().report_type_User_Enrollments()))
             time.sleep(web_driver.one_second)
             # validate generated report filter by
             result.append(
@@ -502,17 +506,16 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             print(result)
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_012 End...")
+            self.logger.info("test_TC_ALR_010 End...")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_012_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_010_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
             print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_012_Exception.png")
-            self.logger.info(
-                f"Validate_generated_report_by_providing_all_valid_inputs_to_select_report_criteria exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_010_Exception.png")
+            self.logger.info(f"Validate_generated_report_by_providing_all_valid_inputs_to_select_report_criteria exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -615,10 +618,10 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
 
-    def Verify_report_right_header_contains_csv_download_option(self):
+    def Verify_download_csv_report_by_checking_data_and_text_format_as_shown_in_the_UI_Audit_log_reports_page(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_016")
+            self.logger.info("test_TC_ALR_011")
             self.go_to_audit_log_report()
             time.sleep(web_driver.one_second)
             self.logger.info("executed go_to_audit_log_report")
@@ -643,16 +646,16 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed validate_csv_download_option")
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_016 End")
+            self.logger.info("test_TC_ALR_011 End")
             if False in result:
                 self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_ALR_016_failed.png")
+                    f"{self.screenshots_path}\\test_TC_ALR_011_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_016_Exception.png")
-            self.logger.info(f"test_TC_ALR_016_failed exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_011_Exception.png")
+            self.logger.info(f"test_TC_ALR_011_failed exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -741,10 +744,10 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
 
-    def Verify_report_generated_with_Approver_enrollments_column(self):
+    def Verify_generated_report_with_Approver_Enrollments_should_contain_Approver_name_Approver_Date_Time_Enrollment_status_Reported_by_Enrollment_Group_Enrolled_Date_Time_Location_store_Reported_Loss_Enrollment_Event_type_Enrollment_Number(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_018")
+            self.logger.info("test_TC_ALR_027")
             self.go_to_audit_log_report()
             time.sleep(web_driver.one_second)
             self.logger.info("executed go_to_audit_log_report")
@@ -753,7 +756,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_report_type")
             # select user
-            self.select_users(Audit_Log_Report_Components().select_core_user())
+            self.select_users(Audit_Log_Report_Components().select_users())
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_users")
             # select filter by
@@ -769,15 +772,15 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed validate_approver_enrollments_list_col")
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_018 End...")
+            self.logger.info("test_TC_ALR_027 End...")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_018_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_027_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_018_exception.png")
-            self.logger.info(f"test_TC_ALR_018_exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_027_exception.png")
+            self.logger.info(f"test_TC_ALR_027_exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -970,22 +973,22 @@ class Audit_log_report_pom(web_driver, web_logger):
     def Verify_user1_with_permissions_able_to_view_Audit_log_reports_on_Cloud_menu(self):
         result = []
         try:
-            self.logger.info("test_TC_ALR_005 Starting...")
+            self.logger.info("test_TC_ALR_004 Starting...")
             result.append(self.validate_user_access_audit_log_report())
             time.sleep(web_driver.one_second)
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_005 End...")
+            self.logger.info("test_TC_ALR_004 End...")
             if False in result:
                 self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_ALR_005_failed.png")
+                    f"{self.screenshots_path}\\test_TC_ALR_004_failed.png")
                 self.close_current_tab()
                 return False
             else:
                 self.close_current_tab()
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_005_exception.png")
-            self.logger.info(f"test_TC_ALR_005_Exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_004_exception.png")
+            self.logger.info(f"test_TC_ALR_004_Exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -2307,7 +2310,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
 
-    def Verify_user_with_all_permissions_enrolled_mask_subject_should_be_in_disable_for_Enrollment_status(self):
+    def Verify_user_with_all_permissions_enrolled_mask_subject_should_be_in_disable_status_for_user_Enrollment_status(self):
         result = []
         try:
             # give enrollment review permission
@@ -2318,6 +2321,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.enroll_mask_subject_person_with_all_permission()
             time.sleep(web_driver.one_second)
             self.logger.info("enroll_mask_subject_person_with_all_permission executed")
+            self.close_all_panel_one_by_one()
             # go to audit log report
             self.go_to_audit_log_report()
             time.sleep(web_driver.one_second)
@@ -2327,7 +2331,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("select_report_type executed")
             # select user
-            self.select_users(Audit_Log_Report_Components().select_one_user())
+            self.select_users(Audit_Log_Report_Components().select_core_users())
             time.sleep(web_driver.one_second)
             self.logger.info("select_users executed")
             # select filter by
@@ -2342,19 +2346,16 @@ class Audit_log_report_pom(web_driver, web_logger):
             result.append(self.validate_user_enrollment_status_should_be_disable())
             time.sleep(web_driver.one_second)
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_060 End...")
-            self.logger.info("test_TC_ALR_094 End...")
+            self.logger.info("test_TC_ALR_066 End...")
+
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_060_failed.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_094_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_066_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_060_Exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_094_Exception.png")
-            self.logger.info(f"test_TC_ALR_060_failed:  {ex}")
-            self.logger.info(f"test_TC_ALR_094_failed:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_066_Exception.png")
+            self.logger.info(f"test_TC_ALR_060_failed:  {type(ex).__name__}")
             return False
         finally:
             self.close_current_tab()
@@ -2371,7 +2372,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             self.enroll_mask_subject_person_with_all_permission()
             time.sleep(web_driver.one_second)
             self.logger.info("enroll_mask_subject_person_with_all_permission executed")
-
+            self.close_all_panel_one_by_one()
             # give enrollment review permission
             self.change_user_role_give_enrollment_review_permission()
             time.sleep(web_driver.one_second)
@@ -2389,7 +2390,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("select_report_type executed")
             # select user
-            self.select_users(Audit_Log_Report_Components().select_one_user())
+            self.select_users(Audit_Log_Report_Components().select_core_users())
             time.sleep(web_driver.one_second)
             self.logger.info("select_users executed")
             # select filter by
@@ -2404,20 +2405,19 @@ class Audit_log_report_pom(web_driver, web_logger):
             result.append(self.validate_user_enrollment_status_should_be_enable())
             time.sleep(web_driver.one_second)
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_061 End...")
-            self.logger.info("test_TC_ALR_095 End...")
+            self.logger.info("test_TC_ALR_067 End...")
+
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_061_failed.png")
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_095_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_067_failed.png")
+
                 return False
             else:
                 return True
         except Exception as ex:
             print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_095_Exception.png")
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_061_Exception.png")
-            self.logger.info(f"test_TC_ALR_061_Exception:  {ex}")
-            self.logger.info(f"test_TC_ALR_095_Exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_067_Exception.png")
+            self.logger.info(f"test_TC_ALR_067_Exception:  {type(ex).__name__}")
+
             return False
         finally:
             self.close_current_tab()
@@ -2443,7 +2443,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_report_type")
             # select user
-            self.select_users(Audit_Log_Report_Components().select_one_user())
+            self.select_users(Audit_Log_Report_Components().select_core_users())
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_users")
             # select filter by
@@ -2459,24 +2459,23 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed verify_pending_enrollment_status")
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_062 End...")
+            self.logger.info("test_TC_ALR_070 End...")
             if False in result:
                 self.d.save_screenshot(
-                    f"{self.screenshots_path}\\test_TC_ALR_062_failed.png")
+                    f"{self.screenshots_path}\\test_TC_ALR_070_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_062_failed.png")
-            self.logger.info(f"test_TC_ALR_062 exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_070_failed.png")
+            self.logger.info(f"test_TC_ALR_070 exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
             self.change_user_role_give_enrollment_review_permission()
 
-    def Verify_user_with_2FA_enrolled_mask_subject_and_approved_by_admin_should_be_in_approved_for_Enrollment_status(
-            self):
+    def Verify_user_with_2FA_enrolled_mask_subject_and_approved_by_admin_should_be_in_approved_for_Enrollment_status(self):
         result = []
         try:
             # give enrollment review permission
@@ -2496,7 +2495,7 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_report_type")
             # select user
-            self.select_users(Audit_Log_Report_Components().select_one_user())
+            self.select_users(Audit_Log_Report_Components().select_core_users())
             time.sleep(web_driver.one_second)
             self.logger.info("executed select_users")
             # select filter by
@@ -2508,24 +2507,25 @@ class Audit_log_report_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.logger.info("executed click_on_submit_button")
             # enrollment status should be pending
-            result.append(self.verify_pending_enrollment_status())
+            result.append(self.verify_enabled_enrollment_status_1())
+            # result.append(self.validate_user_enrollment_status_should_be_enable())
             time.sleep(web_driver.one_second)
             self.logger.info("executed verify_pending_enrollment_status")
             self.logger.info(f"status: {result}")
-            self.logger.info("test_TC_ALR_0063 End..")
+            self.logger.info("test_TC_ALR_0071 End..")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_0063_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_0071_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_0063_failed.png")
-            self.logger.info(f"test_TC_ALR_0063 exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_0071_failed.png")
+            self.logger.info(f"test_TC_ALR_0071 exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
             self.d.switch_to.window(self.d.window_handles[0])
-            self.change_user_role_give_enrollment_review_permission()
+            # self.change_user_role_give_enrollment_review_permission()
 
     def Verify_user_with_2FA_enrolled_subject_should_be_in_pending_for_Enrollment_status(self):
         result = []
@@ -3179,7 +3179,7 @@ class Audit_log_report_pom(web_driver, web_logger):
 
         expected_column_list = ["Approver Name", "Approved DateTime", "Enrollment Status", "Reported By",
                                 "Enrollment Groups", "Enrolled DateTime", "Location / Store", "Reported Loss",
-                                "Case Event Type", "Case Number"]
+                                "Enrollment Event Type", "Enrollment Number"]
         self.logger.info(f"actual_column_list: {actual_column_list}")
         self.logger.info(f"expected_column_list: {expected_column_list}")
         if actual_column_list == expected_column_list:
@@ -5137,7 +5137,7 @@ class Audit_log_report_pom(web_driver, web_logger):
 
     def validate_user_enrollment_status_should_be_enable(self):
         """
-            This function is used to verify the enrollment status should be enabled
+            This function is used to verify the enrollment status should be Enabled
             :return:
         """
         data_list = []
@@ -5148,30 +5148,28 @@ class Audit_log_report_pom(web_driver, web_logger):
         next_btn = self.d.find_element(By.XPATH, Audit_Log_Report_Components().next_btn_report())
         total_pages = self.d.find_element(By.XPATH, Audit_Log_Report_Components().total_pages_number())
         a = str(total_pages.text)
-        print(a)
         a = a.split("-")
         last_page_number = a[1].split("of")[0].strip()
         total_page_number = a[1].split("of")[1].strip()
         time.sleep(web_driver.two_second)
         status = self.d.find_elements(By.XPATH, Audit_Log_Report_Components().user_enrollment_status_list())
         for x in status:
-            if not x.text == "":
-                data_list.append(x.text)
-        while not int(last_page_number) == int(total_page_number) and self.d.find_element(By.XPATH,
-                                                                                          Audit_Log_Report_Components().next_btn_report()).is_enabled():
+            # if not x.text == "":
+            data_list.append(x.text)
+        while not int(last_page_number) == int(total_page_number) and self.d.find_element(By.XPATH, Audit_Log_Report_Components().next_btn_report()).is_enabled():
             next_btn.click()
             time.sleep(web_driver.two_second)
             status = self.d.find_elements(By.XPATH, Audit_Log_Report_Components().user_enrollment_status_list())
             for x in status:
-                if not x.text == "":
-                    data_list.append(x.text)
+                # if not x.text == "":
+                data_list.append(x.text)
             total_pages = self.d.find_element(By.XPATH, Audit_Log_Report_Components().total_pages_number())
             a = str(total_pages.text)
             a = a.split("-")
             last_page_number = a[1].split("of")[0].strip()
         self.logger.info(f"data list: {data_list}")
         last_index = data_list.__len__()
-        if data_list.__getitem__(last_index - 1) == "Enabled":
+        if "Enabled" in data_list.__getitem__(last_index - 1):
             return True
         else:
             return False
@@ -5212,6 +5210,46 @@ class Audit_log_report_pom(web_driver, web_logger):
         self.logger.info(f"data list: {data_list}")
         last_index = data_list.__len__()
         if "Pending" in data_list.__getitem__(last_index - 1):
+            return True
+        else:
+            return False
+
+    def verify_enabled_enrollment_status_1(self):
+        """
+            This function is used to verify the enrollment status should be pending
+            :return:
+        """
+        data_list = []
+        rows_selection = self.d.find_element(By.XPATH,
+                                             Audit_Log_Report_Components().generated_report_page_select_dropdown())
+        select = Select(rows_selection)
+        select.select_by_value("30")
+        next_btn = self.d.find_element(By.XPATH, Audit_Log_Report_Components().next_btn_report())
+        total_pages = self.d.find_element(By.XPATH, Audit_Log_Report_Components().total_pages_number())
+        a = str(total_pages.text)
+        a = a.split("-")
+        last_page_number = a[1].split("of")[0].strip()
+        total_page_number = a[1].split("of")[1].strip()
+        time.sleep(web_driver.two_second)
+        status = self.d.find_elements(By.XPATH, Audit_Log_Report_Components().user_enrollment_status_list())
+        for x in status:
+            # if not x.text == "":
+            data_list.append(x.text)
+        while not int(last_page_number) == int(total_page_number) and self.d.find_element(By.XPATH,
+                                                                                          Audit_Log_Report_Components().next_btn_report()).is_enabled():
+            next_btn.click()
+            time.sleep(web_driver.two_second)
+            status = self.d.find_elements(By.XPATH, Audit_Log_Report_Components().user_enrollment_status_list())
+            for x in status:
+                # if not x.text == "":
+                data_list.append(x.text)
+            total_pages = self.d.find_element(By.XPATH, Audit_Log_Report_Components().total_pages_number())
+            a = str(total_pages.text)
+            a = a.split("-")
+            last_page_number = a[1].split("of")[0].strip()
+        self.logger.info(f"data list: {data_list}")
+        last_index = data_list.__len__()
+        if "Enabled" in data_list.__getitem__(last_index - 1):
             return True
         else:
             return False
@@ -7287,15 +7325,15 @@ class Audit_log_report_pom(web_driver, web_logger):
         try:
             result = self.validate_Threshold_changes_report_with_user_modified_threshold_type_for_enrolment_group()
             self.logger.info(f"result: {result}")
-            self.logger.info("test_TC_ALR_134 End...")
+            self.logger.info("test_TC_ALR_156 End...")
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_134_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_156_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_134_failed.png")
-            self.logger.info(f"test_TC_ALR_134 Exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_156_failed.png")
+            self.logger.info(f"test_TC_ALR_156 Exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -7405,18 +7443,18 @@ class Audit_log_report_pom(web_driver, web_logger):
     def Verify_Threshold_changes_report_with_user_modified_threshold_change_result_for_enrolment_group_match(self):
         try:
             result = self.Validate_Threshold_changes_report_with_user_modified_threshold_change_result_for_enrolment_group_match()
-            self.logger.info("test_TC_ALR_135 End...")
-            self.logger.info(f"test_TC_ALR_135 Returning: {result}")
+            self.logger.info("test_TC_ALR_157 End...")
+            self.logger.info(f"test_TC_ALR_157 Returning: {result}")
             if not result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_135_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_157_failed.png")
                 return False
             else:
                 return True
 
         except Exception as ex:
             self.d.save_screenshot(
-                f"{self.screenshots_path}\\test_TC_ALR_135_failed.png")
-            self.logger.info(f"test_TC_ALR_135 Exception:  {ex}")
+                f"{self.screenshots_path}\\test_TC_ALR_157_failed.png")
+            self.logger.info(f"test_TC_ALR_157 Exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -7469,8 +7507,8 @@ class Audit_log_report_pom(web_driver, web_logger):
         threshold_change = self.d.find_element(By.XPATH, Audit_Log_Report_Components().threshold_change_change_result(
             face_change_result_data[0])).text
         status = []
-        self.logger.info(f"result : {status}")
         status.append(face_change_result_data[1] == float(threshold_change.strip()))
+        self.logger.info(f"result : {status}")
         return status
 
     def get_modified_change_result_for_enrollment_group(self):
@@ -7528,15 +7566,15 @@ class Audit_log_report_pom(web_driver, web_logger):
     def Verify_Threshold_changes_report_with_user_modified_serious_offender_change_for_enrolment_group_match(self):
         try:
             result = self.Validate_Threshold_changes_report_with_user_modified_serious_offender_change_for_enrolment_group_match()
-            self.logger.info(f"test_TC_ALR_136 Returning: {result}")
+            self.logger.info(f"test_TC_ALR_158 Returning: {result}")
             if not result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_136_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_ALR_158_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot( f"{self.screenshots_path}\test_TC_ALR_136_failed.png")
-            self.logger.info(f"test_TC_ALR_136 Exception:  {ex}")
+            self.d.save_screenshot( f"{self.screenshots_path}\\test_TC_ALR_158_failed.png")
+            self.logger.info(f"test_TC_ALR_158 Exception:  {ex}")
             return False
         finally:
             self.close_current_tab()
@@ -7590,9 +7628,9 @@ class Audit_log_report_pom(web_driver, web_logger):
                                                    serious_offender_result_data[0])).text
         serious_offender_list = serious_offender.split("->")
         status = []
-        self.logger.info(f"result : {status}")
         status.append(serious_offender_result_data[1] == serious_offender_list[0].strip())
         status.append(serious_offender_result_data[2] == serious_offender_list[1].strip())
+        self.logger.info(f"result : {status}")
         return status
 
     def get_modified_serious_offender_change_for_enrollment_group(self):
@@ -7615,6 +7653,7 @@ class Audit_log_report_pom(web_driver, web_logger):
         name = self.d.find_element(By.XPATH, Audit_Log_Report_Components().enrollment_groups_details_name_input_bx())
 
         name.send_keys(name_input)
+        self.logger.info(f"serious offender xpath: {Audit_Log_Report_Components().serious_offender_drop_down()}")
         serious_offender = self.d.find_element(By.XPATH, Audit_Log_Report_Components().serious_offender_drop_down())
         s = Select(serious_offender)
         serious_offender_value = "Low"

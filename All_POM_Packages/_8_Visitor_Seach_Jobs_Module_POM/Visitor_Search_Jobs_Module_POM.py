@@ -14,8 +14,6 @@ from pathlib import Path
 import pyautogui
 
 
-
-
 class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
     d = web_driver.d()
     logger = web_logger.logger_obj()
@@ -39,7 +37,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
     def __init__(self):
         self.end_datetime = self.end_time = self.end_date = self.end_date_and_time = self.start_datetime = \
             self.start_age = None
-        self.start_time = self.start_date = self.start_date_and_time  = None
+        self.start_time = self.start_date = self.start_date_and_time = None
 
         self.custom_dates_json = \
             (f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\18_Reporting_Module\\Data_From_JSON"
@@ -82,9 +80,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
 
     def click_on_visitor_search_jobs_btn(self):
         time.sleep(web_driver.three_second)
-        visitor_search_jobs_btn = web_driver.explicit_wait(self, 10, "XPATH",
-                                 Read_Visitor_Search_jobs_Components().visitors_search_job_btn_by_xpath(),
-                                 self.d)
+        visitor_search_jobs_btn = web_driver.explicit_wait(self, 10, "XPATH", Read_Visitor_Search_jobs_Components().visitors_search_job_btn_by_xpath(), self.d)
         self.d.execute_script("arguments[0].click();", visitor_search_jobs_btn)
         time.sleep(web_driver.two_second)
         visitor_search_jobs_panel_list = self.d.find_elements(By.XPATH, Read_Visitor_Search_jobs_Components().visitor_search_jobs_panel_heading_by_xpath())
@@ -124,7 +120,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_001_exception.png")
-            self.logger.info(f"test_VSJ_001_exception:  {ex}")
+            self.logger.info(f"test_VSJ_001_exception:  {type(ex).__name__}")
             return False
 
     def verify_user_opens_vsj_then_visitor_search_jobs_panel_should_display(self):
@@ -145,13 +141,13 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.logger.info(f"status:{result}")
 
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_002_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_17_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_002_exception.png")
-            self.logger.info(f"test_VSJ_002_exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_17_exception.png")
+            self.logger.info(f"test_TC_VSJ_17_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -177,7 +173,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_003_exception.png")
-            self.logger.info(f"test_VSJ_003_exception:  {ex}")
+            self.logger.info(f"test_VSJ_003_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -203,7 +199,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_004_exception.png")
-            self.logger.info(f"test_VSJ_004_exception:  {ex}")
+            self.logger.info(f"test_VSJ_004_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -254,7 +250,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_005_exception.png")
-            self.logger.info(f"test_VSJ_005_exception:  {ex}")
+            self.logger.info(f"test_VSJ_005_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -315,7 +311,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_006_exception.png")
-            self.logger.info(f"test_VSJ_006_exception:  {ex}")
+            self.logger.info(f"test_VSJ_006_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -325,7 +321,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -370,7 +365,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_007_exception.png")
-            self.logger.info(f"test_VSJ_007_exception:  {ex}")
+            self.logger.info(f"test_VSJ_007_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -380,7 +375,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -425,7 +419,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_008_exception.png")
-            self.logger.info(f"test_VSJ_008_exception:  {ex}")
+            self.logger.info(f"test_VSJ_008_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -436,7 +430,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -482,7 +475,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_009_exception.png")
-            self.logger.info(f"test_VSJ_009_exception:  {ex}")
+            self.logger.info(f"test_VSJ_009_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -493,7 +486,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -539,7 +531,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_010_exception.png")
-            self.logger.info(f"test_VSJ_010_exception:  {ex}")
+            self.logger.info(f"test_VSJ_010_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -550,7 +542,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -600,7 +591,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_011_exception.png")
-            self.logger.info(f"test_VSJ_011_exception:  {ex}")
+            self.logger.info(f"test_VSJ_011_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -610,7 +601,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         try:
             self.login()
             self.click_on_visitor_search()
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -659,7 +649,80 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_012_exception.png")
-            self.logger.info(f"test_VSJ_012_exception:  {ex}")
+            self.logger.info(f"test_VSJ_012_exception:  {type(ex).__name__}")
+            return False
+        finally:
+            self.close_all_panel_one_by_one()
+
+    def Verify_the_visitor_search_job_contains_the_matching_visitors_with_image_when_visitor_search_with_image_only(self):
+        result = []
+        try:
+            self.add_image_search()
+            time.sleep(web_driver.two_second)
+            # self.nats_checkbox()
+
+            self.click_on_submit_search_button()
+            time.sleep(web_driver.two_second)
+            visitor_search_complete = web_driver.explicit_wait(self, 80, "XPATH",
+                                                               Read_Visitor_Search_jobs_Components().visitor_search_completed_banner(),
+                                                               self.d)
+            if visitor_search_complete.is_displayed():
+                self.logger.info("Visitor Search Completed.")
+            else:
+                self.logger.info("Visitor Search Not Completed.")
+            matches_found = web_driver.explicit_wait(self, 20, "XPATH",
+                                                     Read_Visitor_Search_jobs_Components().visitor_search_result_panel_matches_found(),
+                                                     self.d)
+            max_count = matches_found.text
+            self.logger.info(f"max match count text: {max_count}")
+            max_number = max_count.split(" ")[0]
+            self.logger.info(f"max match count: {max_number}")
+            if max_number.isnumeric():
+                result.append(int(max_number) <= 50)
+                self.click_on_cloud_menu()
+                self.click_on_visitor_search_jobs_btn()
+                time.sleep(web_driver.two_second)
+                max_matches = self.d.find_elements(By.XPATH,
+                                                   Read_Visitor_Search_jobs_Components().visitors_search_jobs_panel_max_matches_by_xpath())
+                count = 0
+                while len(max_matches) == 0 or count > 150:
+                    max_matches = self.d.find_elements(By.XPATH,
+                                                       Read_Visitor_Search_jobs_Components().visitors_search_jobs_panel_max_matches_by_xpath())
+                    time.sleep(web_driver.two_second)
+                    count += 1
+                    self.logger.info(f"max matches function count: {count}")
+            if max_number.isnumeric():
+                result.append(int(max_number) <= 50)
+                self.click_on_cloud_menu()
+                self.click_on_visitor_search_jobs_btn()
+                time.sleep(web_driver.two_second)
+                max_matches = self.d.find_elements(By.XPATH,
+                                                   Read_Visitor_Search_jobs_Components().visitors_search_jobs_panel_max_matches_by_xpath())
+                count = 0
+                while len(max_matches) == 0 or count > 150:
+                    max_matches = self.d.find_elements(By.XPATH,
+                                                       Read_Visitor_Search_jobs_Components().visitors_search_jobs_panel_max_matches_by_xpath())
+                    time.sleep(web_driver.two_second)
+                    count += 1
+                    self.logger.info(f"max matches function count: {count}")
+
+                max_matches_text = max_matches[0].text
+                self.logger.info(f"match count text on visitor search job panel: {max_matches_text}")
+                max_number_counted = max_matches_text.split(" ")[0]
+                self.logger.info(f"max count on vsj panel: {max_number_counted}")
+                result.append(int(max_number_counted) <= 50)
+                self.logger.info(f"status: {result}")
+                if False in result:
+                    self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_02_failed.png")
+                    return False
+                else:
+                    return True
+            else:
+                self.logger.info("No Image count is displayed.")
+                return True
+        except Exception as ex:
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_02_exception.png")
+            self.logger.info(f"test_TC_VSJ_02_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -730,7 +793,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_013_exception.png")
-            self.logger.info(f"test_VSJ_013_exception:  {ex}")
+            self.logger.info(f"test_VSJ_013_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -789,7 +852,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_013_exception.png")
-    #         self.logger.info(f"test_VSJ_013_exception:  {ex}")
+    #         self.logger.info(f"test_VSJ_013_exception:  {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -824,7 +887,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_014_exception.png")
-            self.logger.info(f"test_VSJ_014_exception:  {ex}")
+            self.logger.info(f"test_VSJ_014_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -857,16 +920,16 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.logger.info(f"max number counted: {max_number_counted}")
             result.append(int(max_number_counted) <= int(threshold_data))
             self.logger.info(f"status: {result}")
-            self.logger.info(f"status: {result}")
+
             if False in result:
-                self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_015_failed.png")
+                self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_05_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
             print(ex)
-            self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_015_exception.png")
-            self.logger.info(f"test_VSJ_015_exception:  {ex}")
+            self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VSJ_05_exception.png")
+            self.logger.info(f"test_TC_VSJ_05_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -915,7 +978,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_016_exception.png")
-            self.logger.info(f"test_VSJ_016_fexception:  {ex}")
+            self.logger.info(f"test_VSJ_016_fexception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -950,7 +1013,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_017_exception.png")
-            self.logger.info(f"test_VSJ_017_exception:  {ex}")
+            self.logger.info(f"test_VSJ_017_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -998,7 +1061,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_018_exception.png")
-            self.logger.info(f"test_VSJ_018_exception:  {ex}")
+            self.logger.info(f"test_VSJ_018_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1043,7 +1106,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_019_exception.png")
-            self.logger.info(f"test_VSJ_019_exception:  {ex}")
+            self.logger.info(f"test_VSJ_019_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1102,7 +1165,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_020_exception.png")
-            self.logger.info(f"test_VSJ_020_exception:  {ex}")
+            self.logger.info(f"test_VSJ_020_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1141,7 +1204,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_021_exception.png")
-            self.logger.info(f"test_VSJ_021_exception:  {ex}")
+            self.logger.info(f"test_VSJ_021_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1198,7 +1261,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_022_exception.png")
-            self.logger.info(f"test_VSJ_022_exception:  {ex}")
+            self.logger.info(f"test_VSJ_022_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -1254,7 +1317,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_023_exception.png")
-            self.logger.info(f"test_VSJ_023_exception:  {ex}")
+            self.logger.info(f"test_VSJ_023_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -1318,7 +1381,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_024_exception.png")
-            self.logger.info(f"test_VSJ_024_exception:  {ex}")
+            self.logger.info(f"test_VSJ_024_exception:  {type(ex).__name__}")
 
             return False
         finally:
@@ -1363,7 +1426,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_025_exception.png")
-            self.logger.info(f"test_VSJ_025_exception:  {ex}")
+            self.logger.info(f"test_VSJ_025_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1425,7 +1488,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_026_exception.png")
-            self.logger.info(f"test_VSJ_026_exception:  {ex}")
+            self.logger.info(f"test_VSJ_026_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1485,7 +1548,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_027_exception.png")
-            self.logger.info(f"test_VSJ_027_exception:  {ex}")
+            self.logger.info(f"test_VSJ_027_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1552,7 +1615,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_028_exception.png")
-            self.logger.info(f"test_VSJ_028_exception:  {ex}")
+            self.logger.info(f"test_VSJ_028_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1595,7 +1658,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_029_exception.png")
-            self.logger.info(f"test_VSJ_029_exception:  {ex}")
+            self.logger.info(f"test_VSJ_029_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1653,7 +1716,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_030_exception.png")
-            self.logger.info(f"test_VSJ_030_exception:  {ex}")
+            self.logger.info(f"test_VSJ_030_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1709,7 +1772,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_031_exception.png")
-            self.logger.info(f"test_VSJ_031_exception:  {ex}")
+            self.logger.info(f"test_VSJ_031_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1771,7 +1834,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_032_exception.png")
-            self.logger.info(f"test_VSJ_031_exception:  {ex}")
+            self.logger.info(f"test_VSJ_031_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1813,7 +1876,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_033_exception.png")
-            self.logger.info(f"test_VSJ_033_exception:  {ex}")
+            self.logger.info(f"test_VSJ_033_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1870,7 +1933,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_034_exception.png")
-            self.logger.info(f"test_VSJ_034_exception:  {ex}")
+            self.logger.info(f"test_VSJ_034_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1926,7 +1989,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_035_exception.png")
-            self.logger.info(f"test_VSJ_035_exception:  {ex}")
+            self.logger.info(f"test_VSJ_035_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1987,7 +2050,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_036_exception.png")
-            self.logger.info(f"test_VSJ_036_exception:  {ex}")
+            self.logger.info(f"test_VSJ_036_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2029,7 +2092,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_037_exception.png")
-            self.logger.info(f"test_VSJ_037_exception:  {ex}")
+            self.logger.info(f"test_VSJ_037_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2090,7 +2153,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_038_exception.png")
-            self.logger.info(f"test_VSJ_038_exception:  {ex}")
+            self.logger.info(f"test_VSJ_038_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2151,7 +2214,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_039_exception.png")
-            self.logger.info(f"test_VSJ_039_exception:  {ex}")
+            self.logger.info(f"test_VSJ_039_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2217,7 +2280,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_040_exception.png")
-            self.logger.info(f"test_VSJ_040_exception:  {ex}")
+            self.logger.info(f"test_VSJ_040_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2263,7 +2326,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_041_exception.png")
-            self.logger.info(f"test_VSJ_041_exception:  {ex}")
+            self.logger.info(f"test_VSJ_041_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2329,7 +2392,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_042_exception.png")
-            self.logger.info(f"test_VSJ_042_exception:  {ex}")
+            self.logger.info(f"test_VSJ_042_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2394,7 +2457,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_043_exception.png")
-            self.logger.info(f"test_VSJ_043_exception:  {ex}")
+            self.logger.info(f"test_VSJ_043_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2464,7 +2527,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_044_exception.png")
-            self.logger.info(f"test_VSJ_044_exception:  {ex}")
+            self.logger.info(f"test_VSJ_044_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2505,7 +2568,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_045_exception.png")
-            self.logger.info(f"test_VSJ_045_exception:  {ex}")
+            self.logger.info(f"test_VSJ_045_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2570,7 +2633,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_046_exception.png")
-            self.logger.info(f"test_VSJ_046_exception:  {ex}")
+            self.logger.info(f"test_VSJ_046_exception:  {type(ex).__name__}")
             return False
 
         finally:
@@ -2639,7 +2702,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         except Exception as ex:
             print(ex)
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_047_exception.png")
-            self.logger.info(f"test_VSJ_047_exception:  {ex}")
+            self.logger.info(f"test_VSJ_047_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2711,7 +2774,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_048_exception.png")
-            self.logger.info(f"test_VSJ_048_exception:  {ex}")
+            self.logger.info(f"test_VSJ_048_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2722,8 +2785,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.add_image_search()
 
             # self.nats_checkbox()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -2756,7 +2817,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_049_exception.png")
-            self.logger.info(f"test_VSJ_049_exception:  {ex}")
+            self.logger.info(f"test_VSJ_049_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2767,8 +2828,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.add_image_search()
 
             # self.nats_checkbox()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -2821,7 +2880,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_050_exception.png")
-            self.logger.info(f"test_VSJ_050_exception:  {ex}")
+            self.logger.info(f"test_VSJ_050_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2832,8 +2891,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.add_image_search()
 
             # self.nats_checkbox()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -2888,7 +2945,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_051_exception.png")
-            self.logger.info(f"test_VSJ_051_exception:  {ex}")
+            self.logger.info(f"test_VSJ_051_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2966,7 +3023,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_052_exception.png")
-            self.logger.info(f"test_VSJ_052_exception:  {ex}")
+            self.logger.info(f"test_VSJ_052_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3016,7 +3073,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_053_exception.png")
-            self.logger.info(f"test_VSJ_053_exception:  {ex}")
+            self.logger.info(f"test_VSJ_053_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3093,7 +3150,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_054_exception.png")
-            self.logger.info(f"test_VSJ_054_exception:  {ex}")
+            self.logger.info(f"test_VSJ_054_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3157,7 +3214,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_055_exception.png")
-            self.logger.info(f"test_VSJ_055_exception:  {ex}")
+            self.logger.info(f"test_VSJ_055_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3234,7 +3291,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_056_exception.png")
-            self.logger.info(f"test_VSJ_056_exception:  {ex}")
+            self.logger.info(f"test_VSJ_056_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3287,7 +3344,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_057_exception.png")
-            self.logger.info(f"test_VSJ_057_exception:  {ex}")
+            self.logger.info(f"test_VSJ_057_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3362,7 +3419,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_058_exception.png")
-            self.logger.info(f"test_VSJ_058_exception:  {ex}")
+            self.logger.info(f"test_VSJ_058_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3442,7 +3499,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_059_exception.png")
-            self.logger.info(f"test_VSJ_059_exception:  {ex}")
+            self.logger.info(f"test_VSJ_059_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3519,7 +3576,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_060_exception.png")
-            self.logger.info(f"test_VSJ_060_exception:  {ex}")
+            self.logger.info(f"test_VSJ_060_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3565,7 +3622,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_061_exception.png")
-            self.logger.info(f"test_VSJ_061_exception:  {ex}")
+            self.logger.info(f"test_VSJ_061_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3637,7 +3694,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_062_exception.png")
-            self.logger.info(f"test_VSJ_062_exception:  {ex}")
+            self.logger.info(f"test_VSJ_062_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3720,7 +3777,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_063_exception.png")
-            self.logger.info(f"test_VSJ_063_exception:  {ex}")
+            self.logger.info(f"test_VSJ_063_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3800,7 +3857,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_064_exception.png")
-            self.logger.info(f"test_VSJ_064_exception:  {ex}")
+            self.logger.info(f"test_VSJ_064_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3850,7 +3907,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_065_exception.png")
-            self.logger.info(f"test_VSJ_065_exception:  {ex}")
+            self.logger.info(f"test_VSJ_065_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3919,7 +3976,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_066_exception.png")
-            self.logger.info(f"test_VSJ_066_exception:  {ex}")
+            self.logger.info(f"test_VSJ_066_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3996,7 +4053,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_067_exception.png")
-            self.logger.info(f"test_VSJ_067_exception:  {ex}")
+            self.logger.info(f"test_VSJ_067_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4005,8 +4062,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4069,7 +4124,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_068_exception.png")
-            self.logger.info(f"test_VSJ_068_exception:  {ex}")
+            self.logger.info(f"test_VSJ_068_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4078,8 +4133,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4122,7 +4175,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_069_exception.png")
-            self.logger.info(f"test_VSJ_069_exception:  {ex}")
+            self.logger.info(f"test_VSJ_069_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4131,8 +4184,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4202,7 +4253,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_070_exception.png")
-            self.logger.info(f"test_VSJ_070_exception:  {ex}")
+            self.logger.info(f"test_VSJ_070_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4211,8 +4262,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4252,7 +4301,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             else:
                 self.logger.info("no matches found")
 
-
             self.click_on_cloud_menu()
             time.sleep(web_driver.two_second)
 
@@ -4283,7 +4331,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_071_exception.png")
-            self.logger.info(f"test_VSJ_071_exception:  {ex}")
+            self.logger.info(f"test_VSJ_071_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4292,8 +4340,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4368,7 +4414,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_072_exception.png")
-            self.logger.info(f"test_VSJ_072_exception:  {ex}")
+            self.logger.info(f"test_VSJ_072_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4377,8 +4423,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4425,7 +4469,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_073_exception.png")
-            self.logger.info(f"test_VSJ_073_exception:  {ex}")
+            self.logger.info(f"test_VSJ_073_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4435,8 +4479,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4510,7 +4552,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_074_exception.png")
-            self.logger.info(f"test_VSJ_074_exception:  {ex}")
+            self.logger.info(f"test_VSJ_074_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4519,8 +4561,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4593,7 +4633,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_075_exception.png")
-            self.logger.info(f"test_VSJ_075_exception:  {ex}")
+            self.logger.info(f"test_VSJ_075_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4602,8 +4642,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
         result = []
         try:
             self.add_image_search()
-
-            
 
             time.sleep(web_driver.two_second)
             self.get_start_date()
@@ -4666,14 +4704,14 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             # result.append(int(max_number_counted) <= int(count_data))
 
             self.logger.info(f"status: {result}")
-            if (False in result):
+            if False in result:
                 self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_076_failed.png")
                 return False
             else:
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_076_exception.png")
-            self.logger.info(f"test_VSJ_076_exception:  {ex}")
+            self.logger.info(f"test_VSJ_076_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4718,7 +4756,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_077_exception.png")
-            self.logger.info(f"test_VSJ_077_exception:  {ex}")
+            self.logger.info(f"test_VSJ_077_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4757,7 +4795,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_078_exception.png")
-            self.logger.info(f"test_VSJ_078_exception:  {ex}")
+            self.logger.info(f"test_VSJ_078_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4802,7 +4840,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_079_exception.png")
-            self.logger.info(f"test_VSJ_079_exception:  {ex}")
+            self.logger.info(f"test_VSJ_079_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4840,7 +4878,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_080_exception.png")
-            self.logger.info(f"test_VSJ_080_exception:  {ex}")
+            self.logger.info(f"test_VSJ_080_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4888,7 +4926,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_81_exception.png")
-            self.logger.info(f"test_VSJ_081_exception:  {ex}")
+            self.logger.info(f"test_VSJ_081_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4915,7 +4953,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_082_exception.png")
-            self.logger.info(f"test_VSJ_082_exception:  {ex}")
+            self.logger.info(f"test_VSJ_082_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4939,7 +4977,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_084_exception.png")
-            self.logger.info(f"test_VSJ_084_exception:  {ex}")
+            self.logger.info(f"test_VSJ_084_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4980,7 +5018,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_085_exception.png")
-            self.logger.info(f"test_VSJ_085_exception:  {ex}")
+            self.logger.info(f"test_VSJ_085_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -5025,7 +5063,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_VSJ_086_exception.png")
-            self.logger.info(f"test_VSJ_086_exception:  {ex}")
+            self.logger.info(f"test_VSJ_086_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -5593,7 +5631,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             start_check_bx.click()
             time.sleep(web_driver.two_second)
             self.logger.info("checkbox selected...")
-            start_date_txt_bx =  web_driver.explicit_wait(self, 10, "XPATH", Read_Visitor_Search_jobs_Components().start_date_by_xpath(), self.d)
+            start_date_txt_bx = web_driver.explicit_wait(self, 10, "XPATH", Read_Visitor_Search_jobs_Components().start_date_by_xpath(), self.d)
             self.d.execute_script("arguments[0].scrollIntoView();", start_date_txt_bx)
             start_date_txt_bx.click()
             self.logger.info("start date selected")
@@ -5734,9 +5772,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.d.execute_script("arguments[0].click();", hour_down)
             current_hour_ele = web_driver.explicit_wait(self, 10, "XPATH", Read_Visitor_Search_jobs_Components().current_hour_ele_by_xpath(), self.d)
             cur_hour = int(current_hour_ele.text)
-
-
-
 
     def calender_handle_hour_minute_from(self, hour, minute):
         # set the hour
@@ -6033,7 +6068,7 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
         except Exception as ex:
             self.logger.error("start date method exception")
             self.logger.error(ex)
@@ -6119,7 +6154,6 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             self.logger.error("end date method exception")
             self.logger.error(ex)
 
-
     def select_org_hirarchy_btn(self):
         try:
             time.sleep(web_driver.one_second)
@@ -6129,4 +6163,3 @@ class Visitor_Search_Jobs_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.two_second)
         except Exception as ex:
             self.logger.info(f"select org hirarchy btn: {ex.args}")
-

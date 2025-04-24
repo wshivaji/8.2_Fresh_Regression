@@ -45,6 +45,7 @@ class web_driver:
     def explicit_wait(self, seconds, locator_type, locator, driver):
         try:
             self.logger.info(f"entered explicit wait for {seconds}")
+            self.logger.info(f"looking for locator: {locator} ")
             element = None
             if locator_type == "NAME":
                 element = WebDriverWait(driver, seconds).until(EC.visibility_of_element_located((By.NAME, locator)))

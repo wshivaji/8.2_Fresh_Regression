@@ -1203,6 +1203,13 @@ class Audit_Log_Report_Components:
         except Exception as ex:
             print(ex)
 
+    def select_core_users(self):
+        try:
+            ele = self.common_test_data_config.get('Login_Logout_Data', 'username')
+            return ele
+        except Exception as ex:
+            print(ex)
+
     def select_one_user(self):
         try:
             ele = self.common_test_data_config.get('Audit_Log_Report_Data', 'select_one_user')
