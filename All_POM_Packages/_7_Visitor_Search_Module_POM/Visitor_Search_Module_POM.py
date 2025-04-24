@@ -88,7 +88,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     def Verify_Visitor_search_with_no_criteria_selection_should_display_error_message_above_search_menu_as_Error_Meta_data_only_search_should_target_a_single_store(self):
         try:
             result = []
-            self.logger.info("********** TC_TC_Visitor_Search_059 started ********")
+            self.logger.info("********** TC_Visitor_Search_059 started ********")
             login().login_to_cloud_if_not_done(self.d)
 
             self.click_on_visitor_search()
@@ -111,7 +111,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_059_exception.png")
-            self.logger.info(f"TC_Visitor_Search_059_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_059_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -140,7 +140,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_002_exception.png")
-            self.logger.info(f"visitor_search_with_region_criteria_with_NATS_exception:  {ex}")
+            self.logger.info(f"visitor_search_with_region_criteria_with_NATS_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -166,7 +166,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         print(ex)
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_003_exception.png")
-    #         self.logger.info(f"visitor_search_with_gender_criteria_with_NATS_exception:  {ex}")
+    #         self.logger.info(f"visitor_search_with_gender_criteria_with_NATS_exception:  {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -198,7 +198,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_004_Exception.png")
-    #         self.logger.info(f"visitor_search_with_region_and_gender_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_region_and_gender_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -232,7 +232,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_005_Exception.png")
-    #         self.logger.info(f"visitor_search_with_age_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_age_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -267,7 +267,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_006_Exception.png")
-    #         self.logger.info(f"visitor_search_with_region_and_age_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_region_and_age_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -302,7 +302,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_007_Exception.png")
-    #         self.logger.info(f"visitor_search_with_age_and_gender_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_age_and_gender_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -336,7 +336,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         print(ex)
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_008_exception.png")
-    #         self.logger.info(f"visitor_search_with_region_age_and_gender_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_region_age_and_gender_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -383,7 +383,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_009_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -415,7 +415,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             return result
 
         except Exception as ex:
-            self.logger.info(f"verify_possible_match_dates_are_in_ascending_order got an exception as: {ex}")
+            self.logger.info(f"verify_possible_match_dates_are_in_ascending_order got an exception as: {type(ex).__name__}")
 
     def verify_index_scores_are_in_descending_order(self):
         try:
@@ -432,7 +432,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             return result
 
         except Exception as ex:
-            self.logger.info(f"verify_index_scores_are_in_descending_order got an exception as: {ex}")
+            self.logger.info(f"verify_index_scores_are_in_descending_order got an exception as: {type(ex).__name__}")
 
     def Verify_visitor_search_with_Date_range_and_Org_Hierarch_Selection_should_list_the_visitors_in_selected_date_range_and_belongs_to_selected_Org_Hierarchy_Selection_sorted_by_date_time_in_ascending_order_(self):
         try:
@@ -463,7 +463,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             # self.get_start_date()
             # self.logger.info("get_start_date executed")
             # # self.get_end_date()
@@ -500,7 +500,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_069_exception.png")
-            self.logger.info(f"TC_Visitor_Search_069_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_069_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -529,7 +529,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_011_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_and_gender_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_and_gender_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -584,7 +584,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}"
     #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -645,7 +645,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_012_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -698,7 +698,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_013_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -755,7 +755,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_014_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -810,7 +810,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_015_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -875,7 +875,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         print(ex)
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_016_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -924,7 +924,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_080_exception.png")
-            self.logger.info(f"TC_Visitor_Search_080_exception: {ex}")
+            self.logger.info(f"TC_Visitor_Search_080_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -954,7 +954,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_050_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -982,7 +982,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_051_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1017,7 +1017,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_089_exception.png")
-            self.logger.info(f"TC_Visitor_Search_089_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_089_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1045,7 +1045,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_019_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1076,7 +1076,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_054_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1110,7 +1110,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_055_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1146,7 +1146,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_056_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1175,7 +1175,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_021_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1206,7 +1206,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_058_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1237,7 +1237,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_059_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1271,7 +1271,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_060_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1304,7 +1304,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_061_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1340,7 +1340,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_062_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1374,7 +1374,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_063_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1411,7 +1411,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_064_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1442,7 +1442,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_018_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1476,7 +1476,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_066_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1509,7 +1509,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_067_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1546,7 +1546,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_068_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -1579,7 +1579,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_020_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1616,7 +1616,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_070_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1650,7 +1650,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_071_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1689,7 +1689,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_072_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1722,7 +1722,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_022_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1758,7 +1758,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_074_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1793,7 +1793,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_075_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1832,7 +1832,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_076_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1868,7 +1868,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_023_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1908,7 +1908,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_078_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1947,7 +1947,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_079_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -1990,7 +1990,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_080_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception : {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2026,7 +2026,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
 
             # self.logger.info(f"edge name: {edge_name}")
             # self.select_zone(edge_name)
@@ -2039,7 +2039,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             # self.verify_region_from_match_list(edge_name)
             # self.click_on_logout_button()
         except Exception as ex:
-            self.logger.info(f"Select start and end date got an exception as: {ex}")
+            self.logger.info(f"Select start and end date got an exception as: {type(ex).__name__}")
 
     def visitor_search_with_image_and_date_range_with_NATS_criteria(self):
         result = []
@@ -2066,7 +2066,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_025_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2106,7 +2106,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             count_data = Read_Visitor_Search_Components().matches_count_data_input()
             self.select_count(count_data)
             self.logger.info("select_count executed ")
@@ -2125,7 +2125,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_093_exception.png")
-            self.logger.info(f"TC_Visitor_Search_093_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_093_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2165,7 +2165,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             self.set_thresh_hold_slider()
             self.logger.info("set_thresh_hold_slider executed ")
             self.click_on_submit_search_button()
@@ -2183,7 +2183,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_094_exception.png")
-            self.logger.info(f"TC_Visitor_Search_094_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_094_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2223,7 +2223,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             self.set_thresh_hold_slider()
             self.logger.info("set_thresh_hold_slider executed ")
             count_data = Read_Visitor_Search_Components().matches_count_data_input()
@@ -2245,7 +2245,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_095_exception.png")
-            self.logger.info(f"TC_Visitor_Search_095_exception:  {ex}")
+            self.logger.info(f"TC_Visitor_Search_095_exception:  {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2295,7 +2295,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_027_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2347,7 +2347,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_086_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2398,7 +2398,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_087_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2454,7 +2454,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}"
     #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2505,7 +2505,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_029_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2558,7 +2558,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_090_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2609,7 +2609,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_091_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2665,7 +2665,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}"
     #                                f"\\visitor_search_with_only_date_criteria_with_NATS_failed.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2722,7 +2722,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_024_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2779,7 +2779,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_094_exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2835,7 +2835,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_095_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2894,7 +2894,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
     #             return True
     #     except Exception as ex:
     #         self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_096_Exception.png")
-    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+    #         self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
     #         return False
     #     finally:
     #         self.close_all_panel_one_by_one()
@@ -2932,7 +2932,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Visitor_Search_086_exception.png")
-            self.logger.info(f"TC_Visitor_Search_086_exception: {ex}")
+            self.logger.info(f"TC_Visitor_Search_086_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -2972,7 +2972,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             zone_data = Read_Visitor_Search_Components().zone_data_input()
             self.select_zone(zone_data)
             self.logger.info("select_zone executed")
@@ -2994,7 +2994,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_098_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3033,7 +3033,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_099_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3073,7 +3073,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
             zone_data = Read_Visitor_Search_Components().zone_data_input()
             self.select_zone(zone_data)
             self.logger.info("select_zone executed")
@@ -3097,7 +3097,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_100_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3153,7 +3153,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_028_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3209,7 +3209,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_102_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3264,7 +3264,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_103_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3322,7 +3322,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_104_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_Exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_Exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3377,7 +3377,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_030_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3434,7 +3434,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_106_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3490,7 +3490,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_107_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3549,7 +3549,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_108_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3609,7 +3609,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_032_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3669,7 +3669,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_110_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_failed:{type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3728,7 +3728,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\test_TC_VS_111_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3792,7 +3792,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_112_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3813,7 +3813,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_114_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3834,7 +3834,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_115_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3856,7 +3856,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_116_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3884,7 +3884,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_118_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3911,7 +3911,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_119_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3941,7 +3941,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_120_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -3974,7 +3974,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_122_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4003,7 +4003,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_123_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4038,7 +4038,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_124_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4071,7 +4071,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_126_exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4104,7 +4104,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_127_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4135,7 +4135,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 return True
         except Exception as ex:
             self.d.save_screenshot(f"{self.screenshots_path}\\test_TC_VS_128_Exception.png")
-            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {ex}")
+            self.logger.info(f"visitor_search_with_only_date_criteria_with_NATS_exception: {type(ex).__name__}")
             return False
         finally:
             self.close_all_panel_one_by_one()
@@ -4830,7 +4830,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                 self.d.execute_script("arguments[0].click();", logout_button)
             except Exception as ex:
                 logout_button.click()
-                self.logger.info(f"exception: {ex}")
+                self.logger.info(f"exception: {type(ex).__name__}")
 
             self.d.delete_cookie()
         except Exception as ex:
@@ -5255,7 +5255,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
                                                                    e_period)
                 time.sleep(web_driver.three_second)
             except Exception as ex:
-                self.logger.info(f"select date range got an exception as: {ex}")
+                self.logger.info(f"select date range got an exception as: {type(ex).__name__}")
 
         except Exception as ex:
             self.logger.error("start date method exception")

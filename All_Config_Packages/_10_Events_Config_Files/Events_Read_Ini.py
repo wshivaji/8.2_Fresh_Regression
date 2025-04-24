@@ -1162,8 +1162,6 @@ class events_Read_Ini:
         except Exception as ex:
             print(ex)
 
-
-
     def regions_xpath(self):
         try:
             region_xpath = self.config.get("LOCATOR",  "region_xpath")

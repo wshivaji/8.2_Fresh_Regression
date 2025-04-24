@@ -42,6 +42,7 @@ if __name__ == "__main__":
     report_path_reporting = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\19_Reporting_Module_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
     report_path_notes_search_filter = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\16_Notes_search_filter_Module_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
     report_path_insight_dashboard = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\21_Insight_Dashboard_Module_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
+    report_path_sspr = f"{Path(__file__).parent}\\Reports\\HTML_Reports\\21_SSPR_Module_test_report_{datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')}.html"
     # -----------------------------------------------------------------------------------------------------------
     # --------------------------------- regression and p1 - p5 Test suite path  ---------------------------------
     # ************* test suite path ******************
@@ -74,6 +75,7 @@ if __name__ == "__main__":
     test_suite_path_alr = f"{Path(__file__).parent}\\All_Test_Cases_Package\\_17_Audit_Log_Report_Module"
     test_suite_path_reporting = f"{Path(__file__).parent}\\All_Test_Cases_Package\\_19_Reporting_Module"
     test_suite_path_insight_dashboard = f"{Path(__file__).parent}\\All_Test_Cases_Package\\_21_Insight_Dashboard_Module"
+    test_suite_path_sspr = f"{Path(__file__).parent}\\All_Test_Cases_Package\\_21_SSPR_Module"
 
     # -----------------------------------------------------------------------------------------------------------
     # --------------------------------- Regression and p1 - p5  Test suite run commands  ------------------------
@@ -121,6 +123,7 @@ if __name__ == "__main__":
     pytest.main(['-v', f'{test_suite_path_reporting}', '--html', f'{report_path_reporting}'])
     pytest.main(['-v', f'{test_suite_path_acc}', '--html', f'{report_path_accounts}'])
     pytest.main(['-v', f'{test_suite_path_alr}', '--html', f'{report_path_alr}'])
+    pytest.main(['-v', f'{test_suite_path_sspr}', '--html', f'{report_path_sspr}'])
 
 
     # ------------------------------------------------------------------------------------------------------------

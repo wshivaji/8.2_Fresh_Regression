@@ -117,18 +117,17 @@ class Store_Groups_Module_pom(web_driver, web_logger):
         except Exception as ex:
             str(ex)
 
-    def create_store_groups(self):
+    def create_store_groups(self, sg_name):
         try:
             self.logger.info("********** Test_EG_01 Begin  **********")
             status = []
             users_dict = Users_Module_pom().Read_user_from_json()
             users_list = []
-            username = users_dict["users"][4]["username"]
-            login().login_with_persona_user(self.d, username)
+            # username = users_dict["users"][4]["username"]
+            login().login_with_persona_user(self.d, "TC_SG_test07")
             time.sleep(web_driver.one_second)
-            login().accept_terms_and_conditions_for_login_for_new_user()
-            store_group_menu = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                  get_store_groups_menu_by_xpath(), self.d)
+            # login().accept_terms_and_conditions_for_login_for_new_user()
+            store_group_menu = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_store_groups_menu_by_xpath(), self.d)
             if store_group_menu:
                 store_group_menu.click()
             time.sleep(web_driver.one_second)
@@ -152,8 +151,8 @@ class Store_Groups_Module_pom(web_driver, web_logger):
                     time.sleep(web_driver.one_second)
                     name_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
                                                     get_name_field_for_creating_store_group_by_xpath(), self.d)
-                    name_field.send_keys(store_group[i])
-                    self.logger.info(f"store name entered as {store_group[i]}")
+                    name_field.send_keys(sg_name)
+                    self.logger.info(f"store name entered as {sg_name}")
                     time.sleep(web_driver.one_second)
                     description_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
                                                            get_description_field_by_xpath(), self.d)
@@ -168,10 +167,10 @@ class Store_Groups_Module_pom(web_driver, web_logger):
                                                      get_save_button_on_store_group_creation_panel_by_xpath(), self.d)
                     save_button.click()
                     time.sleep(web_driver.one_second)
-                    success_message = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                         get_store_group_creation_success_message_by_xpath(), self.d)
-                    if success_message.text == store_group_page_read_ini().\
-                            get_success_message_after_store_group_creation():
+                    success_message = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_store_group_creation_success_message_by_xpath(), self.d)
+                    self.logger.info(f"expected success msg: {store_group_page_read_ini().get_success_message_after_store_group_creation()}")
+                    self.logger.info(f"actual success msg: {success_message.text}")
+                    if success_message.text == store_group_page_read_ini().get_success_message_after_store_group_creation():
                         self.status.append(True)
                         self.logger.info(f"store group {store_group[i]} created successfully!")
                     else:
@@ -313,15 +312,13 @@ class Store_Groups_Module_pom(web_driver, web_logger):
     def Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created(self):
         try:
             self.logger.info("********** TC_Store_Groups_15 started ********")
-            self.logger.info(
-                "Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created")
-            print(
-                f"Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created")
+            self.logger.info("Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created")
+            print(f"Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created")
             login().login_to_cloud_if_not_done(self.d)
             Users_Module_pom().click_user_on_cloud_menu()
             Users_Module_pom().click_on_action_create_user_option()
             time.sleep(web_driver.one_second)
-            username = "TC_SG_AD2"
+            username = "TC_SG_test07"
             # username = Read_Users_Components().user_name_input_data() + str(generate_random_number())
             Users_Module_pom().enter_user_name(username)
             Users_Module_pom().enter_first_name("user")
@@ -334,8 +331,8 @@ class Store_Groups_Module_pom(web_driver, web_logger):
             self.select_region(region)
             # Users_Module_pom().select_region(users_dict["users"][i]["user_orgahierarchy"])
             # self.select_store_group(users_dict["users"][i]["store_group"])
-            Users_Module_pom().enter_email("sgad2@facefirst.com")
-            Users_Module_pom().enter_alert_email("sgad2@facefirst.com")
+            Users_Module_pom().enter_email(f"{username}@facefirst.com")
+            Users_Module_pom().enter_alert_email(f"{username}@facefirst.com")
             Users_Module_pom().select_time_zone(Read_Users_Components().time_zone_input_data())
             time.sleep(web_driver.one_second)
             Users_Module_pom().click_on_save_btn()
@@ -353,56 +350,54 @@ class Store_Groups_Module_pom(web_driver, web_logger):
             self.click_on_logout_button()
             login().login_with_persona_user(self.d, username)
             self.accept_terms_and_conditions_for_login_for_new_user()
-            store_group_menu = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                  get_store_groups_menu_by_xpath(), self.d)
-            if store_group_menu:
-                store_group_menu.click()
-            time.sleep(web_driver.one_second)
+            self.status.append(self.create_store_groups(username))
 
-            self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_title_on_store_groups_panel_by_xpath(),
-                               self.d)
-            # description = store_group_page_read_ini().get_store_group_description()
-            # edge_name = Read_Visitor_Search_Components().zone_data_input()
-            x = store_group_page_read_ini().get_store_group_name()
-            store_group = x.split(',')
-
-            for i in range(len(store_group)):
-                action_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                   get_action_dropdown_on_store_groups_panel_by_xpath(), self.d)
-                if action_button:
-                    action_button.click()
-                    time.sleep(web_driver.one_second)
-                    create_store_group_option = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                                   get_create_store_group_option_by_xpath(), self.d)
-                    create_store_group_option.click()
-                    time.sleep(web_driver.one_second)
-                    name_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                    get_name_field_for_creating_store_group_by_xpath(), self.d)
-                    name_field.send_keys(store_group[i])
-                    self.logger.info(f"store name entered as {store_group[i]}")
-                    time.sleep(web_driver.one_second)
-                    # description_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                    #                                        get_description_field_by_xpath(), self.d)
-                    # description_field.send_keys(description)
-                    # time.sleep(web_driver.one_second)
-                    org_selection_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                              get_org_selection_button_by_xpath(), self.d)
-                    org_selection_button.click()
-                    self.select_region_from_org_hierarchy()
-                    time.sleep(web_driver.one_second)
-                    save_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                     get_save_button_on_store_group_creation_panel_by_xpath(), self.d)
-                    save_button.click()
-                    time.sleep(web_driver.one_second)
-                    success_message = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
-                                                         get_store_group_creation_success_message_by_xpath(), self.d)
-                    if success_message.text == store_group_page_read_ini(). \
-                            get_success_message_after_store_group_creation():
-                        self.status.append(True)
-                        self.logger.info(f"store group {store_group[i]} created successfully!")
-                    else:
-                        self.status.append(False)
-            time.sleep(web_driver.one_second)
+            # store_group_menu = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_store_groups_menu_by_xpath(), self.d)
+            # if store_group_menu:
+            #     store_group_menu.click()
+            # time.sleep(web_driver.one_second)
+            #
+            # self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_title_on_store_groups_panel_by_xpath(),
+            #                    self.d)
+            # # description = store_group_page_read_ini().get_store_group_description()
+            # # edge_name = Read_Visitor_Search_Components().zone_data_input()
+            # x = store_group_page_read_ini().get_store_group_name()
+            # store_group = x.split(',')
+            #
+            # for i in range(len(store_group)):
+            #     action_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
+            #                                        get_action_dropdown_on_store_groups_panel_by_xpath(), self.d)
+            #     if action_button:
+            #         action_button.click()
+            #         time.sleep(web_driver.one_second)
+            #         create_store_group_option = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
+            #                                                        get_create_store_group_option_by_xpath(), self.d)
+            #         create_store_group_option.click()
+            #         time.sleep(web_driver.one_second)
+            #         name_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_name_field_for_creating_store_group_by_xpath(), self.d)
+            #         name_field.send_keys(store_group[i])
+            #         self.logger.info(f"store name entered as {store_group[i]}")
+            #         time.sleep(web_driver.one_second)
+            #         # description_field = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
+            #         #                                        get_description_field_by_xpath(), self.d)
+            #         # description_field.send_keys(description)
+            #         # time.sleep(web_driver.one_second)
+            #         org_selection_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_org_selection_button_by_xpath(), self.d)
+            #         org_selection_button.click()
+            #         self.select_region_from_org_hierarchy()
+            #         time.sleep(web_driver.one_second)
+            #         save_button = self.explicit_wait(10, "XPATH", store_group_page_read_ini().get_save_button_on_store_group_creation_panel_by_xpath(), self.d)
+            #         save_button.click()
+            #         time.sleep(web_driver.one_second)
+            #         success_message = self.explicit_wait(10, "XPATH", store_group_page_read_ini().
+            #                                              get_store_group_creation_success_message_by_xpath(), self.d)
+            #         if success_message.text == store_group_page_read_ini(). \
+            #                 get_success_message_after_store_group_creation():
+            #             self.status.append(True)
+            #             self.logger.info(f"store group {store_group[i]} created successfully!")
+            #         else:
+            #             self.status.append(False)
+            # time.sleep(web_driver.one_second)
             self.click_on_logout_button()
             self.logger.info(f"status: {self.status}")
             if False in self.status:

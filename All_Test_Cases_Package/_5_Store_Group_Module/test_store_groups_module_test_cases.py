@@ -14,9 +14,23 @@ class Test_Portal_Smoke_Test_Cases(web_driver, web_logger):
         else:
             assert False
 
-    @pytest.mark.p1
-    def test_TC_SG_15(self):
-        if Store_Groups_Module_pom().Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created():
-            assert True
-        else:
-            assert False
+    # @pytest.mark.p1
+    # def test_TC_SG_02(self):
+    #     if Store_Groups_Module_pom().Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created():
+    #         assert True
+    #     else:
+    #         assert False
+    #
+    # @pytest.mark.p1
+    # def test_TC_SG_03(self):
+    #     if Store_Groups_Module_pom().create_store_groups("test_sg"):
+    #         assert True
+    #     else:
+    #         assert False
+
+    # @pytest.mark.p1
+    # def test_TC_SG_15(self):
+    #     if Store_Groups_Module_pom().Verify_admin_user_able_to_create_store_group_successfully_by_entering_required_fields_such_as_Name_and_Location_Verify_user_able_to_see_success_message_as_Success_A_store_group_has_been_created():
+    #         assert True
+    #     else:
+    #         assert False

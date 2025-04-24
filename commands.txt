@@ -1,0 +1,8 @@
+- Portal Login:- pytest -v -s -m p1 .\All_Test_Cases_Package\_1_Portal_Login_Module\test_portal_login_page_test_cases.py --html=Reports\HTML_Reports\portal_login_module.html
+- Portal Menu:- pytest -v -s -m p1 .\All_Test_Cases_Package\_2_Portal_Menu_Module\test_Portal_Menu_Test_Cases.py --html=Reports\HTML_Reports\portal_menu.html
+- System_test:-
+- User Roles:- pytest -v -s -m p1 .\All_Test_Cases_Package\_4_User_Roles_Module\test_User_Roles_Test_Cases.py --html=Reports\HTML_Reports\User_Roles_Module.html
+
+
+
+- SSPR Command:- pytest -v -s -m p1  .\All_Test_Cases_Package\_21_SSPR_Module\test_SSPR_testcases.py --html=Reports\HTML_Reports\sspr.html

@@ -603,7 +603,7 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
             time.sleep(web_driver.two_second)
             time.sleep(web_driver.one_second)
 
-            login().accept_terms_and_conditions_for_login_for_new_user(self.d)
+            login().accept_terms_and_conditions_for_login_for_new_user()
             if self.explicit_wait(10, "XPATH", Portal_login_page_read_ini()
                     .get_cloud_menu_on_dashboard_by_xpath(), self.d).is_displayed():
                 self.logger.info("Login successful...")
@@ -1304,7 +1304,8 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
             self.status.clear()
             time.sleep(web_driver.one_second)
             username_txtbox = self.d.find_elements(By.XPATH, Portal_login_page_read_ini().get_portal_login_username_textbox_by_xpath())
-            username_txtbox = self.wait_for_element_to_appear(username_txtbox, Portal_login_page_read_ini().get_portal_login_username_textbox_by_xpath())
+            # username_txtbox = self.wait_for_element_to_appear(username_txtbox, Portal_login_page_read_ini().get_portal_login_username_textbox_by_xpath())
+            username_txtbox = self.explicit_wait(5, "XPATH", Portal_login_page_read_ini().get_portal_login_username_textbox_by_xpath(), self.d)
             username_txtbox.clear()
             time.sleep(web_driver.one_second)
             username_txtbox.send_keys(Portal_login_page_read_ini().get_valid_login_username())
