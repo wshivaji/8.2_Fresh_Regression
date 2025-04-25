@@ -12,7 +12,7 @@ class Test_Notes_Search_Filter_Combination(web_driver, web_logger):
     logger.info(" ******** Notes_Search_Module (Order - 15) Begin ********")
     print("******** Notes_Search_Module (Order - 15) Begin ********")
 
-    @pytest.mark.p2
+    @pytest.mark.p1
     def test_TC_NSFC_15(self):
         self.logger.info("test_TC_NSFC_013 execution started..")
         if Notes_search_filter_combination_pom(). \

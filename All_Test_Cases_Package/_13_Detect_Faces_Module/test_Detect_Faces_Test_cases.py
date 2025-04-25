@@ -11,9 +11,7 @@ class Test_detect_faces_testcases(web_driver, web_logger):
     logger.info(" ******** detect_faces (Order - 11) Begin ********")
     print("******** detect_faces (Order - 11) Begin ********")
 
-
-
-    @pytest.mark.p3
+    @pytest.mark.p1
     def test_TC_DF_01(self):
         if detect_faces_pom().Click_on_Detect_Faces_menu_and_verify_it_is_navigating_to_Detect_Faces_panel_verify_panel_heading_is_visible_as_expected():
             assert True

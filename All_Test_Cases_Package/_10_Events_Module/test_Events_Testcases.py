@@ -20,7 +20,7 @@ class Test_eVents_testcases(web_driver, web_logger):
         else:
             assert False
 
-    @pytest.mark.p2
+    @pytest.mark.p1
     def test_TC_EV_75(self):
         if events_pom().on_Events_tags_panel_click_on_linked_tags_in_filter_dropdown_and_verify_only_linked_tags_are_disiplayed():
             assert True

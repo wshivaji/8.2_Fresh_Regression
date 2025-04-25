@@ -583,6 +583,7 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
 
             self.load_portal_login_page_if_not_loaded()
             time.sleep(web_driver.one_second)
+
             self.status.clear()
             time.sleep(web_driver.one_second)
             username_textbox = self.explicit_wait(10, "XPATH", Portal_login_page_read_ini()
@@ -604,8 +605,7 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
 
             login().accept_terms_and_conditions_for_login_for_new_user()
-            if self.explicit_wait(10, "XPATH", Portal_login_page_read_ini()
-                    .get_cloud_menu_on_dashboard_by_xpath(), self.d).is_displayed():
+            if self.explicit_wait(10, "XPATH", Portal_login_page_read_ini().get_cloud_menu_on_dashboard_by_xpath(), self.d).is_displayed():
                 self.logger.info("Login successful...")
                 self.status.append(True)
             else:

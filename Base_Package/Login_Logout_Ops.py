@@ -24,7 +24,7 @@ class login(web_driver, web_logger):
         self.config.read(self.file_path)
         self.cloud_url = self.common_test_data_config.get("Login_Logout_Data", "cloud_login_url")
         print(f"cloud url: {self.cloud_url}")
-        self.d = None
+        self.d = web_driver.d()
         self.logger = web_logger.logger_obj()
 
     def login_to_localhost_if_not_done(self, d):

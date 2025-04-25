@@ -74,6 +74,7 @@ class Test_Notifier_Module_Test_Cases(web_driver, web_logger):
         else:
             assert False
 
+    @pytest.mark.p1
     def test_TC_Notifier_097(self):
         if Notifier_pom().Verify_notifier_panel_should_display_ENROLLMENT_NUMBER_with_valid_data():
             assert True

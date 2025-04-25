@@ -579,6 +579,14 @@ class system_level_test_read_ini:
         except Exception as ex:
             print("image_match_list_by_xpath : ", ex)
 
+    def vs_completed_banner_by_xpath(self):
+        try:
+            vs_completed_banner_by_xpath = self.config.get("Integration", "vs_completed_banner_by_xpath")
+            print(f"identify_within_enrollments_btn_by_xpath: {vs_completed_banner_by_xpath}")
+            return vs_completed_banner_by_xpath
+        except Exception as ex:
+            print("image_match_list_by_xpath : ", ex)
+
     def identifying_photo_wait_by_xpath(self):
         try:
             identifying_photo_wait_by_xpath = self.config.get("Integration", "identifying_photo_wait_by_xpath")

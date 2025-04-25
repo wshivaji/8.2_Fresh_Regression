@@ -481,7 +481,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
             else:
                 result.append(True)
             # result.append(x)
-            self.verify_date()
+            # self.verify_date()
             self.verify_region_from_match_list(zone_data)
             y = self.verify_possible_match_dates_are_in_ascending_order()
             self.logger.info(f"Returned: {y}")

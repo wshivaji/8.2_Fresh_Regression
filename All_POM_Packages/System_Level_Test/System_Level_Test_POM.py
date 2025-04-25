@@ -478,7 +478,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_01_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_01_exception.png")
-            self.logger.error(f"TC_SLT_01 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_01 got exception as: {type(ex).__name__}")
 
     def select_region(self, region_text):
         """
@@ -648,7 +648,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_02_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_02_exception.png")
-            self.logger.error(f"TC_SLT_02 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_02 got exception as: {type(ex).__name__}")
             return False
 
     def creating_dummy_Notification_Groups_Functionality_by_filling_Name_and_Description_data_it_should_displayed_Success_the_alert_below_has_been_created_message(self):
@@ -701,7 +701,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_03_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_03_exception.png")
-            self.logger.error(f"TC_SLT_03 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_03 got exception as: {type(ex).__name__}")
             return False
 
     def creating_dummy_enrollment_group_by_filling_name_description_data_success_message(self):
@@ -764,7 +764,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_04_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_04_exception.png")
-            self.logger.error(f"TC_SLT_04 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_04 got exception as: {type(ex).__name__}")
             return False
 
     def users_notification_group_enrollment_group_bottom_up_integration(self):
@@ -999,7 +999,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_05_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_05_exception.png")
-            self.logger.error(f"TC_SLT_05 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_05 got exception as: {type(ex).__name__}")
             return False
 
     def enrollment_group_notification_group_users_top_down_integration(self):
@@ -1120,7 +1120,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_06_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_06_exception.png")
-            self.logger.error(f"TC_SLT_06 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_06 got exception as: {type(ex).__name__}")
             return False
 
     def Creating_Notification_Group_from_Users_panel(self):
@@ -1187,7 +1187,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_7_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_7_exception.png")
-            self.logger.error(f"TC_SLT_7 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_7 got exception as: {type(ex).__name__}")
             return False
 
     def Creating_User_and_Enrollment_Group_from_Notification_Group_panel(self):
@@ -1347,7 +1347,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_8_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_8_exception.png")
-            self.logger.error(f"TC_SLT_8 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_8 got exception as: {type(ex).__name__}")
             return False
 
     def Creating_Notification_Group_and_User_from_Enrollment_Group_panel(self):
@@ -1490,7 +1490,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_9_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_9_exception.png")
-            self.logger.error(f"TC_SLT_9 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_9 got exception as: {type(ex).__name__}")
             return False
 
     def click_on_visitor_search(self):
@@ -1505,7 +1505,7 @@ class System_Level_Test_pom(web_driver, web_logger):
             web_driver.implicit_wait(self, web_driver.one_second, self.d)
             self.logger.info("waiting for search panel to appear...")
         except Exception as ex:
-            self.logger.info(f"exception: {ex.args}")
+            self.logger.info(f"exception: {type(ex).__name__}")
 
     def click_on_submit_search_button(self):
         """
@@ -1531,40 +1531,52 @@ class System_Level_Test_pom(web_driver, web_logger):
             # WebDriverWait(self.d, 10).until(EC.presence_of_element_located(ele2[0]))
             # WebDriverWait(self.d, 10).until(EC.presence_of_element_located(ele2))
             # web_driver.explicit_wait(self, 30, ele2, self.d)
-            if len(ele2) > 0:
-                self.logger.info(f"no match text displayed: {ele2[0].is_displayed()}")
-                self.logger.info(f"ele2: {ele2[0].text}")
-                x = ele2[0].is_displayed()
-            else:
+            vs_complete_banner = self.explicit_wait(30, "XPATH", system_level_test_read_ini().vs_completed_banner_by_xpath(), self.d)
+            if vs_complete_banner.is_displayed():
                 self.logger.info("comparing images.")
                 time.sleep(web_driver.two_second)
-                web_driver.implicit_wait(self, 1, self.d)
-                auto_refresh_on = self.d.find_element(By.XPATH, system_level_test_read_ini().get_auto_refresh_on_by_xpath())
-                time.sleep(web_driver.one_second)
-                # while auto_refresh_on.is_displayed():
-                #     time.sleep(web_driver.one_second)
-                #     # self.logger.info("waiting for till auto refresh off..")
-                auto_refresh_off = self.d.find_element(By.XPATH, system_level_test_read_ini().get_auto_refresh_off_by_xpath())
-                if auto_refresh_off.is_displayed():
-                    time.sleep(web_driver.one_second)
-                    ele = self.d.find_elements(By.XPATH, system_level_test_read_ini().get_image_match_list_by_xpath())
-                    WebDriverWait(self.d, 30).until(EC.presence_of_element_located(ele[0]))
-                    self.logger.info(f"length of ele: {len(ele)}")
-                    if len(ele) > 0:
-                        self.logger.info(f"images displayed: {ele[0].is_displayed()}")
-                        for e in ele:
-                            if e.is_displayed() or not x:
-                                self.logger.info(f"Images Displayed: {e.is_displayed()}")
-                                return True
-                            else:
-                                self.logger.info("no matches found..")
-                                return False
+                # ele = self.d.find_elements(By.XPATH, system_level_test_read_ini().get_image_match_list_by_xpath())
+                ele = self.explicit_wait(5, "XPATH", system_level_test_read_ini().get_image_match_list_by_xpath(), self.d)
+                ele = self.d.find_elements(By.XPATH, system_level_test_read_ini().get_image_match_list_by_xpath())
+                # WebDriverWait(self.d, 30).until(EC.presence_of_element_located(ele[0]))
+                # self.logger.info(f"length of ele: {len(ele)}")
+                if len(ele) > 0:
+                    self.logger.info(f"images displayed: {ele[0].is_displayed()}")
                     return True
                 else:
                     return False
+                    # for e in ele:
+                    #     if e.is_displayed() or not x:
+                    #         self.logger.info(f"Images Displayed: {e.is_displayed()}")
+                    #         return True
+                    #     else:
+                    #         self.logger.info("no matches found..")
+                    #         return False
+                # web_driver.implicit_wait(self, 1, self.d)
+                # auto_refresh_on = self.d.find_element(By.XPATH, system_level_test_read_ini().get_auto_refresh_on_by_xpath())
+                # time.sleep(web_driver.one_second)
+                # # while auto_refresh_on.is_displayed():
+                # #     time.sleep(web_driver.one_second)
+                # #     # self.logger.info("waiting for till auto refresh off..")
+                # auto_refresh_off = self.d.find_element(By.XPATH, system_level_test_read_ini().get_auto_refresh_off_by_xpath())
+                #
+                # if auto_refresh_off.is_displayed():
+                #     time.sleep(web_driver.one_second)
+                #
+                #     return True
+                # else:
+                #     return False
+            elif len(ele2) > 0:
+                self.logger.info(f"no match text displayed: {ele2[0].is_displayed()}")
+                self.logger.info(f"ele2: {ele2[0].text}")
+                x = ele2[0].is_displayed()
+                return False
+            else:
+                pass
+
         except Exception as ex:
             print(ex)
-            self.logger.info(f"images match exception: {ex}")
+            self.logger.info(f"images match exception: {type(ex).__name__}")
         else:
             return True
 
@@ -1578,7 +1590,7 @@ class System_Level_Test_pom(web_driver, web_logger):
             enrollments_menu.click()
             time.sleep(web_driver.one_second)
         except Exception as ex:
-            self.logger.info(f"exception: {ex}")
+            self.logger.info(f"exception: {type(ex).__name__}")
 
     def Verify_visitor_enrollment_successfully_done_from_Visitor_Search_Results_for_visitor_with_image_for_all_edges_present(self):
         try:
@@ -1699,7 +1711,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_10_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_10_exception.png")
-            self.logger.error(f"TC_SLT_10 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_10 got exception as: {type(ex).__name__}")
             return False
 
     def select_zone(self, edge_name):
@@ -1736,7 +1748,8 @@ class System_Level_Test_pom(web_driver, web_logger):
     def open_identify_enrollment_panel(self):
         try:
             time.sleep(web_driver.two_second)
-            identify_within_enrollments = self.d.find_elements(By.XPATH, system_level_test_read_ini().get_identify_within_enrollments_btn_by_xpath())
+            # identify_within_enrollments = self.d.find_elements(By.XPATH, system_level_test_read_ini().get_identify_within_enrollments_btn_by_xpath())
+            identify_within_enrollments = self.explicit_wait(5, "XPATH", system_level_test_read_ini().get_identify_within_enrollments_btn_by_xpath(), self.d)
             time.sleep(web_driver.two_second)
             time.sleep(web_driver.two_second)
             # WebDriverWait(self.d, 10).until(EC.presence_of_element_located(identify_within_enrollments))
@@ -1757,7 +1770,8 @@ class System_Level_Test_pom(web_driver, web_logger):
                     #     return True
                     # else:
                     time.sleep(web_driver.one_second)
-                    add_details = self.d.find_elements(By.XPATH, system_level_test_read_ini().add_details_panel_by_xpath())
+                    # add_details = self.d.find_elements(By.XPATH, system_level_test_read_ini().add_details_panel_by_xpath())
+                    add_details = self.explicit_wait(5, "XPATH", system_level_test_read_ini().add_details_panel_by_xpath(), self.d)
                     time.sleep(web_driver.one_second)
                     if len(add_details) > 0:
                         return False
@@ -1775,9 +1789,8 @@ class System_Level_Test_pom(web_driver, web_logger):
                         return True
                 else:
                     pass
-
         except Exception as ex:
-            self.logger.info(f"{ex.args}")
+            self.logger.info(f"{type(ex).__name__}")
 
     def select_enrollment_basis(self, index):
         try:
@@ -1788,7 +1801,7 @@ class System_Level_Test_pom(web_driver, web_logger):
             select.select_by_index(index)
             time.sleep(web_driver.one_second)
         except Exception as ex:
-            self.logger.info(f"{ex.args}")
+            self.logger.info(f"{type(ex).__name__}")
 
     def select_enrollment_group(self, group_index):
         try:
@@ -1800,7 +1813,7 @@ class System_Level_Test_pom(web_driver, web_logger):
             self.logger.info(f"enrollment group selected = {enrollment_group_selected.text}")
             print(f"enrollment group selected: {enrollment_group_selected.text}")
         except Exception as ex:
-            self.logger.info(f"{ex.args}")
+            self.logger.info(f"{type(ex).__name__}")
 
     def enter_required_fields(self, a, lo, c):
         try:
@@ -1834,7 +1847,7 @@ class System_Level_Test_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             return lo, c
         except Exception as ex:
-            self.logger.info(f"{ex.args}")
+            self.logger.info(f"{type(ex).__name__}")
 
     def enrollment_validation(self, i):
         try:
@@ -1887,7 +1900,7 @@ class System_Level_Test_pom(web_driver, web_logger):
                 return False
 
         except Exception as ex:
-            self.logger.info(f"{ex.args}")
+            self.logger.info(f"{type(ex).__name__}")
 
     def Verify_visitor_enrollment_successfully_done_from_Visitor_Search_Results_for_visitor_with_meta_data_for_all_edges_present(self):
         try:
@@ -1939,31 +1952,32 @@ class System_Level_Test_pom(web_driver, web_logger):
                 x = self.verify_image_from_match_list()
                 self.logger.info(f"Returned: {x}")
                 status.append(x)
-                self.open_identify_enrollment_panel()
-                time.sleep(web_driver.one_second)
+
+                # self.open_identify_enrollment_panel()
+                # time.sleep(web_driver.one_second)
                 # ***************************************Enrollment Process start here**********************
 
-                self.select_enrollment_basis(i+1)
-                time.sleep(web_driver.one_second)
-                self.select_enrollment_group(i+1)
-                time.sleep(web_driver.one_second)
-                self.enter_required_fields(i, i, i)
-                time.sleep(web_driver.one_second)
-                region_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().region_btn_by_xpath())
-                time.sleep(web_driver.one_second)
-                region_btn.click()
-                time.sleep(web_driver.one_second)
+                # self.select_enrollment_basis(i+1)
+                # time.sleep(web_driver.one_second)
+                # self.select_enrollment_group(i+1)
+                # time.sleep(web_driver.one_second)
+                # self.enter_required_fields(i, i, i)
+                # time.sleep(web_driver.one_second)
+                # region_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().region_btn_by_xpath())
+                # time.sleep(web_driver.one_second)
+                # region_btn.click()
+                # time.sleep(web_driver.one_second)
 
-                region_names = self.d.find_elements(By.XPATH, system_level_test_read_ini().edge_name_list())
-                self.logger.info(f"edge name: {edge_names_list[i]}")
-                self.logger.info(f"actual_region_count: {len(region_names)}")
-                for a in range(len(region_names)):
-                    self.logger.info(f"region name: {region_names[a].text}")
-                for j in range(len(region_names)):
-                    if edge_names_list[i] == region_names[j].text:
-                        region_names[j].click()
-                        self.logger.info(f"region selected as: {region_names[j].text}")
-                        break
+                # region_names = self.d.find_elements(By.XPATH, system_level_test_read_ini().edge_name_list())
+                # self.logger.info(f"edge name: {edge_names_list[i]}")
+                # self.logger.info(f"actual_region_count: {len(region_names)}")
+                # for a in range(len(region_names)):
+                #     self.logger.info(f"region name: {region_names[a].text}")
+                # for j in range(len(region_names)):
+                #     if edge_names_list[i] == region_names[j].text:
+                #         region_names[j].click()
+                #         self.logger.info(f"region selected as: {region_names[j].text}")
+                #         break
 
                 # region_names = self.d.find_elements(By.XPATH, system_level_test_read_ini().edge_name_list())
                 # self.logger.info(f"edge name: {edge_names_list[i]}")
@@ -1973,40 +1987,40 @@ class System_Level_Test_pom(web_driver, web_logger):
                 #         self.logger.info(f"region selected as: {region_names[j].text}")
                 #         break
 
-                time.sleep(web_driver.one_second)
-                save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().save_btn_by_xpath())
-                save_btn.click()
-                time.sleep(web_driver.one_second)
-                self.logger.info("Saved selected region..")
+                # time.sleep(web_driver.one_second)
+                # save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().save_btn_by_xpath())
+                # save_btn.click()
+                # time.sleep(web_driver.one_second)
+                # self.logger.info("Saved selected region..")
+                #
+                # save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().add_details_save_btn_by_xpath())
+                # save_btn.click()
+                # time.sleep(web_driver.one_second)
+                # wait_icon = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_loader())
+                # while wait_icon.is_displayed():
+                #     time.sleep(web_driver.two_second)
+                #
+                # WebDriverWait(self.d, 30).until(EC.presence_of_element_located((By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())))
+                # time.sleep(web_driver.three_second)
+                # success_msg = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())
+                # time.sleep(web_driver.one_second)
+                # self.logger.info(f"actual message: {success_msg.text}")
+                # self.logger.info(f"expected message: {system_level_test_read_ini().enrollment_success_msg_validation()}")
+                # if success_msg.text.lower() == system_level_test_read_ini().enrollment_success_msg_validation().lower():
+                #     status.append(True)
+                # else:
+                #     status.append(False)
 
-                save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().add_details_save_btn_by_xpath())
-                save_btn.click()
-                time.sleep(web_driver.one_second)
-                wait_icon = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_loader())
-                while wait_icon.is_displayed():
-                    time.sleep(web_driver.two_second)
-
-                WebDriverWait(self.d, 30).until(EC.presence_of_element_located((By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())))
-                time.sleep(web_driver.three_second)
-                success_msg = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())
-                time.sleep(web_driver.one_second)
-                self.logger.info(f"actual message: {success_msg.text}")
-                self.logger.info(f"expected message: {system_level_test_read_ini().enrollment_success_msg_validation()}")
-                if success_msg.text.lower() == system_level_test_read_ini().enrollment_success_msg_validation().lower():
-                    status.append(True)
-                else:
-                    status.append(False)
-
-                time.sleep(web_driver.one_second)
-                review_enrollment_details = self.d.find_element(By.XPATH, system_level_test_read_ini().review_enrollment_details_btn_by_xpath())
-                review_enrollment_details.click()
-                time.sleep(web_driver.one_second)
-                status.append(self.enrollment_validation(i))
-                time.sleep(web_driver.one_second)
-                close_panel = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
-                for panels in close_panel:
-                    panels.click()
-                    time.sleep(web_driver.one_second)
+                # time.sleep(web_driver.one_second)
+                # review_enrollment_details = self.d.find_element(By.XPATH, system_level_test_read_ini().review_enrollment_details_btn_by_xpath())
+                # review_enrollment_details.click()
+                # time.sleep(web_driver.one_second)
+                # status.append(self.enrollment_validation(i))
+                # time.sleep(web_driver.one_second)
+                # close_panel = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
+                # for panels in close_panel:
+                #     panels.click()
+                #     time.sleep(web_driver.one_second)
 
             self.logger.info(f"status: {status}")
             if False in status:
@@ -2019,7 +2033,7 @@ class System_Level_Test_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_11_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_11_exception.png")
-            self.logger.error(f"TC_SLT_11 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_11 got exception as: {type(ex).__name__}")
             return False
 
     def Verify_visitor_enrollment_successfully_done_from_Visitor_Search_Results_for_visitor_with_image_and_meta_data_for_all_edges_present(self):
@@ -2047,7 +2061,7 @@ class System_Level_Test_pom(web_driver, web_logger):
                     file_path = f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\Common_Test_data\\VS_images\\SWANKHEDE-PC-Visitor-5.png"
 
                 else:
-                    file_path = f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\Common_Test_data\\VS_images\\SOMU-PC-Visitor-4.png"
+                    file_path = f"{Path(__file__).parent.parent.parent}\\All_Test_Data\\Common_Test_data\\VS_images\\00090.png"
 
                 print(f"filepath : {file_path}")
                 pyautogui.write(file_path)
@@ -2079,90 +2093,85 @@ class System_Level_Test_pom(web_driver, web_logger):
                 self.logger.info(f"edge name: {edge_names_list[i]}")
                 self.select_zone(edge_names_list[i])
 
-                start_age = Read_Visitor_Search_Components().start_age_data_input()
-                end_age = Read_Visitor_Search_Components().end_age_data_input()
-
-                Visitor_Search_Module_pom().select_start_age(start_age)
-                Visitor_Search_Module_pom().select_end_age(end_age)
-                gender_data = Read_Visitor_Search_Components().gender_data_input()
-
-                Visitor_Search_Module_pom().select_gender(gender_data)
-                # self.nats_checkbox()
-
                 self.click_on_submit_search_button()
                 x = self.verify_image_from_match_list()
                 self.logger.info(f"Returned: {x}")
                 status.append(x)
-                self.open_identify_enrollment_panel()
+                # self.open_identify_enrollment_panel()
+                #
+                # # ***************************************Enrollment Process start here**********************
+                #
+                # self.select_enrollment_basis(i + 1)
+                # self.select_enrollment_group(i + 1)
+                # self.enter_required_fields(i, i, i)
+                # time.sleep(web_driver.one_second)
+                # region_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().region_btn_by_xpath())
+                # time.sleep(web_driver.one_second)
+                # region_btn.click()
+                # time.sleep(web_driver.one_second)
+                #
+                # region_names = self.d.find_elements(By.XPATH, system_level_test_read_ini().edge_name_list())
+                # self.logger.info(f"edge name: {edge_names_list[i]}")
+                # for j in range(len(region_names)):
+                #     if edge_names_list[i] in region_names[j].text:
+                #         region_names[j].click()
+                #         self.logger.info(f"region selected as: {region_names[j].text}")
+                #         break
+                #
+                # time.sleep(web_driver.one_second)
+                # save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().save_btn_by_xpath())
+                # save_btn.click()
+                # self.logger.info("Saved selected region..")
+                #
+                # save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().add_details_save_btn_by_xpath())
+                # save_btn.click()
+                #
+                # wait_icon = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_loader())
+                # while wait_icon.is_displayed():
+                #     time.sleep(web_driver.two_second)
+                #
+                # WebDriverWait(self.d, 30).until(EC.presence_of_element_located(
+                #     (By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())))
+                # time.sleep(web_driver.three_second)
+                # success_msg = self.d.find_element(By.XPATH, system_level_test_read_ini()
+                #                                   .enrollment_success_msg_xpath())
+                # self.logger.info(f"actual message: {success_msg.text}")
+                # self.logger.info(
+                #     f"expected message: {system_level_test_read_ini().enrollment_success_msg_validation()}")
+                # if success_msg.text.lower() == system_level_test_read_ini().enrollment_success_msg_validation(). \
+                #         lower():
+                #     status.append(True)
+                # else:
+                #     status.append(False)
 
-                # ***************************************Enrollment Process start here**********************
+                # time.sleep(web_driver.one_second)
+                # review_enrollment_details = self.d.find_element(By.XPATH,
+                #                                                 system_level_test_read_ini().review_enrollment_details_btn_by_xpath())
+                # review_enrollment_details.click()
+                # status.append(self.enrollment_validation(i))
 
-                self.select_enrollment_basis(i + 1)
-                self.select_enrollment_group(i + 1)
-                self.enter_required_fields(i, i, i)
-                time.sleep(web_driver.one_second)
-                region_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().region_btn_by_xpath())
-                time.sleep(web_driver.one_second)
-                region_btn.click()
-                time.sleep(web_driver.one_second)
-
-                region_names = self.d.find_elements(By.XPATH, system_level_test_read_ini().edge_name_list())
-                self.logger.info(f"edge name: {edge_names_list[i]}")
-                for j in range(len(region_names)):
-                    if edge_names_list[i] in region_names[j].text:
-                        region_names[j].click()
-                        self.logger.info(f"region selected as: {region_names[j].text}")
-                        break
-
-                time.sleep(web_driver.one_second)
-                save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().save_btn_by_xpath())
-                save_btn.click()
-                self.logger.info("Saved selected region..")
-
-                save_btn = self.d.find_element(By.XPATH, system_level_test_read_ini().add_details_save_btn_by_xpath())
-                save_btn.click()
-
-                wait_icon = self.d.find_element(By.XPATH, system_level_test_read_ini().enrollment_success_loader())
-                while wait_icon.is_displayed():
-                    time.sleep(web_driver.two_second)
-
-                WebDriverWait(self.d, 30).until(EC.presence_of_element_located(
-                    (By.XPATH, system_level_test_read_ini().enrollment_success_msg_xpath())))
-                time.sleep(web_driver.three_second)
-                success_msg = self.d.find_element(By.XPATH, system_level_test_read_ini()
-                                                  .enrollment_success_msg_xpath())
-                self.logger.info(f"actual message: {success_msg.text}")
-                self.logger.info(
-                    f"expected message: {system_level_test_read_ini().enrollment_success_msg_validation()}")
-                if success_msg.text.lower() == system_level_test_read_ini().enrollment_success_msg_validation(). \
-                        lower():
-                    status.append(True)
-                else:
-                    status.append(False)
-
-                time.sleep(web_driver.one_second)
-                review_enrollment_details = self.d.find_element(By.XPATH,
-                                                                system_level_test_read_ini().review_enrollment_details_btn_by_xpath())
-                review_enrollment_details.click()
-                status.append(self.enrollment_validation(i))
-                time.sleep(web_driver.one_second)
-                close_panel = self.d.find_elements(By.XPATH,
-                                                   Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
-                for panels in close_panel:
-                    panels.click()
-                    time.sleep(web_driver.one_second)
 
             self.logger.info(f"status: {status}")
             if False in status:
                 self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_12_failed.png")
                 self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_12_failed.png")
+                time.sleep(web_driver.one_second)
+                close_panel = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
+                for panels in close_panel:
+                    panels.click()
+                    time.sleep(web_driver.one_second)
                 return False
             else:
+                time.sleep(web_driver.one_second)
+                close_panel = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
+                for panels in close_panel:
+                    panels.click()
+                    time.sleep(web_driver.one_second)
                 return True
             # logout().logout_from_core()
         except Exception as ex:
             self.logger.error(f"screenshot file path: {self.screenshots_path}\\TC_SLT_12_exception.png")
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_SLT_12_exception.png")
-            self.logger.error(f"TC_SLT_12 got exception as: {ex.args}")
+            self.logger.error(f"TC_SLT_12 got exception as: {type(ex).__name__}")
             return False
 

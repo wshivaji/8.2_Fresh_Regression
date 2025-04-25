@@ -1,8 +1,23 @@
-- Portal Login:- pytest -v -s -m p1 .\All_Test_Cases_Package\_1_Portal_Login_Module\test_portal_login_page_test_cases.py --html=Reports\HTML_Reports\portal_login_module.html
-- Portal Menu:- pytest -v -s -m p1 .\All_Test_Cases_Package\_2_Portal_Menu_Module\test_Portal_Menu_Test_Cases.py --html=Reports\HTML_Reports\portal_menu.html
-- System_test:-
-- User Roles:- pytest -v -s -m p1 .\All_Test_Cases_Package\_4_User_Roles_Module\test_User_Roles_Test_Cases.py --html=Reports\HTML_Reports\User_Roles_Module.html
-
-
-
-- SSPR Command:- pytest -v -s -m p1  .\All_Test_Cases_Package\_21_SSPR_Module\test_SSPR_testcases.py --html=Reports\HTML_Reports\sspr.html
+- Portal Login:- pytest -v -s -m p1 .\All_Test_Cases_Package\_1_Portal_Login_Module\test_portal_login_page_test_cases.py --html=Reports\HTML_Reports\1_portal_login_module.html
+- Portal Menu:- pytest -v -s -m p1 .\All_Test_Cases_Package\_2_Portal_Menu_Module\test_Portal_Menu_Test_Cases.py --html=Reports\HTML_Reports\2_portal_menu.html
+- System_test:- pytest -v -s -m p1 .\All_Test_Cases_Package\_3_System_Level_Test\test_system_level_TestCases.py --html=Reports\HTML_Reports\3_System_Test_Reports.html
+- Store Group:- pytest -v -s -m p1 .\All_Test_Cases_Package\_5_Store_Group_Module\test_store_groups_module_test_cases.py --html=Reports\HTML_Reports\4_Store_Group_Module.html
+- User Roles:- pytest -v -s -m p1 .\All_Test_Cases_Package\_4_User_Roles_Module\test_User_Roles_Test_Cases.py --html=Reports\HTML_Reports\5_User_Roles_Module.html
+- Users Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_5_Users_Module\test_Users_Module.py --html=Reports\HTML_Reports\6_Users_Module.html
+- Tags Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_14_tags_Module\test_tags_module.py --html=Reports\HTML_Reports\7_Tags_Module.html
+- Enrollment Group:- pytest -v -s -m p1 .\All_Test_Cases_Package\_6_Enrollment_Groups_Module\test_Enrollment_Groups_Test_Cases.py --html=Reports\HTML_Reports\8_Enrollment_Groups_Module.html
+- Notification Group:- pytest -v -s -m p1 .\All_Test_Cases_Package\_7_Notification_Groups_Module\test_notification_groups_module.py --html=Reports\HTML_Reports\9_Notification_Groups_Module.html
+- identify & Enroll:- pytest -v -s -m p1 .\All_Test_Cases_Package\_8_Identify_and_Enroll_Module\test_Identify_and_Enroll_Test_Cases.py --html=Reports\HTML_Reports\10_Identify_Enroll_Module.html
+- Enrollments Module:-
+- Enrollments_Search_Module:-
+- Events Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_10_Events_Module\test_Events_Testcases.py --html=Reports\HTML_Reports\13_Events_Module.html
+- Visitor Search:- pytest -v -s -m p1 .\All_Test_Cases_Package\_11_Visitor_Search_Module\test_Visitor_Search_Test_Cases.py --html=Reports\HTML_Reports\14_Visitor_Search_Module.html
+- Visitor Search Jobs:- pytest -v -s -m p1 .\All_Test_Cases_Package\_12_Visitor_Search_Jobs_Module\test_Visitor_Search_Jobs_Test_Cases.py --html=Reports\HTML_Reports\15_Visitor_Search_Jobs_Module.html
+- Detect Faces:- pytest -v -s -m p1 .\All_Test_Cases_Package\_13_Detect_Faces_Module\test_Detect_Faces_Test_cases.py --html=Reports\HTML_Reports\16_Detect_Faces_Module.html
+- Notes Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_15_Notes_Module\test_Notes_Test_cases.py --html=Reports\HTML_Reports\17_Notes_Module.html
+- Notes Search Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_16_Notes_search_filter\test_Notes_Search_Filter_Combination.py --html=Reports\HTML_Reports\18_Notes_Search_Module.html
+- Audit Log Report:- pytest -v -s -m p1 .\All_Test_Cases_Package\_17_Audit_Log_Report_Module\test_Audit_Log_Report_Test_Cases.py --html=Reports\HTML_Reports\19_Audit_Log_Reprot.html
+- Notifier Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_18_Notifier_Module\test_notifier_test_cases.py --html=Reports\HTML_Reports\20_Notifier_Module.html
+- Reporting Module:- pytest -v -s -m p1 .\All_Test_Cases_Package\_19_Reporting_Module\test_reporting_test_cases.py --html=Reports\HTML_Reports\21_Reporting_Module.html
+- Insight Dashboard:- pytest -v -s -m p1 .\All_Test_Cases_Package\_21_Insight_Dashboard_Module\test_insight_dashboard_testcases.py --html=Reports\HTML_Reports\22_Insight_Dashboard_Report.html
+- SSPR Command:- pytest -v -s -m p1  .\All_Test_Cases_Package\_21_SSPR_Module\test_SSPR_testcases.py --html=Reports\HTML_Reports\23_sspr.html

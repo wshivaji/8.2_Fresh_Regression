@@ -373,16 +373,14 @@ class Read_Tags_Components:
 
     def input_for_create_serious_event_tags_threat(self):
         try:
-            input_for_create_serious_event_tags_threat = self.config.get("DATA",
-                                                                           "input_for_create_serious_event_tags_threat")
+            input_for_create_serious_event_tags_threat = self.config.get("DATA", "input_for_create_serious_event_tags_threat")
             return input_for_create_serious_event_tags_threat
         except Exception as ex:
             print("input_for_create_serious_event_tags_threat : ", ex)
 
     def input_for_create_serious_event_tags_assault(self):
         try:
-            input_for_create_serious_event_tags_assault = self.config.get("DATA",
-                                                                           "input_for_create_serious_event_tags_assault")
+            input_for_create_serious_event_tags_assault = self.config.get("DATA" "input_for_create_serious_event_tags_assault")
             return input_for_create_serious_event_tags_assault
         except Exception as ex:
             print("input_for_create_serious_event_tags_assault : ", ex)

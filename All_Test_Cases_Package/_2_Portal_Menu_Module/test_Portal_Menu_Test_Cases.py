@@ -124,13 +124,6 @@ class Test_Portal_Menu_Test_Cases(web_driver, web_logger):
             assert False
 
     @pytest.mark.p1
-    def test_TC_PM_17(self):
-        if Portal_Menu_Module_pom().Verify_Dashboard_menu_visible_and_clickable():
-            assert True
-        else:
-            assert False
-
-    @pytest.mark.p1
     def test_TC_PM_18(self):
         if Portal_Menu_Module_pom().Verify_Notifier_menu_visible_and_clickable():
             assert True
@@ -165,3 +158,9 @@ class Test_Portal_Menu_Test_Cases(web_driver, web_logger):
         else:
             assert False
 
+    @pytest.mark.p1
+    def test_TC_PM_29(self):
+        if Portal_Menu_Module_pom().Verify_Dashboard_menu_visible_and_clickable():
+            assert True
+        else:
+            assert False
