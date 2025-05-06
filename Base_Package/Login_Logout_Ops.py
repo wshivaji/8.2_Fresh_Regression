@@ -76,14 +76,10 @@ class login(web_driver, web_logger):
                     pyautogui.hotkey('ctrl', '-')
                     time.sleep(0.5)
 
-            # login_logo = self.d.find_element(By.XPATH, "//img[@id='login-logo']").is_displayed()
-            # if not login_logo.is_displayed():
-            #     self.d.get(Portal_login_page_read_ini().get_portal_url())
-
             login_btn = self.d.find_elements(By.XPATH, self.config.get("login_page_locators", "login_link_by_xpath"))
             current_url = self.d.current_url
             self.logger.info(f"current url: {current_url}")
-
+            self.logger.info(f"login btn list: {len(login_btn)}")
             if current_url is None or len(login_btn) > 0:
                 print("current url", current_url)
                 self.logger.info("url is not open")

@@ -36,22 +36,22 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
         except Exception as ex:
             self.logger.error(ex)
 
-    def wait_for_element_to_appear(self, element_list, xpath):
-        count = 0
-        if len(element_list) == 0:
-            while len(element_list) == 0 or count == 10:
-                element_list = self.d.find_elements(By.XPATH, xpath)
-                time.sleep(web_driver.one_second)
-                if len(element_list) > 0:
-                    self.logger.info("element is visible...")
-                    return element_list[0]
-                else:
-                    self.logger.info("waiting for element...")
-                count += 1
-                self.logger.info(f"wait count: {count}")
-        else:
-            self.logger.info(f"element length: {len(element_list)}")
-            return element_list[0]
+    # def wait_for_element_to_appear(self, element_list, xpath):
+    #     count = 0
+    #     if len(element_list) == 0:
+    #         while len(element_list) == 0 or count == 10:
+    #             element_list = self.d.find_elements(By.XPATH, xpath)
+    #             time.sleep(web_driver.one_second)
+    #             if len(element_list) > 0:
+    #                 self.logger.info("element is visible...")
+    #                 return element_list[0]
+    #             else:
+    #                 self.logger.info("waiting for element...")
+    #             count += 1
+    #             self.logger.info(f"wait count: {count}")
+    #     else:
+    #         self.logger.info(f"element length: {len(element_list)}")
+    #         return element_list[0]
 
     def Verify_events_menu_visible_and_clickable(self):
         try:
@@ -64,7 +64,7 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
             self.explicit_wait(10,"XPATH",Portal_Menu_Module_read_ini().get_events_menu_by_xpath(), self.d)
             events_menu_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_events_menu_by_xpath())
             time.sleep(web_driver.two_second)
-            events_menu = self.wait_for_element_to_appear(events_menu_list, Portal_Menu_Module_read_ini().get_events_menu_by_xpath())
+            events_menu = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_events_menu_by_xpath(), self.d)
             expected_title = Portal_Menu_Module_read_ini().get_expected_events_text()
             if events_menu.is_displayed():
                 if events_menu.text == expected_title:
@@ -83,8 +83,8 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
             events_menu.click()
             time.sleep(web_driver.two_second)
             actual_title_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_title_on_Events_panel_by_xpath())
-            actual_title = self.wait_for_element_to_appear(actual_title_list, Portal_Menu_Module_read_ini().get_title_on_Events_panel_by_xpath())
 
+            actual_title = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_title_on_Events_panel_by_xpath(), self.d)
             self.logger.info(f"actual title: {actual_title.text}")
             self.logger.info(f"expected title: {expected_title}")
             if actual_title.text == expected_title:
@@ -93,7 +93,8 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
                 self.status.append(False)
             time.sleep(web_driver.two_second)
             close_panel_btn_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
-            close_panel_btn = self.wait_for_element_to_appear(close_panel_btn_list, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath)
+
+            close_panel_btn = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath(), self.d)
             close_panel_btn.click()
             time.sleep(web_driver.two_second)
             self.logger.info(f"status: {self.status}")
@@ -120,7 +121,8 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
             time.sleep(web_driver.one_second)
             self.explicit_wait(10, "XPATH", Portal_Menu_Module_read_ini().get_Tags_menu_by_xpath(), self.d)
             tags_menu_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_Tags_menu_by_xpath())
-            tags_menu = self.wait_for_element_to_appear(tags_menu_list, Portal_Menu_Module_read_ini().get_Tags_menu_by_xpath())
+
+            tags_menu = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_Tags_menu_by_xpath(), self.d)
             expected_title = Portal_Menu_Module_read_ini().get_expected_tags_text()
             time.sleep(web_driver.one_second)
             if tags_menu.is_displayed():
@@ -140,7 +142,8 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
             tags_menu.click()
             time.sleep(web_driver.two_second)
             actual_title_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_title_on_Tags_panel_by_xpath())
-            actual_title = self.wait_for_element_to_appear(actual_title_list, Portal_Menu_Module_read_ini().get_title_on_Tags_panel_by_xpath())
+
+            actual_title = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_title_on_Tags_panel_by_xpath(), self.d)
             self.logger.info(f"actual title: {actual_title.text}")
             self.logger.info(f"expected title: {expected_title}")
             if actual_title.text == expected_title:
@@ -149,7 +152,8 @@ class Portal_Menu_Module_pom(web_driver, web_logger):
                 self.status.append(False)
             time.sleep(web_driver.two_second)
             close_panel_btn_list = self.d.find_elements(By.XPATH, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
-            close_panel_btn = self.wait_for_element_to_appear(close_panel_btn_list, Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath())
+
+            close_panel_btn = self.explicit_wait(5, "XPATH", Portal_Menu_Module_read_ini().get_close_panel_button_by_xpath(), self.d)
             close_panel_btn.click()
             time.sleep(web_driver.two_second)
             self.logger.info(f"status: {self.status}")

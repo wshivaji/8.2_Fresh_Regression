@@ -3,10 +3,13 @@ from selenium import webdriver
 import pyautogui
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.color import Color
+from selenium.webdriver.support.wait import WebDriverWait
+
 from All_Config_Packages._1_Portal_Login_Module_Config_Files.Portal_Login_Page_Read_INI import Portal_login_page_read_ini
 from Base_Package.Login_Logout_Ops import login
 from Base_Package.Web_Driver import web_driver
 from Base_Package.Web_Logger import web_logger
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Portal_Login_Page_Pom(web_driver, web_logger):
@@ -1142,8 +1145,7 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
             self.d.save_screenshot(f"{self.screenshots_path}\\TC_Portal_Login_17_exception.png")
             self.logger.error(f"TC_Portal_Login_17 got an exception as: {ex}")
 
-    def verify_face_first_copy_rights_is_visible_and_clickable_click_on_copyrights_and_verify_versions_of_webapi_and_server_both_are_visible_verify_latest_version_of_webapi_and_server_is_appeared(
-            self):
+    def verify_face_first_copy_rights_is_visible_and_clickable_click_on_copyrights_and_verify_versions_of_webapi_and_server_both_are_visible_verify_latest_version_of_webapi_and_server_is_appeared(self):
         try:
             self.logger.info("********** TC_Portal_Login_20 started ********")
             self.logger.info("verify_face_first_copy_rights_is_visible_and_clickable_click_on_copyrights_and_verify_versions_of_webapi_and_server_both_are_visible_verify_latest_version_of_webapi_and_server_is_appeared")
@@ -1167,56 +1169,74 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
                 self.status.append(False)
             time.sleep(web_driver.one_second)
             actual_copyright_text = face_first_copyright.text
-            self.logger.info(f"actual copyright text: {actual_copyright_text}")
-            print(f"actual copyright text: {actual_copyright_text}")
+            self.logger.info(f"actual copyright text: {actual_copyright_text[7:]}")
+            print(f"actual copyright text: {actual_copyright_text[7:]}")
             expected_copyright_text = Portal_login_page_read_ini().get_expected_copyright_text()
             self.logger.info(f"expected copyright text: {expected_copyright_text}")
 
-            if expected_copyright_text != actual_copyright_text:
+            if expected_copyright_text != actual_copyright_text[7:]:
                 self.status.append(False)
             else:
                 self.status.append(True)
+            self.logger.info(f"status: {self.status}")
             time.sleep(web_driver.one_second)
             self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_face_first_copyright_text_by_xpath()).click()
             time.sleep(web_driver.one_second)
-            copyright_on_display_version_info = self.d.find_elements(By.XPATH, Portal_login_page_read_ini().get_copyright_on_display_version_page())
-            copyright_on_display_version_info = self.wait_for_element_to_appear(copyright_on_display_version_info, Portal_login_page_read_ini().get_copyright_on_display_version_page())
-
-            if actual_copyright_text in copyright_on_display_version_info.text:
+            wait = WebDriverWait(self.d, 10)
+            popover = wait.until(EC.visibility_of_element_located((By.ID, "versionInformation")))
+            copyright_on_display_version_info = popover.find_element(By.XPATH, '//span[@ng-bind="\'TEXT-FACEFIRST-COPYRIGHT\' | i18n"]')
+            print(copyright_on_display_version_info.text)
+            # copyright_on_display_version_info = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_copyright_on_display_version_page())
+            # copyright_on_display_version_info = self.explicit_wait(5, "XPATH", Portal_login_page_read_ini().get_copyright_on_display_version_page(), self.d)
+            # copyright_on_display_version_info = self.wait_for_element_to_appear(copyright_on_display_version_info, Portal_login_page_read_ini().get_copyright_on_display_version_page())
+            self.logger.info(f"popover visible: {popover.is_displayed()}")
+            self.logger.info(f"copyrights text: {copyright_on_display_version_info.text}")
+            if actual_copyright_text[7:] == copyright_on_display_version_info.text:
                 self.status.append(True)
             else:
                 self.status.append(False)
-            time.sleep(web_driver.one_second)
-            actual_webapi_text_on_version_info = self.d.find_elements(By.XPATH, Portal_login_page_read_ini().get_WebAPI_text_on_version_info_by_xpath())
-            actual_webapi_text_on_version_info = self.wait_for_element_to_appear(actual_webapi_text_on_version_info, Portal_login_page_read_ini().get_WebAPI_text_on_version_info_by_xpath())
-            expected_webapi_text_on_version_info = Portal_login_page_read_ini().get_expected_webapi_text_on_version_info()
 
+            time.sleep(web_driver.one_second)
+            # actual_webapi_text_on_version_info = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_WebAPI_text_on_version_info_by_xpath())
+            actual_webapi_text_on_version_info = popover.find_element(By.XPATH, Portal_login_page_read_ini().get_WebAPI_text_on_version_info_by_xpath())
+            # actual_webapi_text_on_version_info = self.wait_for_element_to_appear(actual_webapi_text_on_version_info, Portal_login_page_read_ini().get_WebAPI_text_on_version_info_by_xpath())
+            expected_webapi_text_on_version_info = Portal_login_page_read_ini().get_expected_webapi_text_on_version_info()
+            self.logger.info(f"actual webapi text: {actual_webapi_text_on_version_info.text}")
+            self.logger.info(f"actual webapi text: {expected_webapi_text_on_version_info}")
             if actual_webapi_text_on_version_info.text == expected_webapi_text_on_version_info:
                 self.status.append(True)
             else:
                 self.status.append(False)
+            self.logger.info(f"status: {self.status}")
             time.sleep(web_driver.one_second)
-            actual_webapi_version_number = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_webapi_version_info_by_xpath()).text
-            self.logger.info(f"actual webapi version: {actual_webapi_text_on_version_info.text} v{actual_webapi_version_number}")
+            # actual_webapi_version_number = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_webapi_version_info_by_xpath()).text
+            actual_webapi_version_number = popover.find_element(By.XPATH, Portal_login_page_read_ini().get_webapi_version_info_by_xpath())
+            self.logger.info(f"actual webapi version: {actual_webapi_text_on_version_info.text} v{actual_webapi_version_number.text}")
             expected_webapi_version_number = Portal_login_page_read_ini().get_expected_webapi_version_number()
             self.logger.info(f"expected webapi version: {expected_webapi_text_on_version_info} v{expected_webapi_version_number}")
-            if actual_webapi_version_number == expected_webapi_version_number:
+            if actual_webapi_version_number.text == expected_webapi_version_number:
                 self.status.append(True)
             else:
                 self.status.append(False)
+            self.logger.info(f"status: {self.status}")
             time.sleep(web_driver.one_second)
-            actual_server_text_on_version_info = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_Server_text_on_version_info_by_xpath()).text
+            # actual_server_text_on_version_info = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_Server_text_on_version_info_by_xpath()).text
+            actual_server_text_on_version_info = popover.find_element(By.XPATH, Portal_login_page_read_ini().get_Server_text_on_version_info_by_xpath())
             expected_server_text_on_version_info = Portal_login_page_read_ini().get_expected_server_text_on_version_info()
-            if actual_server_text_on_version_info == expected_server_text_on_version_info:
+            self.logger.info(f"actual_server_text_on_version_info: {actual_server_text_on_version_info.text}")
+            self.logger.info(f"expected_server_text_on_version_info: {expected_server_text_on_version_info}")
+            if actual_server_text_on_version_info.text == expected_server_text_on_version_info:
                 self.status.append(True)
             else:
                 self.status.append(False)
+            self.logger.info(f"status: {self.status}")
             time.sleep(web_driver.one_second)
-            actual_portal_version_number = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_portal_version_number_by_xpath()).text
-            self.logger.info(f"actual portal version: {actual_server_text_on_version_info} v{actual_portal_version_number}")
+            # actual_portal_version_number = self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_portal_version_number_by_xpath()).text
+            actual_portal_version_number = popover.find_element(By.XPATH, Portal_login_page_read_ini().get_portal_version_number_by_xpath())
+            self.logger.info(f"actual portal version: {actual_server_text_on_version_info.text} v{actual_portal_version_number.text}")
             expected_portal_version_number = Portal_login_page_read_ini().get_expected_portal_version_number()
             self.logger.info(f"expected portal number: {expected_server_text_on_version_info} v{expected_portal_version_number}")
-            if actual_portal_version_number == expected_portal_version_number:
+            if actual_portal_version_number.text == expected_portal_version_number:
                 self.status.append(True)
             else:
                 self.status.append(False)
@@ -1270,8 +1290,7 @@ class Portal_Login_Page_Pom(web_driver, web_logger):
             else:
                 self.status.append(False)
             time.sleep(web_driver.one_second)
-            self.d.find_element(By.XPATH, Portal_login_page_read_ini().
-                                get_close_button_on_version_info_by_xpath()).click()
+            self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_close_button_on_version_info_by_xpath()).click()
             self.logger.info("Clicked on Close button....")
             time.sleep(web_driver.one_second)
             if self.d.find_element(By.XPATH, Portal_login_page_read_ini().get_copyright_on_display_version_page()). \

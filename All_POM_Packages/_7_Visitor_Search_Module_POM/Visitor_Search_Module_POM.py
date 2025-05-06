@@ -4537,8 +4537,7 @@ class Visitor_Search_Module_pom(web_driver, web_logger):
         :return:
         """
         time.sleep(web_driver.one_second)
-        upload_photo = web_driver.explicit_wait(self, 10, "XPATH",
-                                 Read_Visitor_Search_Components().photo_upload_container_by_xpath(), self.d)
+        upload_photo = web_driver.explicit_wait(self, 10, "XPATH", Read_Visitor_Search_Components().photo_upload_container_by_xpath(), self.d)
         upload_photo.click()
         time.sleep(web_driver.one_second)
         print("file path =====>>>> ")
